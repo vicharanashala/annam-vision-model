@@ -1,0 +1,80 @@
+{
+  "Potato_Early_blight": {
+    "disease_name": "Early Blight",
+    "plant": "Potato",
+    "symptom": "Dark brown concentric spots on older leaves, leading to leaf drop and reduced yield",
+    "treatment": "Use disease-free seed tubers, apply fungicides like mancozeb or chlorothalonil, and practice crop rotation"
+  },
+  "Potato_healthy": {
+    "disease_name": "Healthy",
+    "plant": "Potato",
+    "symptom": "Leaves are green and uniform without spots or discoloration",
+    "treatment": "No treatment needed"
+  },
+  "Potato_Late_blight": {
+    "disease_name": "Late Blight",
+    "plant": "Potato",
+    "symptom": "Water-soaked lesions on leaves and stems that turn brown and cause plant collapse",
+    "treatment": "Apply fungicides like metalaxyl or cymoxanil, remove infected plants, and ensure good field drainage"
+  },
+  "Tomato_Bacterial_spot": {
+    "disease_name": "Bacterial Spot",
+    "plant": "Tomato",
+    "symptom": "Small dark brown spots with yellow halos on leaves and fruit, leading to defoliation",
+    "treatment": "Use copper-based bactericides, avoid overhead irrigation, and use certified seed"
+  },
+  "Tomato_Early_blight": {
+    "disease_name": "Early Blight",
+    "plant": "Tomato",
+    "symptom": "Concentric dark brown rings on lower leaves, causing yellowing and drying",
+    "treatment": "Apply fungicides (mancozeb, chlorothalonil), remove infected debris, and use resistant varieties"
+  },
+  "Tomato_healthy": {
+    "disease_name": "Healthy",
+    "plant": "Tomato",
+    "symptom": "Leaves are green and turgid with no disease symptoms",
+    "treatment": "No treatment needed"
+  },
+  "Tomato_Late_blight": {
+    "disease_name": "Late Blight",
+    "plant": "Tomato",
+    "symptom": "Irregular, water-soaked lesions on leaves and stems with white mold growth under humid conditions",
+    "treatment": "Use resistant varieties, remove affected plants, and apply systemic fungicides"
+  },
+  "Tomato_Leaf_Mold": {
+    "disease_name": "Leaf Mold",
+    "plant": "Tomato",
+    "symptom": "Yellow patches on upper leaf surfaces with olive-green mold growth underneath",
+    "treatment": "Ensure good ventilation, avoid excess humidity, and apply fungicides like chlorothalonil or copper oxychloride"
+  },
+  "Tomato_Septoria_leaf_spot": {
+    "disease_name": "Septoria Leaf Spot",
+    "plant": "Tomato",
+    "symptom": "Small circular spots with dark borders and gray centers appearing on lower leaves",
+    "treatment": "Remove infected leaves, improve air circulation, and use protective fungicides"
+  },
+  "Tomato_Spider_mites_Two-spotted_spider_mite": {
+    "disease_name": "Two-Spotted Spider Mite Infestation",
+    "plant": "Tomato",
+    "symptom": "Tiny yellow or white specks on leaves with fine webbing and eventual leaf drop",
+    "treatment": "Spray miticides or neem oil and maintain field humidity to reduce mite population"
+  },
+  "Tomato_Target_Spot": {
+    "disease_name": "Target Spot",
+    "plant": "Tomato",
+    "symptom": "Brown circular lesions with concentric rings on leaves and fruit, causing premature leaf fall",
+    "treatment": "Use crop rotation, apply fungicides like azoxystrobin or chlorothalonil, and avoid overcrowding"
+  },
+  "Tomato_Tomato_mosaic_virus": {
+    "disease_name": "Tomato Mosaic Virus",
+    "plant": "Tomato",
+    "symptom": "Mosaic light and dark green mottling on leaves, distortion, and stunted growth",
+    "treatment": "No chemical cure; remove infected plants, disinfect tools, and use resistant varieties"
+  },
+  "Tomato_Tomato_Yellow_Leaf_Curl_Virus": {
+    "disease_name": "Tomato Yellow Leaf Curl Virus",
+    "plant": "Tomato",
+    "symptom": "Upward curling and yellowing of leaves, stunted plants, and reduced fruit set",
+    "treatment": "Control whitefly vectors, use virus-free seedlings, and plant resistant cultivars"
+  }
+}
