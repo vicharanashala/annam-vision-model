@@ -1,0 +1,23 @@
+RESULT SUMMARY
+
+Model:
+- CLIP ViT-L/14 (Zero-shot, Prompt Ensembling)
+
+Evaluation Setup:
+- Zero-shot classification
+- No fine-tuning applied
+
+Results:
+============================================================
+CLIP ZERO-SHOT (PROMPT ENSEMBLE)
+============================================================
+- Total images        : 600
+- Correct predictions : 149
+- Wrong predictions   : 451
+- Overall Accuracy    : 24.83%
+============================================================
+
+Conclusion:
+CLIP zero-shot performance is not up to the required level
+for plant leaf disease detection. Without fine-tuning,
+the model struggles with fine-grained disease classification.
