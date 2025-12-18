@@ -1,0 +1,45 @@
+RESULT SUMMARY
+
+Model:
+- EfficientNet-B4 (Fine-tuned)
+
+--------------------------------------------------
+1. Training with 20 Epochs
+--------------------------------------------------
+
+Benchmark Dataset Test Results:
+- Total images        : 52,146
+- Correct predictions : 48,425
+- Wrong predictions   : 3,721
+- Overall Accuracy    : 92.86%
+
+Field Image Dataset Test Results:
+- Total images        : 996
+- Correct predictions : 375
+- Wrong predictions   : 621
+- Overall Accuracy    : 37.65%
+
+--------------------------------------------------
+2. Training with 50 Epochs
+--------------------------------------------------
+
+Benchmark Dataset Test Results:
+- Total images        : 52,146
+- Correct predictions : 48,530
+- Wrong predictions   : 3,616
+- Overall Accuracy    : 93.07%
+
+Field Image Dataset Test Results:
+- Total images        : 996
+- Correct predictions : 365
+- Wrong predictions   : 631
+- Overall Accuracy    : 36.65%
+
+--------------------------------------------------
+Conclusion:
+Both models perform well on the benchmark dataset.
+The model trained for **50 epochs** achieves higher accuracy
+and is selected for further processing.
+
+However, performance on field images remains low,
+indicating a domain gap between benchmark and real-world data.
