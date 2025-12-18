@@ -1,0 +1,28 @@
+RESULT SUMMARY
+
+Model:
+- unsloth/Qwen3-VL-8B-Instruct-unsloth-bnb-4bit
+
+Dataset:
+- Benchmark dataset
+- 13 classes
+- 50 images per class
+- Total images: 650
+
+With fine-tuning (max_sequence_length = 1024):
+Overall Statistics:
+- Total images: 650
+- Correct predictions: 304
+- Wrong predictions: 346
+- Overall Accuracy: 46.77%
+
+Without fine-tuning:
+Overall Statistics:
+- Total images: 650
+- Correct predictions: 14
+- Wrong predictions: 636
+- Overall Accuracy: 2.15%
+
+Conclusion:
+Even after fine-tuning, the model performance is not up to the required
+level for reliable plant leaf disease detection.
