@@ -1,0 +1,19 @@
+RESULT SUMMARY
+
+Models tested:
+- Qwen (via Ollama)
+- LLaVA (via Ollama)
+
+Testing method:
+- Inference on a small set of plant leaf images
+
+Observations:
+- Models were able to generate generic descriptions
+- Plant and disease prediction was inconsistent
+- Most images were NOT predicted correctly
+- Fine-grained disease identification was poor
+
+Conclusion:
+Ollama-based VLMs are not reliable for plant leaf disease detection
+without domain-specific fine-tuning.
+
