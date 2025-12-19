@@ -1,78 +1,130 @@
-# Code working -epoch = 20
 import os
-import timm
 import torch
-from torchvision import transforms, datasets
-from sklearn.metrics import accuracy_score, confusion_matrix
-import matplotlib.pyplot as plt
-import numpy as np
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+from timm import create_model
+from sklearn.metrics import accuracy_score
 
 # -------------------------
 # CONFIG
 # -------------------------
-MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/efficientnet_b4_leaf.pth"
-VAL_DIR = "/home/aic_u3/aic_u3/ComputerVision/DINO_large/Benchmark_Dataset-CDDM_images/Benchmark_Dataset-CDDM_images/images"
-NUM_CLASSES = 13
+DATASET_DIR = "/home/aic_u3/aic_u3/ComputerVision/DINO_large/Benchmark_Dataset-CDDM_images/Benchmark_Dataset-CDDM_images/images"
+MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/checkpoints/best_model_50epochs.pth"
+IMG_SIZE = 380
+BATCH_SIZE = 16
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-val_transforms = transforms.Compose([
-    transforms.Resize((380, 380)),
+# -------------------------
+# TRANSFORMS (must match training)
+# -------------------------
+test_transforms = transforms.Compose([
+    transforms.Resize(IMG_SIZE + 32),
+    transforms.CenterCrop(IMG_SIZE),
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                         std=[0.229, 0.224, 0.225])
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
 ])
 
-val_dataset = datasets.ImageFolder(VAL_DIR, transform=val_transforms)
-val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=16, shuffle=False, num_workers=4)
+# -------------------------
+# DATASET
+# -------------------------
+test_dataset = datasets.ImageFolder(
+    root=DATASET_DIR,
+    transform=test_transforms
+)
+
+test_loader = DataLoader(
+    test_dataset,
+    batch_size=BATCH_SIZE,
+    shuffle=False,
+    num_workers=4,
+    pin_memory=True
+)
+
+NUM_CLASSES = len(test_dataset.classes)
+print(f"Detected {NUM_CLASSES} classes")
 
 # -------------------------
 # MODEL
 # -------------------------
-model = timm.create_model('efficientnet_b4', pretrained=False, num_classes=NUM_CLASSES)
-model.load_state_dict(torch.load(MODEL_PATH))
+model = create_model(
+    "efficientnet_b4",
+    pretrained=False,
+    num_classes=NUM_CLASSES
+)
+
+state_dict = torch.load(MODEL_PATH, map_location=DEVICE)
+model.load_state_dict(state_dict)
 model = model.to(DEVICE)
 model.eval()
 
 # -------------------------
 # EVALUATION
 # -------------------------
-all_preds, all_labels = [], []
+y_true, y_pred = [], []
 
 with torch.no_grad():
-    for imgs, labels in val_loader:
-        imgs, labels = imgs.to(DEVICE), labels.to(DEVICE)
+    for imgs, labels in test_loader:
+        imgs = imgs.to(DEVICE)
+        labels = labels.to(DEVICE)
+
         outputs = model(imgs)
         preds = outputs.argmax(dim=1)
-        all_preds.extend(preds.cpu().numpy())
-        all_labels.extend(labels.cpu().numpy())
 
-acc = accuracy_score(all_labels, all_preds)
-cm = confusion_matrix(all_labels, all_preds)
+        y_pred.extend(preds.cpu().numpy())
+        y_true.extend(labels.cpu().numpy())
 
-print(f"\n📊 TEST RESULTS")
-print("="*50)
-print(f"Total images        : {len(all_labels)}")
-print(f"Correct predictions : {(acc*len(all_labels)):.0f}")
-print(f"Wrong predictions   : {len(all_labels) - (acc*len(all_labels)):.0f}")
-print(f"Overall Accuracy    : {acc*100:.2f}%")
+acc = accuracy_score(y_true, y_pred) * 100
 
-# Optional: Plot confusion matrix
-import seaborn as sns
-import pandas as pd
+print("\n📊 BENCHMARK TEST RESULTS")
+print("=" * 50)
+print(f"Total images        : {len(y_true)}")
+print(f"Correct predictions : {(acc/100)*len(y_true):.0f}")
+print(f"Wrong predictions   : {len(y_true) - (acc/100)*len(y_true):.0f}")
+print(f"Overall Accuracy    : {acc:.2f}%")
 
-class_names = val_dataset.classes
-cm_norm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-plt.figure(figsize=(12,10))
-sns.heatmap(cm_norm, annot=True, fmt=".2f", xticklabels=class_names, yticklabels=class_names, cmap="Blues")
-plt.ylabel("True")
-plt.xlabel("Predicted")
-plt.title("Normalized Confusion Matrix")
-plt.show()
+# ###############################################################
+# Test Result using Bechmark - # both models are working 
 
-# 📊 TEST RESULTS
+# 1. Epochs= 20 
+# 📊 BENCHMARK DATASET TEST RESULTS
 # ==================================================
 # Total images        : 52146
-# Correct predictions : 47734
-# Wrong predictions   : 4412
-# Overall Accuracy    : 91.54%
+# Correct predictions : 48425
+# Wrong predictions   : 3721
+# Overall Accuracy    : 92.86%
+# .......................................................
+# 📊 FIELD IMAGE DATASET TEST RESULTS
+# ==================================================
+# Total images        : 996
+# Correct predictions : 375
+# Wrong predictions   : 621
+# Overall Accuracy    : 37.65%
+# ..............................................
+
+# 2. Epochs=50
+
+# 📊 BENCHMARK DATASET TEST RESULTS
+# ==================================================
+# Total images        : 52146
+# Correct predictions : 48530
+# Wrong predictions   : 3616
+# Overall Accuracy    : 93.07%
+
+# so for further process model with epochs = 50 is selecting
+
+# "/home/aic_u3/aic_u3/ComputerVision/DINO_large/Benchmark_Dataset-CDDM_images/images"
+
+
+# "/home/aic_u3/aic_u3/ComputerVision/DINO_large/Field_Images"
+
+# 📊 FIELD IMAGE DATASET TEST RESULTS
+# ==================================================
+# Total images        : 996
+# Correct predictions : 365
+# Wrong predictions   : 631
+# Overall Accuracy    : 36.65%
+
 
