@@ -88,7 +88,7 @@ def predict(image_path):
 
 # Test
 if __name__ == "__main__":
-    img_path = "/home/aic_u3/aic_u3/ComputerVision/DINO_large/Benchmark_Dataset-CDDM_images/Benchmark_Dataset-CDDM_images/images/Potato Early Blight/plant_64483.jpg"
+    img_path = "/home/aic_u3/aic_u3/ComputerVision/DINO_large/Benchmark_Dataset-CDDM_images/Benchmark_Dataset-CDDM_images/images/Tomato Mosaic Virus/plant_37135.jpg"
     plant, disease = predict(img_path)
     print(f"Plant: {plant} | Disease: {disease}")
 
