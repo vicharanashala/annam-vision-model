@@ -2,7 +2,7 @@ RESULT SUMMARY
 
 Model:
 - EfficientNet-B4 (Fine-tuned)
-
+1. Dataset Potato_Tomato
 --------------------------------------------------
 1. Training with 20 Epochs
 --------------------------------------------------
@@ -43,3 +43,42 @@ and is selected for further processing.
 
 However, performance on field images remains low,
 indicating a domain gap between benchmark and real-world data.
+
+
+2. Rice Disease Dataset 
+
+Training 
+
+# Rice Disease Dataset - 45,456
+
+Bacterial Leaf Blight -4417
+Bacterial Streak - 84
+Bakanae - 85
+Brown Spot - 5388
+False Smut - 134
+Grassy Stunt Virus - 85
+Healthy Leaf - 6520
+Hispa - 2179
+Insect Affected - 2335
+Leaf Blast - 7700
+Leaf scald - 5230
+Leaf Smut - 1470
+Narrow Brown Spot - 1778
+Neck Blast - 1292
+Ragged Stunt Virus - 85
+Sheath Blight - 602
+Sheath Rot - 76
+Stem Rot - 85
+Tungro - 5911
+
+Epoch 50: Train Loss=0.1378 | Val Acc=92.71%
+
+🎯 Best Validation Accuracy: 92.96%
+
+
+📊  TEST RESULTS
+==================================================
+Total images        : 465
+Correct predictions : 436
+Wrong predictions   : 29
+Overall Accuracy    : 93.76%
