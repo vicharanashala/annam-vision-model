@@ -82,3 +82,8 @@ Total images        : 465
 Correct predictions : 436
 Wrong predictions   : 29
 Overall Accuracy    : 93.76%
+
+# ##########################################################
+# EfficientNet-b7- fine tuning started for 50 epochs
+Epoch 20: Train Loss=0.3873 | Val Acc=88.52%
+✅ Saved best model (88.52%
