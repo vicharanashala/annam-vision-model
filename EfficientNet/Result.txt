@@ -96,3 +96,25 @@ Epoch 50/50: 100%|████████████████████�
 Epoch 50: Train Loss=0.1659 | Val Acc=93.18%
 
 🎯 Best Validation Accuracy: 93.60%
+
+
+
+# Final Summary EfficientNet-B4 vs EfficientNet-B7
+
+| **Metric**                  | **EfficientNet-B4** | **EfficientNet-B7** |
+| --------------------------- | ------------------- | ------------------- |
+| **Training Images**         | 36,338              | 36,338              |
+| Correct Predictions (Train) | 34,509              | 34,755              |
+| Wrong Predictions (Train)   | 1,829               | 1,583               |
+| **Training Accuracy (%)**   | **94.97**           | **95.64**           |
+|                             |                     |                     |
+| **Validation Images**       | 9,091               | 9,091               |
+| Correct Predictions (Val)   | 8,451               | 8,509               |
+| Wrong Predictions (Val)     | 640                 | 582                 |
+| **Validation Accuracy (%)** | **92.96**           | **93.60**           |
+|                             |                     |                     |
+| **Test Images**             | 465                 | 465                 |
+| Correct Predictions (Test)  | 436                 | 420                 |
+| Wrong Predictions (Test)    | 29                  | 45                  |
+| **Test Accuracy (%)**       | **93.76**           | **90.32**           |
+
