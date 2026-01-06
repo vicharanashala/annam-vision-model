@@ -82,8 +82,35 @@ Total images        : 465
 Correct predictions : 436
 Wrong predictions   : 29
 Overall Accuracy    : 93.76%
+# ..................................
+# Added Per-Class Accuracy / Recall
 
-# ##########################################################
+📊 Per-Class Accuracy / Recall
+=======================================================
+Bacterial Leaf Blight     : 29/30 (96.67%)
+Bacterial Streak          : 15/15 (100.00%)
+Bakanae                   : 15/15 (100.00%)
+Brown Spot                : 23/30 (76.67%)
+False Smut                : 15/15 (100.00%)
+Grassy Stunt Virus        : 12/15 (80.00%)
+Healthy Leaf              : 30/30 (100.00%)
+Hispa                     : 29/30 (96.67%)
+Insect Affected           : 29/30 (96.67%)
+Leaf Blast                : 30/30 (100.00%)
+Leaf Scald                : 29/30 (96.67%)
+Leaf Smut                 : 25/30 (83.33%)
+Narrow Brown Spot         : 29/30 (96.67%)
+Neck Blast                : 30/30 (100.00%)
+Ragged Stunt Virus        : 14/15 (93.33%)
+Sheath Blight             : 29/30 (96.67%)
+Sheath Rot                : 8/15 (53.33%)
+Stem Rot                  : 15/15 (100.00%)
+Tungro                    : 30/30 (100.00%)
+
+🎯 Macro Recall (Average over classes)
+=======================================================
+92.98%
+##########################################################
 # EfficientNet-b7- fine tuning started for 50 epochs
 Epoch 20: Train Loss=0.3873 | Val Acc=88.52%
 ✅ Saved best model (88.52%)
