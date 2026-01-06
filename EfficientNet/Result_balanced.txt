@@ -1,0 +1,39 @@
+1. WeightedRandomSampler
+# Training
+Epoch 50/50: 100%|██████████████████████████████████████████████| 2272/2272 [04:29<00:00,  8.43it/s]
+Epoch 50: Train Loss=0.0945 | Val Acc=93.40%
+
+🎯 Best Validation Accuracy: 93.40%
+# Test 
+📊 BENCHMARK TEST RESULTS
+=======================================================
+Total images        : 465
+Correct predictions : 445
+Wrong predictions   : 20
+Overall Accuracy    : 95.70%
+
+📊 Per-Class Accuracy / Recall
+=======================================================
+Bacterial Leaf Blight     : 29/30 (96.67%)
+Bacterial Streak          : 15/15 (100.00%)
+Bakanae                   : 15/15 (100.00%)
+Brown Spot                : 23/30 (76.67%)
+False Smut                : 15/15 (100.00%)
+Grassy Stunt Virus        : 12/15 (80.00%)
+Healthy Leaf              : 30/30 (100.00%)
+Hispa                     : 30/30 (100.00%)
+Insect Affected           : 30/30 (100.00%)
+Leaf Blast                : 29/30 (96.67%)
+Leaf Scald                : 30/30 (100.00%)
+Leaf Smut                 : 29/30 (96.67%)
+Narrow Brown Spot         : 30/30 (100.00%)
+Neck Blast                : 30/30 (100.00%)
+Ragged Stunt Virus        : 14/15 (93.33%)
+Sheath Blight             : 30/30 (100.00%)
+Sheath Rot                : 9/15 (60.00%)
+Stem Rot                  : 15/15 (100.00%)
+Tungro                    : 30/30 (100.00%)
+
+🎯 Macro Recall (Average over classes)
+=======================================================
+94.74%
