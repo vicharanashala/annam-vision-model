@@ -1,0 +1,177 @@
+Balancing Technique : SMOTE (Synthetic Minority Over-Sampling Technique)
+
+# CORRECT SMOTE ARCHITECTURE FOR IMAGES(The process of SMOTE on this Rice disease dataset)
+
+Images
+  ↓
+Pretrained CNN (Frozen)
+  ↓
+Feature vectors (e.g. 1792-d for EfficientNet-B4)
+  ↓
+SMOTE (feature space)
+  ↓
+Balanced feature dataset
+  ↓
+Train classifier head
+  ↓
+Evaluation / Testing
+Training completed on SMOTE-Te
+
+Epoch 44/50 | Train Loss: 0.1392 | Val Acc: 85.65%
+✅ Saved best model (85.65%)
+Epoch 45/50 | Train Loss: 0.1387 | Val Acc: 85.67%
+✅ Saved best model (85.67%)
+Epoch 46/50 | Train Loss: 0.1380 | Val Acc: 85.56%
+Epoch 47/50 | Train Loss: 0.1373 | Val Acc: 85.17%
+Epoch 48/50 | Train Loss: 0.1368 | Val Acc: 85.69%
+✅ Saved best model (85.69%)
+Epoch 49/50 | Train Loss: 0.1363 | Val Acc: 85.35%
+Epoch 50/50 | Train Loss: 0.1357 | Val Acc: 85.34%
+
+🎯 Best Validation Accuracy: 85.69%
+
+📊 Validation Report (SMOTE)
+ Validation Report (SMOTE)
+                       precision    recall  f1-score   support
+
+Bacterial Leaf Blight     0.9483    0.9536    0.9509       884
+     Bacterial Streak     0.7083    1.0000    0.8293        17
+              Bakanae     0.8947    1.0000    0.9444        17
+           Brown Spot     0.8848    0.8340    0.8586      1078
+           False Smut     1.0000    1.0000    1.0000        27
+   Grassy Stunt Virus     1.0000    0.8824    0.9375        17
+         Healthy Leaf     0.8536    0.8942    0.8734      1304
+                Hispa     0.8289    0.9335    0.8781       436
+      Insect Affected     0.8806    0.9315    0.9053       467
+           Leaf Blast     0.8608    0.5623    0.6803      1540
+           Leaf Scald     0.9432    0.8770    0.9089      1041
+            Leaf Smut     0.4801    0.9864    0.6459       294
+    Narrow Brown Spot     0.6841    0.9551    0.7972       356
+           Neck Blast     1.0000    1.0000    1.0000       259
+   Ragged Stunt Virus     1.0000    1.0000    1.0000        17
+        Sheath Blight     0.9048    0.9421    0.9231       121
+           Sheath Rot     0.9091    0.6250    0.7407        16
+             Stem Rot     1.0000    0.9412    0.9697        17
+               Tungro     0.8884    0.9358    0.9115      1183
+
+             accuracy                         0.8534      9091
+            macro avg     0.8774    0.9081    0.8818      9091
+         weighted avg     0.8700    0.8534    0.8520      9091
+
+
+
+# Test Results- Unseen dataset
+
+📊 TEST RESULTS (SMOTE)
+============================================================
+Total images        : 465
+Correct predictions : 405
+Wrong predictions   : 60
+Overall Accuracy    : 87.10%
+
+📌 Per-Class Accuracy:
+Bacterial Leaf Blight         : 90.00%
+Bacterial Streak              : 93.33%
+Bakanae                       : 100.00%
+Brown Spot                    : 70.00%
+False Smut                    : 100.00%
+Grassy Stunt Virus            : 80.00%
+Healthy Leaf                  : 93.33%
+Hispa                         : 93.33%
+Insect Affected               : 83.33%
+Leaf Blast                    : 60.00%
+Leaf Scald                    : 83.33%
+Leaf Smut                     : 86.67%
+Narrow Brown Spot             : 96.67%
+Neck Blast                    : 100.00%
+Ragged Stunt Virus            : 86.67%
+Sheath Blight                 : 93.33%
+Sheath Rot                    : 60.00%
+Stem Rot                      : 93.33%
+Tungro                        : 93.33%
+
+📌 Classification Report (Recall, Macro Avg):
+                       precision    recall  f1-score   support
+
+Bacterial Leaf Blight     0.6750    0.9000    0.7714        30
+     Bacterial Streak     1.0000    0.9333    0.9655        15
+              Bakanae     0.8333    1.0000    0.9091        15
+           Brown Spot     0.7778    0.7000    0.7368        30
+           False Smut     1.0000    1.0000    1.0000        15
+   Grassy Stunt Virus     1.0000    0.8000    0.8889        15
+         Healthy Leaf     0.7568    0.9333    0.8358        30
+                Hispa     0.9333    0.9333    0.9333        30
+      Insect Affected     0.8929    0.8333    0.8621        30
+           Leaf Blast     0.9000    0.6000    0.7200        30
+           Leaf Scald     0.8333    0.8333    0.8333        30
+            Leaf Smut     1.0000    0.8667    0.9286        30
+    Narrow Brown Spot     0.7632    0.9667    0.8529        30
+           Neck Blast     1.0000    1.0000    1.0000        30
+   Ragged Stunt Virus     0.8125    0.8667    0.8387        15
+        Sheath Blight     0.9333    0.9333    0.9333        30
+           Sheath Rot     1.0000    0.6000    0.7500        15
+             Stem Rot     1.0000    0.9333    0.9655        15
+               Tungro     0.9032    0.9333    0.9180        30
+
+             accuracy                         0.8710       465
+            macro avg     0.8955    0.8719    0.8760       465
+         weighted avg     0.8833    0.8710    0.8700       465
+
+
+
+# Test result on Training dataset
+📊 RESULTS (SMOTE)
+============================================================
+Total images        : 36338
+Correct predictions : 31133
+Wrong predictions   : 5205
+Overall Accuracy    : 85.68%
+
+📌 Per-Class Accuracy:
+Bacterial Leaf Blight         : 97.42%
+Bacterial Streak              : 100.00%
+Bakanae                       : 100.00%
+Brown Spot                    : 86.47%
+False Smut                    : 100.00%
+Grassy Stunt Virus            : 100.00%
+Healthy Leaf                  : 94.57%
+Hispa                         : 92.60%
+Insect Affected               : 94.81%
+Leaf Blast                    : 45.06%
+Leaf Scald                    : 91.54%
+Leaf Smut                     : 98.81%
+Narrow Brown Spot             : 98.95%
+Neck Blast                    : 100.00%
+Ragged Stunt Virus            : 100.00%
+Sheath Blight                 : 99.38%
+Sheath Rot                    : 100.00%
+Stem Rot                      : 100.00%
+Tungro                        : 94.63%
+
+📌 Classification Report (Recall, Macro Avg):
+                       precision    recall  f1-score   support
+
+Bacterial Leaf Blight     0.9679    0.9742    0.9711      3533
+     Bacterial Streak     0.9853    1.0000    0.9926        67
+              Bakanae     1.0000    1.0000    1.0000        68
+           Brown Spot     0.9148    0.8647    0.8891      4310
+           False Smut     1.0000    1.0000    1.0000       107
+   Grassy Stunt Virus     1.0000    1.0000    1.0000        68
+         Healthy Leaf     0.8045    0.9457    0.8694      5216
+                Hispa     0.8490    0.9260    0.8858      1743
+      Insect Affected     0.8660    0.9481    0.9052      1868
+           Leaf Blast     0.9401    0.4506    0.6092      6160
+           Leaf Scald     0.9091    0.9154    0.9122      4162
+            Leaf Smut     0.4889    0.9881    0.6541      1176
+    Narrow Brown Spot     0.7215    0.9895    0.8345      1422
+           Neck Blast     1.0000    1.0000    1.0000      1033
+   Ragged Stunt Virus     1.0000    1.0000    1.0000        68
+        Sheath Blight     0.9775    0.9938    0.9856       481
+           Sheath Rot     0.9836    1.0000    0.9917        60
+             Stem Rot     1.0000    1.0000    1.0000        68
+               Tungro     0.8723    0.9463    0.9078      4728
+
+             accuracy                         0.8568     36338
+            macro avg     0.9095    0.9443    0.9162     36338
+         weighted avg     0.8796    0.8568    0.8488     36338
+
