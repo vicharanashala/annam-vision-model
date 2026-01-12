@@ -166,3 +166,13 @@ Epoch 50/50: 100%|████████████████████�
 Epoch 50: Train Loss=0.1701 | Val Acc=93.25%
 
 🎯 Best Validation Accuracy: 93.59%
+
+# ############################
+# Efficientnet-b6
+# Training
+Epoch 49/50: 100%|██████████████████████████████████████████████| 4572/4572 [09:51<00:00,  7.74it/s]
+Epoch 49: Train Loss=0.1586 | Val Acc=93.08%
+Epoch 50/50: 100%|██████████████████████████████████████████████| 4572/4572 [09:57<00:00,  7.66it/s]
+Epoch 50: Train Loss=0.1582 | Val Acc=92.80%
+
+🎯 Best Validation Accuracy: 93.29%
