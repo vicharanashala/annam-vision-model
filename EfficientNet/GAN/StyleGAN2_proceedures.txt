@@ -1,0 +1,243 @@
+# ##################################################################################
+Total Images used for Training and validation(before splitting)
+
+# Rice Disease Dataset (Before splitting as train and validation dataset)- 45,456
+
+Bacterial Leaf Blight -4417
+Bacterial Streak - 84
+Bakanae - 85
+Brown Spot - 5388
+False Smut - 134
+Grassy Stunt Virus - 85
+Healthy Leaf - 6520
+Hispa - 2179
+Insect Affected - 2335
+Leaf Blast - 7700
+Leaf scald - 5230
+Leaf Smut - 1470
+Narrow Brown Spot - 1778
+Neck Blast - 1292
+Ragged Stunt Virus - 85
+Sheath Blight - 602
+Sheath Rot - 76
+Stem Rot - 85
+Tungro - 5911
+
+# After splitting the dataset as Train and Validation
+
+# Rice disease dataset
+# Train Folder- Total Number of images -36338
+
+Bacterial Leaf Blight : 3533
+Bacterial Streak : 67
+Bakanae : 68
+Brown Spot : 4310
+False Smut : 107
+Grassy Stunt Virus : 68
+Healthy Leaf : 5216
+Hispa : 1743
+Insect Affected : 1868
+Leaf Blast : 6160
+Leaf Scald : 4162
+Leaf Smut : 1176
+Narrow Brown Spot : 1422
+Neck Blast : 1033
+Ragged Stunt Virus : 68
+Sheath Blight : 481
+Sheath Rot : 60
+Stem Rot : 68
+Tungro : 4728
+
+# Validation Folder- Total Number of images -9091
+
+Bacterial Leaf Blight : 884
+Bacterial Streak : 17
+Bakanae : 17
+Brown Spot : 1078
+False Smut : 27
+Grassy Stunt Virus : 17
+Healthy Leaf : 1304
+Hispa : 436
+Insect Affected : 467
+Leaf Blast : 1540
+Leaf Scald : 1041
+Leaf Smut : 294
+Narrow Brown Spot : 356
+Neck Blast : 259
+Ragged Stunt Virus : 17
+Sheath Blight : 121
+Sheath Rot : 16
+Stem Rot : 17
+Tungro : 1183
+
+# ###################################################################################
+# GAN proceedures
+
+Apply GANs to create new image files for minority classes using StyleGAN2/3 + ADA.
+Real images ──► GAN training ──► Synthetic images (.jpg /.png)
+
+# ................................................................................................
+# 1. Make a directory gan_augmentation
+
+# clone stylengan2-ada-pytorch
+
+cd /home/aic_u3/aic_u3/ComputerVision/gan_augmentation/stylegan2-ada-pytorch
+# .................................................................................................
+
+# 2. created a resized images for all classes for avoiding resolution issue(One time process)
+# .................................................................................................
+
+# 3. Common procedure for each class 
+
+# 3.1.creating .zip for all minority classes
+
+
+| Class              | Train images
+| ------------------ | ------------
+| Bacterial Streak   | 67
+| Bakanae            | 68
+| False Smut         | 107
+| Grassy Stunt Virus | 68
+| Ragged Stunt Virus | 68
+| Sheath Rot         | 60
+| Stem Rot           | 68
+
+# .....................................................................................................................
+# Script for generating  dataset .zip for each class(# change name of each class)
+# For Class 1
+
+python dataset_tool.py \
+  --source "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_resized_256_gan/Bacterial Streak" \
+  --dest "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_zips_gan/bacterial_streak.zip"
+     
+
+python dataset_tool.py \
+  --source "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_resized_256_gan/False Smut" \
+  --dest "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_zips_gan/false_smut.zip"
+
+# ......................................................................................................................
+
+# 3.2.Train GAN for Each class
+
+# ############## code not working..b'z of compatibility issue. ######################
+python train.py \
+  --outdir="/home/aic_u3/aic_u3/ComputerVision/gan_augmentation/training-runs" \
+  --data="/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_zips_gan/bacterial_streak.zip" \
+  --gpus=1 \
+  --cfg=paper256 \
+  --mirror=True \
+  --batch=4 \
+  --kimg=50 \
+  --snap=5 \
+  --aug=noaug \
+  --metrics=none
+
+# ##################### new working code  ####################################
+python train.py \
+  --outdir="/home/aic_u3/aic_u3/ComputerVision/gan_augmentation/training-runs" \
+  --data="/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_zips_gan/bacterial_streak.zip" \
+  --gpus=1 \
+  --cfg=paper256 \
+  --mirror=True \
+  --batch=4 \
+  --kimg=50 \
+  --snap=5 \
+  --aug=noaug \
+  --metrics=none \
+  --cond=False
+
+python train.py \
+  --outdir="/home/aic_u3/aic_u3/ComputerVision/gan_augmentation/training-runs" \
+  --data="/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_zips_gan/false_smut.zip" \
+  --gpus=1 \
+  --cfg=paper256 \
+  --mirror=True \
+  --batch=4 \
+  --kimg=50 \
+  --snap=5 \
+  --aug=noaug \
+  --metrics=none \
+  --cond=False
+
+# .....................................................................................
+# How to confirm training completion
+
+# for checking .pkl file( change path for each class) 
+(venv_gan) aic_u3@iitropar-vm04:~/aic_u3/ComputerVision/gan_augmentation/stylegan2-ada-pytorch$ ls -lh /home/aic_u3/aic_u3/ComputerVision/gan_augmentation/training-runs/0000*/
+
+ls -lh /home/aic_u3/aic_u3/ComputerVision/gan_augmentation/training-runs/00003-ragged_stunt_virus-mirror-paper256-kimg50-batch4-noaug/network-snapshot-*.pkl
+
+
+....then output is ..........
+total 1.8G
+-rw-rw-r-- 1 aic_u3 aic_u3  20M Jan 19 10:48 fakes000000.png
+-rw-rw-r-- 1 aic_u3 aic_u3  37M Jan 19 11:03 fakes000020.png
+-rw-rw-r-- 1 aic_u3 aic_u3  58M Jan 19 11:18 fakes000040.png
+-rw-rw-r-- 1 aic_u3 aic_u3  63M Jan 19 11:27 fakes000050.png
+-rw-rw-r-- 1 aic_u3 aic_u3  20M Jan 19 10:48 fakes_init.png
+-rw-rw-r-- 1 aic_u3 aic_u3 449M Jan 19 11:27 log.txt
+-rw-rw-r-- 1 aic_u3 aic_u3 283M Jan 19 10:48 network-snapshot-000000.pkl
+-rw-rw-r-- 1 aic_u3 aic_u3 283M Jan 19 11:03 network-snapshot-000020.pkl
+-rw-rw-r-- 1 aic_u3 aic_u3 283M Jan 19 11:18 network-snapshot-000040.pkl
+-rw-rw-r-- 1 aic_u3 aic_u3 283M Jan 19 11:27 network-snapshot-000050.pkl
+-rw-rw-r-- 1 aic_u3 aic_u3  70M Jan 19 10:47 reals.png
+-rw-rw-r-- 1 aic_u3 aic_u3  27K Jan 19 11:27 stats.jsonl
+-rw-rw-r-- 1 aic_u3 aic_u3 1.7K Jan 19 10:47 training_options.json
+
+
+# 3.4. Generate Images (change path for each class)
+
+# Generate images using the trained GAN(give  full path of .pkl file.. also used seed 0-249 ie, 250 will generate
+
+# Class 1
+python generate.py \
+  --outdir="/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_gan_generated/bacterial_streak" \
+  --trunc=1.0 \
+  --seeds=0-249 \
+  --network="/home/aic_u3/aic_u3/ComputerVision/gan_augmentation/training-runs/00000-bacterial_streak-mirror-paper256-kimg50-batch4-noaug/network-snapshot-000050.pkl"
+
+# Class 2
+python generate.py \
+  --outdir="/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_gan_generated/false_smut" \
+  --trunc=1.0 \
+  --seeds=0-249 \
+  --network="/home/aic_u3/aic_u3/ComputerVision/gan_augmentation/training-runs/00006-false_smut-mirror-paper256-kimg50-batch4-noaug/network-snapshot-000050.pkl"
+
+
+
+# for checking generated images
+ls "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_gan_generated/bacterial_streak" | wc -l
+
+..  And its output is ..
+250
+
+ls "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_gan_generated/stem_rot" | wc -l
+
+# 3.5. Move GAN images(ie, newly generated images) into TRAIN folder
+
+# class 1 
+cp "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_gan_generated/sheath_rot/"*.png \
+   "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train/Sheath Rot/"
+# class 2
+
+cp "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_gan_generated/stem_rot/"*.png \
+   "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train/Stem Rot/"
+
+# ..............
+Or if you want to keep a backup, move instead of copy:
+mv "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train_gan_generated/bacterial_streak/"*.png \
+   "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train/Bacterial Streak/"
+
+# For verifying final count
+ls "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train/Bacterial Streak" | wc -l
+... output ....
+67+250=317
+
+# class 2
+ls "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split/train/False Smut/" | wc -l
+  
+
+
+# For each class, repeat fron generating folder, train → generate → move to folder of each class under main train folder.
+
+Adjust --seeds based on how many images you want per class.
