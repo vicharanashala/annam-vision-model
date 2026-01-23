@@ -1,0 +1,125 @@
+1. WeightedRandomSampler
+# Training
+Epoch 50/50: 100%|██████████████████████████████████████████████| 2272/2272 [04:29<00:00,  8.43it/s]
+Epoch 50: Train Loss=0.0945 | Val Acc=93.40%
+
+🎯 Best Validation Accuracy: 93.40%
+# Test 
+# .............................................................
+# WeightedRandomSampler 
+# Efficientnet b4  
+
+📊 BENCHMARK TEST RESULTS
+======================================================================
+Total images        : 465
+Correct predictions : 444
+Wrong predictions   : 21
+Overall Accuracy    : 95.48%
+Overall Precision   : 95.95%
+
+Per-Class Metrics
+----------------------------------------------------------------------
+Class                     | Accuracy (%) |  Precision (%)
+----------------------------------------------------------------------
+Bacterial Leaf Blight     |        96.67 |          85.29
+Bacterial Streak          |       100.00 |         100.00
+Bakanae                   |       100.00 |          88.24
+Brown Spot                |        76.67 |          95.83
+False Smut                |       100.00 |         100.00
+Grassy Stunt Virus        |        80.00 |         100.00
+Healthy Leaf              |       100.00 |          96.77
+Hispa                     |       100.00 |         100.00
+Insect Affected           |       100.00 |         100.00
+Leaf Blast                |        96.67 |          96.67
+Leaf Scald                |       100.00 |          93.75
+Leaf Smut                 |        96.67 |         100.00
+Narrow Brown Spot         |       100.00 |          81.08
+Neck Blast                |       100.00 |         100.00
+Ragged Stunt Virus        |        93.33 |         100.00
+Sheath Blight             |       100.00 |         100.00
+Sheath Rot                |        53.33 |         100.00
+Stem Rot                  |       100.00 |          93.75
+Tungro                    |       100.00 |          96.77
+----------------------------------------------------------------------
+Macro Avg Accuracy  : 94.39%
+Macro Avg Precision : 96.22%
+======================================================================
+# ...................................................................................................
+# WeightedRandomSampler + class-weighted loss with the EfficientNet-B4 and EfficientNet-B6 variants
+
+# Efficientnet-b4 
+
+📊 BENCHMARK TEST RESULTS
+======================================================================
+Total images        : 465
+Correct predictions : 441
+Wrong predictions   : 24
+Overall Accuracy    : 94.84%
+Overall Precision   : 95.19%
+
+Per-Class Metrics
+----------------------------------------------------------------------
+Class                     | Accuracy (%) |  Precision (%)
+----------------------------------------------------------------------
+Bacterial Leaf Blight     |       100.00 |          90.91
+Bacterial Streak          |       100.00 |         100.00
+Bakanae                   |       100.00 |          93.75
+Brown Spot                |        73.33 |          84.62
+False Smut                |       100.00 |          88.24
+Grassy Stunt Virus        |        80.00 |         100.00
+Healthy Leaf              |        96.67 |          93.55
+Hispa                     |        96.67 |          96.67
+Insect Affected           |       100.00 |         100.00
+Leaf Blast                |        96.67 |          96.67
+Leaf Scald                |        93.33 |         100.00
+Leaf Smut                 |        90.00 |         100.00
+Narrow Brown Spot         |       100.00 |          81.08
+Neck Blast                |       100.00 |         100.00
+Ragged Stunt Virus        |       100.00 |         100.00
+Sheath Blight             |       100.00 |         100.00
+Sheath Rot                |        66.67 |         100.00
+Stem Rot                  |       100.00 |         100.00
+Tungro                    |       100.00 |          90.91
+----------------------------------------------------------------------
+Macro Avg Accuracy  : 94.39%
+Macro Avg Precision : 95.60%
+======================================================================
+# ......................................................................
+# efficientnet b6
+📊 BENCHMARK TEST RESULTS
+======================================================================
+Total images        : 465
+Correct predictions : 430
+Wrong predictions   : 35
+Overall Accuracy    : 92.47%
+Overall Precision   : 92.69%
+
+Per-Class Metrics
+----------------------------------------------------------------------
+Class                     | Accuracy (%) |  Precision (%)
+----------------------------------------------------------------------
+Bacterial Leaf Blight     |        96.67 |          87.88
+Bacterial Streak          |       100.00 |          93.75
+Bakanae                   |       100.00 |          93.75
+Brown Spot                |        73.33 |          84.62
+False Smut                |       100.00 |         100.00
+Grassy Stunt Virus        |        86.67 |         100.00
+Healthy Leaf              |        96.67 |          90.62
+Hispa                     |       100.00 |          96.77
+Insect Affected           |        96.67 |          96.67
+Leaf Blast                |        83.33 |          86.21
+Leaf Scald                |        73.33 |          95.65
+Leaf Smut                 |        93.33 |          96.55
+Narrow Brown Spot         |        96.67 |          78.38
+Neck Blast                |       100.00 |         100.00
+Ragged Stunt Virus        |        93.33 |          93.33
+Sheath Blight             |        96.67 |         100.00
+Sheath Rot                |        73.33 |          78.57
+Stem Rot                  |       100.00 |          93.75
+Tungro                    |       100.00 |          96.77
+----------------------------------------------------------------------
+Macro Avg Accuracy  : 92.63%
+Macro Avg Precision : 92.80%
+======================================================================
+
+
