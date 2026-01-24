@@ -17,11 +17,11 @@ from tqdm import tqdm
 # =========================
 # CONFIG
 # =========================
-DATASET_DIR = "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split"
-BATCH_SIZE = 32
+DATASET_DIR = "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split_ORIGINAL"
+BATCH_SIZE = 8 # b4=16, b5=16, b6=8, b7=8
 EPOCHS = 50
 LR = 3e-4
-IMG_SIZE = 380
+IMG_SIZE = 528 # b4=380 | b5=456 | b6=528
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # =========================
@@ -57,7 +57,7 @@ print("Classes:", class_names)
 # FEATURE EXTRACTOR
 # =========================
 feature_extractor = create_model(
-    "efficientnet_b4",
+    "tf_efficientnet_b6_ns", # "efficientnet_b4" "efficientnet_b5" "tf_efficientnet_b6_ns"
     pretrained=True,
     num_classes=0  # removes classifier
 ).to(DEVICE)
@@ -177,7 +177,7 @@ for epoch in range(EPOCHS):
         torch.save({
             "feature_extractor": feature_extractor.state_dict(),
             "classifier": classifier.state_dict()
-        }, "checkpoints_Rice/best_model_smote1.pth")
+        }, "checkpoints_Rice/best_model_smote_b6.pth")
         print(f"✅ Saved best model ({best_acc:.2f}%)")
 
 print(f"\n🎯 Best Validation Accuracy: {best_acc:.2f}%")
