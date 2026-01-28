@@ -192,7 +192,7 @@ for epoch in range(EPOCHS):
         best_acc = val_acc
         torch.save(
             model.state_dict(),
-            "checkpoints_Rice/best_model_balanced_weighted_loss_b6.pth"
+            "checkpoints_Rice/best_model_weightedrandomsampler_weighted_loss_b6.pth"
         )
         print(f"✅ Saved best model ({best_acc:.2f}%)")
 
