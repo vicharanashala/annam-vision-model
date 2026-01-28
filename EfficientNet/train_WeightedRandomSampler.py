@@ -17,7 +17,7 @@ import os
 # =========================
 # CONFIG
 # =========================
-DATASET_DIR = "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split"
+DATASET_DIR = "//home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset split_ORIGINAL"
 BATCH_SIZE = 8  # b4=16, b5=16, b6=8, b7=8
 EPOCHS = 50
 LR = 3e-4
@@ -188,7 +188,7 @@ for epoch in range(EPOCHS):
         best_acc = val_acc
         torch.save(
             model.state_dict(),
-            "checkpoints_Rice/best_model_balanced_b6.pth"
+            "checkpoints_Rice/best_model_weightedrandomsampler_b6.pth"
         )
         print(f"✅ Saved best model ({best_acc:.2f}%)")
 
