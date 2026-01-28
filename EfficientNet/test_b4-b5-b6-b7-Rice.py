@@ -20,10 +20,10 @@ DATASET_DIR = "/home/aic_u3/aic_u3/ComputerVision/Rice Disease Dataset Test"
 # MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/checkpoints_Rice/best_model_b6.pth"
 # ################################
 # WeightedRandomSampler + class-weighted loss with the EfficientNet-B4 and EfficientNet-B6 variants
+# MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/checkpoints_Rice/best_model_weightedrandomsampler_b4.pth"
+# MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/checkpoints_Rice/best_model_weightedrandomsampler_b6.pth"
 # MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/checkpoints_Rice/best_model_weightedrandomsampler_weighted_loss_b4.pth"
-# MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/checkpoints_Rice/best_model_weightedrandomsampler_weighted_loss_b6.pth"
 MODEL_PATH = "/home/aic_u3/aic_u3/ComputerVision/EfficientNet/checkpoints_Rice/best_model_weightedrandomsampler_weighted_loss_b6.pth"
-
 
 
 IMG_SIZE = 528  # b4=380 | b5=456 | b6=528
