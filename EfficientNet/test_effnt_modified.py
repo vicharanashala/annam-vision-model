@@ -1,4 +1,4 @@
-# Efficientnet-b4
+# Efficientnet-b4- (Now a single script made for testing all cases test_b4-b5-b6-b7-Rice.py  and test_b4-b5-b6-b7-P_T)
 import os
 import torch
 from torchvision import datasets, transforms
