@@ -36,3 +36,8 @@ Pretty interesting how AdamW has become so standard, need to study how it differ
 Used a constant lr, one experiment can be to implement a scheduler to try to improve performance
 They used 15 epochs in one experiment (my sense of necessary epochs have been messed up while training diffusion models :)), while some others have used 50-60 as well. Can check while recreating.
 There are also descriptive class by class metrics which I am currently going through. After finishing this, I'll create a few experiment plans and start the code setup and training
+
+The per-class metrics are quite uneven. Quite a few have an f1 score of 1.0 while others have 0.5 or below, lowest being Tomato Leaf Bacterial Spot from PlantDoc at 0.38. While training, I need to prepare class-wise distributions as well. They will help provide info on what the model finds difficult to understand. 
+Training graphs show that Validation loss converges very quickly while train keeps reducing. This dataset is quite difficult for classification if the converging val loss happens within <5 epochs.
+Precision is slightly better than F1 for most values, but for this problem recall is more important and that is similar to F1, so not too good hmm.
+Despite everything though, its overall results are pretty strong. We can test later by only training the model on the difficult classes to see if it learns any better.
