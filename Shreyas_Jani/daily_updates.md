@@ -16,3 +16,23 @@ A promising paper, Swin-HViT used a mix of 3k images from cron and 1.8k from Pla
 
 Multiple other models, specifically EfficientNet-B3, ICVT, MobileViT+LeafyGAN, and a few others performed approximately ~80% accuracy but all have used a mixed dataset. I could check out any experimentation code repos if they are publicly available. They all used PlantDoc for training among other datasets so it's not a perfect comparison against PlantAIM. This could be a point of study; training PlantAIM on a training subset of PlantDoc. Assuming it hasn't been done before of course.
 Object detection models can also be tested later on. A few I have seen which can get 40-60% mAP
+
+## 13/1/2026
+
+After looking at some more models, most of which focused on highly specialized datasets (still worth testing them later), selected the Swin-HViT to understand first. Looked into its code repo for a look-through. Continuing with a slightly deeper study of the corresponding paper
+
+Had a progress meet. Followed this with looking through the PlantDoc paper. It seems to have also been designed for, and benchmarked on, object detection problems (contains both bounding boxes and image classes). I'll initially start with classification only and then test with YOLO or a hybrid.
+The benchmarks also showed very low scores, which basically confirms that it is, indeed, a difficult dataset. Would be interesting to see the difference when it is used to train vs purely for validation
+
+Started looking through the paper for Swin-HViT.
+The main idea is that the Swin transformer is good at local understanding (kind of a like a CNN with attention) and ViT as we know is good at global understanding.
+It uses something called a shifted window in the Swin part for the local understanding. 
+I'll continue with a more in-depth read through of the paper
+
+Went through the methodology and architecture of the model and how the fusion layer works. I thought it would be special but it turned out to be simple concatenation from the ViT and swin transformer. Currently going through their experiments and results
+
+As expected (and thankfully), they used torch and huggingface Transformers, and the code is available I believe. 
+Pretty interesting how AdamW has become so standard, need to study how it differs from Adam sometime. 
+Used a constant lr, one experiment can be to implement a scheduler to try to improve performance
+They used 15 epochs in one experiment (my sense of necessary epochs have been messed up while training diffusion models :)), while some others have used 50-60 as well. Can check while recreating.
+There are also descriptive class by class metrics which I am currently going through. After finishing this, I'll create a few experiment plans and start the code setup and training
