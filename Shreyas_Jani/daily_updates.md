@@ -41,3 +41,21 @@ The per-class metrics are quite uneven. Quite a few have an f1 score of 1.0 whil
 Training graphs show that Validation loss converges very quickly while train keeps reducing. This dataset is quite difficult for classification if the converging val loss happens within <5 epochs.
 Precision is slightly better than F1 for most values, but for this problem recall is more important and that is similar to F1, so not too good hmm.
 Despite everything though, its overall results are pretty strong. We can test later by only training the model on the difficult classes to see if it learns any better.
+
+## 14/1/2026
+
+Looked into the paper's code in github. Had the daily progress meet. Setup the code in kaggle, but they had merged their data and uploaded and used it from their gdrive, so the code requires some updates to load the data from kaggle and merge them within there directly. Currently working on this.
+
+There were quite a few bugs while setting up the merging code but it was done and I started the remaining script. 
+Will look into the code to see how their implementation functions while it runs
+
+Went through the initial part of the code and which exact features they used from each of the 2 transformers, as well as the exact classification head used.
+As well as the exact hyperparams used.
+I will continue looking into the detailed workings of the Swim transformer while this one trains
+
+The training script stopped because of a network error so I restarted it
+It completed and shows similar results to the paper's which I will analyze in greater detail.
+I looked into how the Swin part of this hybrid model worked
+I'll also begin planning some experiments to try to check the limits of this architecture.
+
+Went through exact training loop for the code and understood in a bit more detail how swin transformer and ViT worked. Also planned potential experiments to run with this codebase as a baseline. The main test is to train without plantdoc and then validate on it only. That is, train on the corn data where their labels match / use Plantvillage instead for greater matching (since the labels might not match with corn/maize). Another is to test with a mix of PlantVillage and PlantDoc and then validate on PlantDoc.
