@@ -10,3 +10,9 @@
 - Testing using this dataset's provided test set has resulted in > 90% accuracy but the test dataset shared with us showed < 20%
 - One major reason which I could observe for this is the way in which this model was fine-tuned i.e. the training images were that of isolated leaves and not of the whole plant.
 - So, the focus has shifted a bit from testing out models to testing out better pre-processing techniques moreover better segmentation techniques to help the model identify the leaf easily.
+
+## 14/02/2026
+- Currently training the ViT_l_16 model on the New Plant Disease(Augmented) dataset and then fine-tuning the resultant model on the Plant-Doc dataset ([link](https://github.com/pratikkayal/PlantDoc-Dataset)).
+- The goal is to capture the various characteristics of the plant leaves and then try to classify the real world plant disease dataset i.e. Plant-Doc coupled with this knowledge.
+- So far, the accuracy of the model has been struggling on the real-world test set.
+- Also, unfreezing some of the layers (as much as the GPU allows) to improve the learning and better weights correction of the model.

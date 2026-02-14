@@ -7,3 +7,6 @@ Understood different SAM models and how it's segmenting techniques works.
 ## 13/02/2026
 Trained the plant village dataset using SAM with mask as a segmentation method and got the accuracy of 0.98 on validation. Then tried different segmentation methods such as cropping, blurring, and removing background. With masking on plant doc the accuracy was 0.78. Then when tested the model on plant doc dataset using cropping it was not able to process all the class due to memory limitations on colab. So, trained 5 classes on CPU of tomato dataset and accuracy was not good it gave around 0.38. So, did some fine tuning and accuracy increased to 0.52
 
+## 14/02/2026
+Initially added 5 more classes by doing the segmentation on it. In which 3 classes were of apple and 2 of bell. Then trained using total 10 classes but accuracy didn't improve much. Then again added 5 more classes in which 3 is of corn and 2 of potato. Model is under training.
+
