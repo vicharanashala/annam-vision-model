@@ -59,3 +59,8 @@ I looked into how the Swin part of this hybrid model worked
 I'll also begin planning some experiments to try to check the limits of this architecture.
 
 Went through exact training loop for the code and understood in a bit more detail how swin transformer and ViT worked. Also planned potential experiments to run with this codebase as a baseline. The main test is to train without plantdoc and then validate on it only. That is, train on the corn data where their labels match / use Plantvillage instead for greater matching (since the labels might not match with corn/maize). Another is to test with a mix of PlantVillage and PlantDoc and then validate on PlantDoc.
+
+Made the necessary updates in the data selection code, selected the overlapping corn classes (a total of 3) for the initial test. The data will train on the entire corn dataset (not just the 3), and will then be validated with just those 3 on PlantDoc.
+Made the necessary updates to separately load PlantDoc and validate on it.
+I can test how much it improves (current hypothesis) if only trained on the 3 selected.
+Currently the model is training.
