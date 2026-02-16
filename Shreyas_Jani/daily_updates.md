@@ -79,3 +79,6 @@ Monitored the training which can take a while longer.
 Looked into synthetic data generation and since I have experience with diffusion, looked into related research. They seem to be considered better than GANs here as well with the same reasoning of mode collapse being highly likely in GANs.
 Further study pointed to standard approaches including Latent diffusion, repaint, pix2pix. I'll look into these deeper later if needed.
 Then started looking into the other models which performed well on PlantDoc, specifically the Efficient net variant
+
+The model finished training and the result was... Sad. Only got 30% val accuracy when trained on PV but tested on PD. Not too far from my guesses but still pretty sad. For a more comparable comparison, I'll train it again with a mix of PV and PD and then test separately on PV and PD.
+Meanwhile I looked into EfficientNet-B3
