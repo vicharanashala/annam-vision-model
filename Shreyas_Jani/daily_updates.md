@@ -64,3 +64,18 @@ Made the necessary updates in the data selection code, selected the overlapping 
 Made the necessary updates to separately load PlantDoc and validate on it.
 I can test how much it improves (current hypothesis) if only trained on the 3 selected.
 Currently the model is training.
+
+## 15/1/2026
+
+Looked into the results. The previous one validated on the Corn/maize leaf dataset only since the PlantDoc validation script had some errors (thankfully it was at the end so didn't mess up the checkpoints). It obviously performs well on the data it is trained on with 0.95 acc. Had the daily progress meet. Continued with the same idea for setting up PlantDoc. I had the checkpoint saved so currently setting up loading the saved checkpoints in kaggle, will then add the validation on PlantDoc to see how it performs.
+
+There were some problems with how the checkpoint was stored so currently still working on loading up the saved model. Will need to fix the checkpointing code later.
+
+Fixed it and tested. And the results are 35% accuracy. Hmm. Pretty interesting how bad it turned out, barely better than earlier ViT but that was on PlantVillage and a larger dataset so for comparable results I suppose it should be trained with PlantVillage again. I'll set that up with the same overlapping classes and see the results.
+
+Updated the earlier notebook to use the Swin-HViT class instead of ViT and started training. Currently running.
+
+Monitored the training which can take a while longer.
+Looked into synthetic data generation and since I have experience with diffusion, looked into related research. They seem to be considered better than GANs here as well with the same reasoning of mode collapse being highly likely in GANs.
+Further study pointed to standard approaches including Latent diffusion, repaint, pix2pix. I'll look into these deeper later if needed.
+Then started looking into the other models which performed well on PlantDoc, specifically the Efficient net variant
