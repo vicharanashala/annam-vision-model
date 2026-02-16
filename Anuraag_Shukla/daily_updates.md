@@ -17,6 +17,6 @@
 - So far, the accuracy of the model has been struggling on the real-world test set.
 - Also, unfreezing some of the layers (as much as the GPU allows) to improve the learning and better weights correction of the model.
 
-## 15/02/2026
+## 16/02/2026
 - Trained Yolo v11 on the Plant-Doc dataset to get bounding boxes, which in turn will be used to train the ViT Classifier.
 - The idea is to train the classifier to capture features from the leaves of real world photos and Yolo will help us focus on the leaves of these real world photos.
