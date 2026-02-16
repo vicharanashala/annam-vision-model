@@ -17,7 +17,7 @@ A promising paper, Swin-HViT used a mix of 3k images from cron and 1.8k from Pla
 Multiple other models, specifically EfficientNet-B3, ICVT, MobileViT+LeafyGAN, and a few others performed approximately ~80% accuracy but all have used a mixed dataset. I could check out any experimentation code repos if they are publicly available. They all used PlantDoc for training among other datasets so it's not a perfect comparison against PlantAIM. This could be a point of study; training PlantAIM on a training subset of PlantDoc. Assuming it hasn't been done before of course.
 Object detection models can also be tested later on. A few I have seen which can get 40-60% mAP
 
-## 13/1/2026
+## 13/2/2026
 
 After looking at some more models, most of which focused on highly specialized datasets (still worth testing them later), selected the Swin-HViT to understand first. Looked into its code repo for a look-through. Continuing with a slightly deeper study of the corresponding paper
 
@@ -42,7 +42,7 @@ Training graphs show that Validation loss converges very quickly while train kee
 Precision is slightly better than F1 for most values, but for this problem recall is more important and that is similar to F1, so not too good hmm.
 Despite everything though, its overall results are pretty strong. We can test later by only training the model on the difficult classes to see if it learns any better.
 
-## 14/1/2026
+## 14/2/2026
 
 Looked into the paper's code in github. Had the daily progress meet. Setup the code in kaggle, but they had merged their data and uploaded and used it from their gdrive, so the code requires some updates to load the data from kaggle and merge them within there directly. Currently working on this.
 
@@ -65,7 +65,7 @@ Made the necessary updates to separately load PlantDoc and validate on it.
 I can test how much it improves (current hypothesis) if only trained on the 3 selected.
 Currently the model is training.
 
-## 15/1/2026
+## 16/2/2026
 
 Looked into the results. The previous one validated on the Corn/maize leaf dataset only since the PlantDoc validation script had some errors (thankfully it was at the end so didn't mess up the checkpoints). It obviously performs well on the data it is trained on with 0.95 acc. Had the daily progress meet. Continued with the same idea for setting up PlantDoc. I had the checkpoint saved so currently setting up loading the saved checkpoints in kaggle, will then add the validation on PlantDoc to see how it performs.
 
