@@ -12,3 +12,7 @@ Initially added 5 more classes by doing the segmentation on it. In which 3 class
 
 ## 16/02/2026
 Even after increasing the total number of classes to 15 accuracy wasn't improving much. So, went through the segmentated images again and realized that images are inconsistently cropped some images are big while some were small. Hence, changed the segmentation method from single center point segmentation to bounding box and did the preprocessing on 7 classes using this method. After training it gave a validation score of around 0.65 which was some good improvement from 0.52.
+
+## 17/02/2026
+Trained the model on the Plant Village dataset and fine tuned it on PlantDoc, then validated it on the PlantDoc dataset. Only fine tuning on the PlantDoc didn't give much improved accuracy, so also included the PlantDoc in the training dataset. So, merged the plant village and plant doc for training and validating. Plant Village dataset is big as compared to the PlantDoc real world images, in combined validation, 0.98 accuracy was achieved, but there were fewer images in the validation of the real world PlantDoc. So, can't rely on this accuracy for real world images. Hence validated only on plant doc dataset, achieving the accuracy of 0.8518.
+
