@@ -20,3 +20,16 @@
 ## 16/02/2026
 - Trained Yolo v11 on the Plant-Doc dataset to get bounding boxes, which in turn will be used to train the ViT Classifier.
 - The idea is to train the classifier to capture features from the leaves of real world photos and Yolo will help us focus on the leaves of these real world photos.
+
+## 17/02/2026
+- Trained and tested a YOLO v11 + ViT_L_16 pipeline on Plant_Doc(28 classes),
+    - On Validation Set,
+        - Top-1 Accuracy => 47.44%
+        - Top-5 Accuracy => 84.44%
+    - On Testing Set,
+        - Top-1 Accuracy => 41.10%
+        - Top-5 Accuracy => 77.97%
+    - On Testing Set shared with Us (13 classes),
+        - Accuracy => 28%
+- Focusing on 11 classes instead of the 13 provided because appropriate data w.r.t. those classes is not available.
+- Switching from ViT to a CNN based classifier, currently training and testing them and they are showing promising results on the testing set shared as of now.
