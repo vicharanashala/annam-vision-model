@@ -82,3 +82,24 @@ Then started looking into the other models which performed well on PlantDoc, spe
 
 The model finished training and the result was... Sad. Only got 30% val accuracy when trained on PV but tested on PD. Not too far from my guesses but still pretty sad. For a more comparable comparison, I'll train it again with a mix of PV and PD and then test separately on PV and PD.
 Meanwhile I looked into EfficientNet-B3
+
+## 17/2/2026
+
+Looked into the differences between the hybrid vs normal ViT (earlier experiment) for PV train and PD val and the difference is of 5% with a 20% increase in performance from 25% to 30% accuracy. This does indicate clear improvements but the magnitude is still low.
+Class wise accuracy is much better distributed though with no high peaks but everything settled around 50% with a few low acc in some classes. This seems promising other than going for YOLO.
+Had the progress meet
+
+Setup the merging code and train-val pipeline to validate on PV and PD separately for a better comparison. 
+
+The results are slightly better while it's currently at epoch 6. The highest accuracy for the held out PD samples is 62.75% while PV held out have 99.8. the 62% is significantly better given it has 12 classes to corn + PD's 4
+
+The model completed training. The highest amount still remained 62, and it started to go worse for PD.
+It did slightly improve for PV but that's not as useful.
+Added the rice disease datasets that were shared after kaggle decided to finally show them after I spent a long time trying to add them.
+
+Looked through the class wise dataset distribution for the given train and test sets.
+It seems there is a decent bit of imbalance with classes with 80 as well as 5k samples 
+
+Would require some work. I'll start without anything different, and then slowly attempt ways to fix the imbalance to see if anything improves
+
+The test dataset, in comparison, is pretty nice with either 15 or 30 samples per class
