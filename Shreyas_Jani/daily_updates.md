@@ -101,5 +101,8 @@ Looked through the class wise dataset distribution for the given train and test 
 It seems there is a decent bit of imbalance with classes with 80 as well as 5k samples 
 
 Would require some work. I'll start without anything different, and then slowly attempt ways to fix the imbalance to see if anything improves
-
 The test dataset, in comparison, is pretty nice with either 15 or 30 samples per class
+
+Created the Dataset class to cleanly load the data and apply transformations
+Split the train set into train and val loaders with 80-20 split
+Partially implemented the transfer for the Swin-HViT model and train script
