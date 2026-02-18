@@ -16,3 +16,5 @@ Even after increasing the total number of classes to 15 accuracy wasn't improvin
 ## 17/02/2026
 Trained the model on the Plant Village dataset and fine tuned it on PlantDoc, then validated it on the PlantDoc dataset. Only fine tuning on the PlantDoc didn't give much improved accuracy, so also included the PlantDoc in the training dataset. So, merged the plant village and plant doc for training and validating. Plant Village dataset is big as compared to the PlantDoc real world images, in combined validation, 0.98 accuracy was achieved, but there were fewer images in the validation of the real world PlantDoc. So, can't rely on this accuracy for real world images. Hence validated only on plant doc dataset, achieving the accuracy of 0.8518.
 
+## 18/02/2026
+Segmented test data for testing accuracy. Completed testing the model on test dataset and testing accuracy is 60%. Trained again through dropout and tested, getting 0.64 accuracy. Then switched to SAM2 from SAM1. Completed the segmentation using SAM 2 large model.
