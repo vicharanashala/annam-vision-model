@@ -33,3 +33,16 @@
         - Accuracy => 28%
 - Focusing on 11 classes instead of the 13 provided because appropriate data w.r.t. those classes is not available.
 - Switching from ViT to a CNN based classifier, currently training and testing them and they are showing promising results on the testing set shared as of now.
+
+## 18/02/2026
+- Trained Efficient Net B4 for 20 Epochs on the New_Plant_Disease+Plant_Doc+Plant_Wild dataset.
+- Images were cropped and resized to 224x224.
+- On Testing Set,
+    - Accuracy => 57.08%
+- Tried to change the image size to 380 but that decreased the accuracy.
+- Tried Efficient Net B4 with only Plant_Doc+Plant_Wild dataset.
+- On Testing Set,
+    - Accuracy => 53%
+- Abandoned the Tomato_Target_Spot as well as Tomato_Spider_mites_Two-spotted_spider_mites classes as of now, since the training data associated
+  with these classes has not been enough for the model to capture features from them properly.
+- Tried the various versions of the upgraded EfficientNetV2(small, medium, large) but all of them stalled at 50-52% testing accuracy.
