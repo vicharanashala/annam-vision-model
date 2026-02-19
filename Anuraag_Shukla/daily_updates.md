@@ -46,3 +46,7 @@
 - Abandoned the Tomato_Target_Spot as well as Tomato_Spider_mites_Two-spotted_spider_mites classes as of now, since the training data associated
   with these classes has not been enough for the model to capture features from them properly.
 - Tried the various versions of the upgraded EfficientNetV2(small, medium, large) but all of them stalled at 50-52% testing accuracy.
+
+## 19/02/2026
+- Currently the best accuracy on the test set of Plant_Doc+Plant_Wild is 55.57% using an Efficient Net B4 model trained for 40 epochs on the cropped images of Plant_Doc+Plant_Wild
+- Trying to pretrain InceptionResnetV2 using New Plant Diseases(Augmented) dataset and then finetuning it on the merged Plant_Doc+Plant_Wild dataset. Anything close to a 70% test accuracy can be considered a success for this case.
