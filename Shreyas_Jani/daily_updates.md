@@ -106,3 +106,27 @@ The test dataset, in comparison, is pretty nice with either 15 or 30 samples per
 Created the Dataset class to cleanly load the data and apply transformations
 Split the train set into train and val loaders with 80-20 split
 Partially implemented the transfer for the Swin-HViT model and train script
+
+## 18/2/2026
+
+Mostly completed the training script except for a few bugs.
+Had the progress meet
+
+Fixed it, setup training logs (tqdm only ofc) and started training. Could take a while
+
+For treating the imbalance, started looking into diffusion related research for synthetic dataset generation
+
+The training is currently partially through epoch 3/10. It takes a while to train.
+But the results are already pretty good with a 90% accuracy on the validation split. The test results will be done after the training finishes ofcourse
+Also given the imbalance, i'll also get some other metrics like F1 taken over all classes and per class precision and recall
+I have a feeling there would be some problems with the underrepresented classes
+
+There was an electricity cut and the session was interrupted before I could download the checkpoint :)
+It's started again and the model is again at epoch 3 (mostly complete with epoch 3) and I have downloaded the checkpoint this time  :)
+The other techniques for dealing with class imbalance are mostly clear and need only be implemented based on how the model performs, but in case it needs a bigger way to deal with it, data augmentation through generation from a Diffusion model would be useful.
+So while the model trains, I'll be going through a new paper in Diffusion called Back to Basics which deals with some minor changes in the architecture of these models to get a better idea of the available literature
+
+There was another bug in kaggle where it for whatever reason stopped 
+Thankfully I had the checkpoint so started training again.
+
+As for the paper, the main idea is to move away from the noise prediction done in most of the literature from 2020 to do x-prediction to model the low dimensional manifold in the full space
