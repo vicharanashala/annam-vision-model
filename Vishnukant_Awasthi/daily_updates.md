@@ -18,3 +18,6 @@ Trained the model on the Plant Village dataset and fine tuned it on PlantDoc, th
 
 ## 18/02/2026
 Segmented test data for testing accuracy. Completed testing the model on test dataset and testing accuracy is 60%. Trained again through dropout and tested, getting 0.64 accuracy. Then switched to SAM2 from SAM1. Completed the segmentation using SAM 2 large model.
+
+## 19/02/2026
+Trained SAM 2 only on plant doc dataset to compare the accuracy with SAM 1. It performed better than SAM 1 with validation accuracy of around 63% and testing accuracy of 59 where as SAM 1 initially just gave 38% accuracy. Then increase the dataset by merging it with plant village dataset and then again trained on merged dataset and validated only on plant doc but testing accuracy remained same 59& while validation accuracy increase from 63% to 68%. Then did the segmentation using different method initially removed the background and made it white. Now, doing the cropping using bounding box.
