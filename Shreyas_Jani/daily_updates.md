@@ -130,3 +130,6 @@ There was another bug in kaggle where it for whatever reason stopped
 Thankfully I had the checkpoint so started training again.
 
 As for the paper, the main idea is to move away from the noise prediction done in most of the literature from 2020 to do x-prediction to model the low dimensional manifold in the full space
+
+The training seems stable around 92-93% at epoch 4. I'll let it continue till epoch 6 (and not till 10 since each one takes quite a long time). 
+The back to basics paper seems to cover reasonings about previous work on manifold learning in ML. Even aside from data augmentation, this might be interesting in training the classifiers as well. The idea is that a bottlenecked model might be better than a larger model if the important data lies on a low-dim manifold. A Vision Transformer with larger patches could be good. I might give it a try in the future.
