@@ -107,7 +107,7 @@ Created the Dataset class to cleanly load the data and apply transformations
 Split the train set into train and val loaders with 80-20 split
 Partially implemented the transfer for the Swin-HViT model and train script
 
-## 18/2/2026
+## 19/2/2026
 
 Mostly completed the training script except for a few bugs.
 Had the progress meet
@@ -133,3 +133,25 @@ As for the paper, the main idea is to move away from the noise prediction done i
 
 The training seems stable around 92-93% at epoch 4. I'll let it continue till epoch 6 (and not till 10 since each one takes quite a long time). 
 The back to basics paper seems to cover reasonings about previous work on manifold learning in ML. Even aside from data augmentation, this might be interesting in training the classifiers as well. The idea is that a bottlenecked model might be better than a larger model if the important data lies on a low-dim manifold. A Vision Transformer with larger patches could be good. I might give it a try in the future.
+
+## 20/2/2026
+
+Completed training till epoch 5 only since it seems to have converged mostly (will run for more epochs). The testing accuracy after this is 87.1%. The per-class results are actually pretty good and not affected by the large imbalance. The only problematic one is Leaf Smut with 0.18 F1 score. From the Confusion matrix, it seems to be heavily misclassified as Leaf Blast instead. Will need to look into the dataset in more detail to understand. Another thing can be the low-sample classes were overfitted
+Had the progress meet
+
+There was an increase in val accuracy at epoch 6 to 94.6% but none at epoch 7. Currently 8 is training. I will go at 10, verify test accuracy, then train till epoch 15 before stopping if there is no improvement. Meanwhile, continued reading the  Back to Basics paper for more details regarding the bottlenecked ViT
+
+Epoch 8 improved the test accuracy to 89%. There is hope that it will increase further. leaf smut also improved significantly to an F1 of 0.6. I will now train in batches of another 3 epochs.
+
+At epoch 11, the val accuracy is mostly stable while the test accuracy actually went down to 86% with Leaf Smut also at F1 of 0.24. This implies overfitting, but I'll completely verify by training for 2 more epochs. If it remains low, then that means the maximum is 89% test which is not entirely bad.
+Meanwhile the paper mentions that the bottlenecked ViT approach is more helpful to large dimensional datasets with low dimensional actual information. That does match our datasets which are scaled to 224x224 and I assume contain the data in a low-dim manifold.
+I'll continue in this direction while it trains as well as then later testing on ViT and Swin separately to compare as discussed in the meet today
+
+Given that epoch 13 resulted in 88.3% test accuracy, I would say that this has mostly converged (Leaf smut F1 at 0.5). Started implementing just training the ViT base version directly with the same splits. I will also setup another account with the rice disease dataset after this is running and setup Swin-tiny (used in the current hybrid) separately to train as well. 
+Actually nevermind, my main account's weekly training quota is full so I will train on the different account, as well as see if it is sufficiently fast locally.
+Next week though I should be able to run 2 accelerator sessions
+The diffusion paper went into the differences between different combinations of x,e,v-prediction vs losses and that they are all valid generators (all 9) but are not the same.
+
+Setup training for the ViT on another account and started training. Currently at epoch 3 with 89% val accuracy, a little lower than swin-hvit and I guess I can let it run after checking out as well. Though I doubt it will perform better than the Hybrid model.
+Also created a 3rd account but it needs some verification and time before I can use the accelerator, so I will fully set that up by tomorrow.
+I suppose running 2-3 experiments parallelly will speed things up
