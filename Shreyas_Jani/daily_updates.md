@@ -176,3 +176,7 @@ As for the bottlenecked implementation, it's called JiT (Just an Image Transform
 I could try 2 things: Just adding 2 linear layers at the beginning for a bottleneck eg. 768 -> 32 -> 768 or maybe something more lenient. Or this combined with patch sizes of 32x32 instead of the current 16.
 The outcome can be either very good or horrible. It is possible that the model ends up ignoring the small lesion features in the patches if they are large and are drowned out. The hope is that it does the opposite, which I believe can be possible. 
 I will begin with implementing this.
+
+Setup the bottleneck in the patch embedding layer.
+To allow these new weights time to train, implemented a warm-up phase where the other pre-trained weights from imagenet are frozen and then unfrozen after 1 epoch. Took a little while to get the surgery right. Currently training. 
+also the Vit-large one seems to be stuck on 91% val accuracy.
