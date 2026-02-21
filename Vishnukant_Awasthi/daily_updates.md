@@ -24,3 +24,6 @@ Trained SAM 2 only on plant doc dataset to compare the accuracy with SAM 1. It p
 
 ## 20/02/2026
 Trained and tested on the new cropped segmented dataset of SAM 2 large model but its giving the same accuracy of 59%. Changed the SAM 2 model from large to base. Then did the segmentation again using SAM 2 base model. Completed the training and testing and it's giving validation accuracy of 74% and testing accuracy improved from 59% to 69%. Then doing the segmentation on more classes to increase the number of classes from 4 to 13. Adding 9 classes of tomato.
+
+## 21/02/2026
+Completed the segmentation on 9 new classes. Trained the model on 13 classes and it gave overall testing accuracy is 51% but for some class it is giving good accuracy like 92%. Explored and learned how to set up and use SAM 3. 
