@@ -155,3 +155,24 @@ The diffusion paper went into the differences between different combinations of 
 Setup training for the ViT on another account and started training. Currently at epoch 3 with 89% val accuracy, a little lower than swin-hvit and I guess I can let it run after checking out as well. Though I doubt it will perform better than the Hybrid model.
 Also created a 3rd account but it needs some verification and time before I can use the accelerator, so I will fully set that up by tomorrow.
 I suppose running 2-3 experiments parallelly will speed things up
+
+## 21/2/2026
+
+Finished training till 10 epochs. The test accuracy is 87.5% with Leaf smut f1 at 0.64.
+So its just slightly worse than Swin-HViT. Hmm. I wonder how tiny performs. Setup training for Swin tiny and currently at epoch 2 with val accuracy of 90%
+
+Swin tiny completed training and it actually showed better results than ViT base at 88%. But I see that Leaf smut F1 is horrible at 0.12. So the overall accuracy was  better but that one class was still quite bad.
+Is this a problem with the width (tiny) or the architecture?
+I'll run ViT-tiny as well and see how it performs
+
+ViT tiny isn't officially uploaded by google (the other one was a community upload which we could potentially test later), but there is a close alternative in facebook's deit tiny. It's the same architecture but with a different distillation method. Set up the code and started training
+
+deit tiny finished training at 81% accuracy and an okayish F1 for that class of 0.29. Hmm, so a smaller one didn't help. I can compare the architectures of these ViTs with the one used by the diffusion paper and see how they differ exactly to implement the bottleneck.
+Also setup the 3rd account. Currently looking through the paper's codebase to see their architecture. Once there is a direction, I will start implementing and training.
+Meanwhile, I can run ViT large. Currently training that.
+
+vit large takes about as long per epoch as swin-hvit. Pretty heavy. currently at 91% val accuracy.
+As for the bottlenecked implementation, it's called JiT (Just an Image Transformer). The name comes from how the Diffusion space has been building highly complex approaches like latent space autoencoders, velocity losses, and other things, when this approach is just a transformer with a bottleneck at the beginning, large patch sizes, and it does x-prediction (relevant in diffusion, not so much here).
+I could try 2 things: Just adding 2 linear layers at the beginning for a bottleneck eg. 768 -> 32 -> 768 or maybe something more lenient. Or this combined with patch sizes of 32x32 instead of the current 16.
+The outcome can be either very good or horrible. It is possible that the model ends up ignoring the small lesion features in the patches if they are large and are drowned out. The hope is that it does the opposite, which I believe can be possible. 
+I will begin with implementing this.
