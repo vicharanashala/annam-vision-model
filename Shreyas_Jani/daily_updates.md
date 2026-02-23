@@ -180,3 +180,35 @@ I will begin with implementing this.
 Setup the bottleneck in the patch embedding layer.
 To allow these new weights time to train, implemented a warm-up phase where the other pre-trained weights from imagenet are frozen and then unfrozen after 1 epoch. Took a little while to get the surgery right. Currently training. 
 also the Vit-large one seems to be stuck on 91% val accuracy.
+
+## 23/2/2026
+
+The vit large training took quite a lot of time and the results were not any better with the val accuracy of 92% at epoch 10.
+The bottleneck approach seems to not have performed a lot better (only 77% test accuracy) but that might have been due to it requiring either more epochs or more training data for the new patch embedding layer. In case it is the former, I will continue training it. I will make a few updates to increase the warm up phase to 3 epochs to see a comparison on initial epochs.
+Meanwhile, I'll look back into the code and paper for that architecture to see if I missed anything and which is why this didn't perform as well potentially
+Had the progress meet
+
+The bottleneck model when warmed up till epoch 3 currently shows 78% val accuracy on epoch 6. The curve is slightly better than earlier but it needs to be verified. 
+Also looked into the way they setup the 32 patch size and it should be doable to use google's existing patch 32 ViT.
+
+There was a network error. Thankfully I was able to download the checkpoint but it took a while
+Then implemented the resuming logic and uploaded the 1gb checkpoint. Pretty heavy.
+Will then restart training till epoch 15
+
+Training continued
+I checked test accuracy at epoch 10 and there's a big improvement to 80% so the longer warmup definitely helped. 
+Another very important thing of note is that Leaf smut F1 is not the lowest, and is infact pretty high at 0.8
+Does this imply the bottleneck helped this very clearly?
+But conversely, sheath rot is much lower at 0.24
+Maybe we require multiple models for different subgroups of diseases that are similar.
+
+Currently it's at epoch 13 with 12's val acc of 84%
+
+Test accuracy at epoch 16 was 81% 
+Hmm I would say it's mostly converged.
+From what I can see, I need to look deeper into ViT base and compare it with the paper's JiT-B.
+In that one, their results in 256x256 were pretty good even with patch size 16.
+What they did note was that the benefit decreases on lower res images because the hidden size (768) is much greater than the patch din (4x4x3 in their case) 
+Of course we aren't dealing with low-res (224x224 is sufficiently high-res) and so there should be benefit.
+Hmmm, I will look into this since patch size 32 might not be necessary. They only used that on 512x512 images.
+Now of course things might not transfer over well from diffusion (which was their goal) to classification, but like before, it's worth a shot.
