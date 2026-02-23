@@ -212,3 +212,10 @@ What they did note was that the benefit decreases on lower res images because th
 Of course we aren't dealing with low-res (224x224 is sufficiently high-res) and so there should be benefit.
 Hmmm, I will look into this since patch size 32 might not be necessary. They only used that on 512x512 images.
 Now of course things might not transfer over well from diffusion (which was their goal) to classification, but like before, it's worth a shot.
+
+So I let it run for some more epochs and the results are not improving. 
+From what I can see, JiT-B's internal transformer doesn't look different from the original ViT-B.
+I can try and setup their code if the pre-training is not going to be a problem
+
+On that note, I noticed that I have been using pretrained models, and this does cause some issues with domain shift. Would training from scratch on a smaller model help?
+Either way, my understanding from today's work is that there is some potential in the bottleneck approach and I can try training a smaller model from scratch
