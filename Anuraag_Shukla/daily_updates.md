@@ -50,3 +50,15 @@
 ## 19/02/2026
 - Currently the best accuracy on the test set of Plant_Doc+Plant_Wild is 55.57% using an Efficient Net B4 model trained for 40 epochs on the cropped images of Plant_Doc+Plant_Wild
 - Trying to pretrain InceptionResnetV2 using New Plant Diseases(Augmented) dataset and then finetuning it on the merged Plant_Doc+Plant_Wild dataset. Anything close to a 70% test accuracy can be considered a success for this case.
+
+## 23/02/2026
+- Tested EfficientNetB4 for Plant_Doc + Plant_Wild dataset for Potato only,
+    Testing Accuracy => 69.29 %
+- Tested EfficientNetB7 for Plant_Doc + Plant_Wild dataset for Tomato only,
+    Testing Accuracy => 58.72 %
+- Tested ConvexNet-Base for Plant_Doc + Plant_Wild dataset for Tomato only,
+    Testing Accuracy => 66.50 %
+- Tested ConvexNet-Base for Plant_Doc + Plant_Wild dataset for Potato only,
+    Testing Accuracy => 71.26 %
+- Tested ConvexNet-Large for Plant_Doc + Plant_Wild dataset,
+    Testing Accuracy => 56.26 %
