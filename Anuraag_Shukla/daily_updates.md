@@ -62,3 +62,16 @@
     Testing Accuracy => 71.26 %
 - Tested ConvexNet-Large for Plant_Doc + Plant_Wild dataset,
     Testing Accuracy => 56.26 %
+
+## 24/02/2026
+- Tested EfficientNetB4 for Potato + Tomato Dataset(provided),
+    Validation Accuracy => 97.84 %
+    Testing Accuracy(On 11 classes) => 37.7 %
+- Currently training ConvexNet-Base on the same dataset for 10 epochs.
+- Went through the following research papers in search of alternative methods to
+  approach the given problem,
+    - [Paper 1](https://www.nature.com/articles/s41598-025-92143-0)
+    - [Paper 2](https://www.ijert.org/detection-and-classification-of-plant-leaf-diseases-by-using-deep-learning-algorithm)
+- The major problem with these research papers is that they have used lab-controlled 
+  images for the training and testing part. The models trained by me worked on these datasets well but 
+  they struggled on real-world images.
