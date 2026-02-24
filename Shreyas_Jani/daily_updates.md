@@ -219,3 +219,39 @@ I can try and setup their code if the pre-training is not going to be a problem
 
 On that note, I noticed that I have been using pretrained models, and this does cause some issues with domain shift. Would training from scratch on a smaller model help?
 Either way, my understanding from today's work is that there is some potential in the bottleneck approach and I can try training a smaller model from scratch
+
+## 24/2/2026
+
+Setup training for ViT tiny from scratch. Depending on how this trains, I'll have an idea of if from scratch is feasible or not.
+Meanwhile, I noticed the paper has some more detailed experiment logs at the end (should have noticed before I started going through their repo) so started reading through those.
+Had the progress meet
+
+The model is steadily training with aval accuracy of 73% at epoch 7.
+It is looking decently promising as well actually, though nothing can be said
+
+Also mostly set up the bottleneck patch embedding layer to add in this and will start training when this happens.
+While these 2 train to like 15-20 epochs, I will look through the paper's experiments
+
+Setup bottleneck on tiny and started training from scratch.
+As for the normal tiny, it is still increasing with val accuracy of 74% on epoch 10 and test accuracy of 67.5%. I'll train it till epoch 20 to observe changes. Meanwhile the bottleneck one will also train.
+
+The normal tiny has test accuracy of 75% at epoch 20 and horrible F1 for leaf smut again. I don't think this will get better so I will leave it be
+In contrast, test accuracy for the bottleneck tiny is 70% at epoch 10, but that can also imply that it is just taking a while to understand which features to keep and extract through the bottleneck.
+This is strengthened by the fact that the val accuracy is increasing in concert with training at every step.
+Also from what I researched right now in manifold learning related articles, this seems to be a likely possibility in many training scenarios.
+Hence I am letting it run to epoch 20, and potentially even 25 or 30 if it shows results.
+
+Another thing of note is that it has extremely well balanced F1 scores with only a few bad recall scores.
+Much better than the non bottleneck tiny model.
+This is the biggest feedback for the benefit of utilizing this in the patch embedding.
+It's not possible that other models haven't implemented this obviously, so I can try looking into other vision models that implement some form of bottleneck (aside from VAEs ofcourse)
+
+Yep, there's a clear improvement in the bottlenecked one. I am quite surprised after a somewhat success after such a long time (still not better in magnitude).
+The test accuracy after epoch 20 is 79%, with a clean F1 at that (0.5 being the lowest for 3-4 classes). But it does match all of the theory I read during this time.
+Also the val accuracy has still been improving during this time, proving things further. Although the progress has slowed, but it is still there.
+Thus, I will continue training until epoch 30 minimum to observe the results.
+This has clear potential. Funny how an old idea was observed while studying a new paper on a very different topic.
+
+The model is still improving steadily with a val accuracy of 84% at epoch 27 (test will be checked after 30)
+I have some other ideas to explore here parallely, mostly with SSMs (Mamba2 and related hybrid models with cnns and vits) and looked through some possible architectures
+I'll continue studying them in more detail and then implement and train.
