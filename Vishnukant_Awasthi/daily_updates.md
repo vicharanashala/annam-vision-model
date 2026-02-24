@@ -28,6 +28,9 @@ Trained and tested on the new cropped segmented dataset of SAM 2 large model but
 ## 21/02/2026
 Completed the segmentation on 9 new classes. Trained the model on 13 classes and it gave overall testing accuracy is 51% but for some class it is giving good accuracy like 92%. Explored and learned how to set up and use SAM 3. 
 
-## 22/02/2026 
+## 23/02/2026 
 Segmented 4 classes of plantdoc dataset using SAM 3 model. Also did some finding for the plant doc segmentation annotation dataset. Completed the training and segmentation on test dataset for testing. Completed the testing and it's giving accuracy of 69.23% and validation accuracy of 76.34%.
+
+## 24/02/2026 
+Explored the SAM 3 model, how the accuracy can be improved further. Found a project cropscan. Understood the code of app.py, leaf_segmenter.py and sam2_segmentation.py of the project. Understood the complete working of the Cropscan project. It does not classify multiple diseases. It only classifies whether a leaf is healthy or not healthy, if not healthy, then it predicts the severity level mild, moderate, or high. Then tested using the weights provided in the project and it gave a testing accuracy of 89.23% for 2 class label, healthy or diseased.
 
