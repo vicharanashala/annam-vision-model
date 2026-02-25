@@ -255,3 +255,31 @@ This has clear potential. Funny how an old idea was observed while studying a ne
 The model is still improving steadily with a val accuracy of 84% at epoch 27 (test will be checked after 30)
 I have some other ideas to explore here parallely, mostly with SSMs (Mamba2 and related hybrid models with cnns and vits) and looked through some possible architectures
 I'll continue studying them in more detail and then implement and train.
+
+## 25/2/2026
+
+The tiny bottleneck model got 77% accuracy at epoch 30. This is not ideal ofcourse because it might imply overfitting, but the val accuracy is still increasing slowly, so I am going to let it run till epoch 40.
+meanwhile, I'll run another experiment with the bottleneck dim set to 32 instead of 64. Letting this run till epoch 20 will give a much better idea of how things are going. 
+Also, I'll look into State Space Models in general first, followed by specific implementations in Plant Disease Detection. If bottleneck vit doesn't help, I'll try this.
+And if this doesn't work either, its time to move on to Object Detection / Segmentation.
+Had the progress meet.
+
+There was an electricity near the end (it's really weird for this amount of cuts happening honestly not expected) and no checkpoints were saved so I'll need to redo from epoch 30
+But training for tiny 64 bottleneck improved significantly to 88% val accuracy and 32 is also training well 
+It's worth running 64 till 40-45 as well to see improvements (after it comes back :))
+
+I guess the random seed is not working correctly because the val accuracy is different but 87.8% is not far from 88.4 that was previously at epoch 31. Currently training, and I'll download more checkpoints in case there's another cut.
+Also, the 32 one is at epoch 7 with val accuracy of 71.4%, consistently increasing with train accuracy. I have high hopes for that as well when it reaches epoch 20. Meanwhile looked into the idea behind SSMs
+
+The 32 bottleneck one is performing similar to 64 with test acc of 70% at epoch 12 with similar F1 per class scores
+Training is going smoothly 81% val accuracy at epoch 18.
+As for the 64 one, it has a result of 79% at epoch 45
+I'll let it run a while longer and see if it improves because it might be converging.
+
+The 32 one improved at epoch 20 with test accuracy of 79%, very similar to 64. very good.
+The earlier 64 one seems to be stationary around 88% val accuracy only, currently training epoch 49. thankfully train isn't increasing either so it might not be overfitting yet
+Looking into other models
+
+Hey the 64 one actually gave test accuracy of 80.6% on epoch 50. Not intense, but an interesting thing. Let's see how much it gives at 60
+Meanwhile the 32 one is consistently improving with 83% val accuracy on epoch 27
+Hybrid models with SSMs have the benefit of being quite fast from what I can see. A potentially good approach to look into
