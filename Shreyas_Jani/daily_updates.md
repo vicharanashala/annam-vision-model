@@ -283,3 +283,10 @@ Looking into other models
 Hey the 64 one actually gave test accuracy of 80.6% on epoch 50. Not intense, but an interesting thing. Let's see how much it gives at 60
 Meanwhile the 32 one is consistently improving with 83% val accuracy on epoch 27
 Hybrid models with SSMs have the benefit of being quite fast from what I can see. A potentially good approach to look into
+
+Remembered that I hadn't gone through the back to basics paper's appendix part yet. Did that. Nothing too useful, most of the stuff is for the diffusion model part rather than the manifold learning.
+The 32 one remained at 79% at epoch 30 like 64. Seems to be going through a similar curve. 
+Hmm I wonder what that implies. Is there potential to go lower? Or will this one perform better with more epochs? I will test it out
+
+Also hybrid approaches with one part being an SSM seem like a potentially good experiment 
+I'll set things up tomorrow while the other 2 continue
