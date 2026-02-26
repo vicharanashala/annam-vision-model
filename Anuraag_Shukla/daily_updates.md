@@ -89,3 +89,12 @@
 - Applied the same transformation on the complete dataset and it bumped the 
   testing accuracy from 56.26 % to 59.63 %
 - Further testing with other parameters is required before making a conclusion.
+
+## 26/02/2026
+- Applied Photometric transformation (transforms.ColorJitter including saturation and hue) as well as Affine Geometric transformations yet no change in accuracy, instead it fell down by 1-3 %.
+- Best result till date,
+    - Model: ConvexNet-Base
+    - Dataset: Plant_Doc+Plant_Wild
+    - Epochs: 20
+    - Testing Accuracy[On the 10 classes]: 60.21 %
+- Currently compiling a jupyter notebook containing the saved models along with their class-wise classification accuracy on the testing set.

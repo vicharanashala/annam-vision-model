@@ -37,3 +37,5 @@ Explored the SAM 3 model, how the accuracy can be improved further. Found a proj
 ## 25/02/2026 
 Segmented 5 classes of plantdoc dataset 3 of Apple and 2 of Grapes using SAM 3 model. Completed the training and segmentation on test dataset for testing. Completed the testing and it's giving testing accuracy of 83.66% and validation accuracy of 86%.
 
+## 26/02/2026 
+Explored different dataset on kaggle for better training and testing. Earlier used to train the model on normal plantvillage + segmented plantdoc. Now, trained the model using segmented plantvillage and segmented plantdoc. Completed training and testing. Got the validation accuracy of 82.23% and testing accuracy of 87.75% when both the datasets are segmented. Then trained the model using grayscale plantvillage + segmented plantdoc. Completed the training and testing on Grayscale Plantvillage + Segmentaed Plactdoc. Got the validation accuracy of 86% and testing accuracy of 89.79%.
