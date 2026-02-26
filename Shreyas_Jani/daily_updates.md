@@ -290,3 +290,45 @@ Hmm I wonder what that implies. Is there potential to go lower? Or will this one
 
 Also hybrid approaches with one part being an SSM seem like a potentially good experiment 
 I'll set things up tomorrow while the other 2 continue
+
+## 26/2/2026
+
+The 64 one showed an improving test accuracy of 82% at epoch 60 
+I wonder though, if it might have overfitted and the images are not diverse enough. Hmm, Wonder if PlantDoc has the corresponding rice disease images. Could also try to find some of my own
+The 32 one was also promising. 
+To verify how a smaller bottleneck performs, I will setup experiments for 8 and 16 sizes as well.
+Started looking through Mamba as an architecture
+Had the progress meet
+
+SSMs were initially designed for sequential tasks, later appropriated for language modeling, and then much later used for vision tasks with 2d versions like VMamba
+Their 1d version (started from the beginning for a better foundation) are very similar to an RNN but with one major difference.
+The way their hidden state is computed makes it easier to parallelize, fixing the major problem with RNNs. 
+In fact, you could say they are similar to transformers more than RNNs because of how they parallelize.
+They are also discretized from a continuous representation in comparison to RNNs which are inherently discrete 
+It also uses some initialisation strategies on its A matrix so it can store memory much better
+
+The 8 and 16 models are also running well currently at epoch 9 with val accuracy of 73 and 72% respectively 
+They will be run on test data after 20 epochs
+
+Bottleneck size 8 performed worse with a test accuracy of 73% compared to 16 with 76%. Similarly for the class wise F1 scores.
+But the difference is not too much and they are still improving
+I do notice that they are not performing as well as size 32, though this can also be because of taking a while to understand how to correctly compress
+
+I'll run till epoch 30 and then decide further after that
+
+Gained a decent high level understanding of SSMs for sequential data. Now going to start with vision SSMs.
+
+Both bottleneck models are currently training, will evaluate with test set on epoch 30
+
+SSMs for image classification all approach in a similar approach.
+Like ViTs they create patches, and their 1d approach of sequential checking is converted to using multiple such linear scans. Like left to right, up to down, for each pixel and patch.
+Multiple such models in use but I will get into more detail for Plant disease detection used in papers
+I remember VMamba was used in one.
+Other than that, all the theory was pretty interesting to read through 
+Their main benefit seems to be understanding global context but in linear complexity instead of ViT's quadratic.
+
+The other bottlenecked models are almost to epoch 40 and will then once again be tested on the test data. Should be interesting to see
+If nothing helps, guess we need to reconsider stuff.
+
+Researched and found a few promising papers which I will begin with tomorrow
+The models are at epoch 38 and will complete in a while. After that, I'll have a better idea of how to move further with these ones
