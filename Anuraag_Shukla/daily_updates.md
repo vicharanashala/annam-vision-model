@@ -78,14 +78,14 @@
 
 ## 25/02/2026
 - Tested ConvexNet-Base for Potato+Tomato Dataset(provided),
-    Validation Accuracy => 97.78 %
-    Testing Accuracy(On 11 classes) => 38.52 %
+    - Validation Accuracy => 97.78 %
+    - Testing Accuracy(On 11 classes) => 38.52 %
 - Researching about various transformations available in PyTorch and if some 
   particular transformations can help us cover up the deficit in our training 
   data quantity.
 - After applying transforms.equalize() on the Plant_Doc+Plant_Wild(Potato Only) dataset(used ConvexNet-Base only), saw a jump in validation as well as testing accuracy;
-    Validation Accuracy => 75.68 %
-    Testing Accuracy => 73.62 %
+    - Validation Accuracy => 75.68 %
+    - Testing Accuracy => 73.62 %
 - Applied the same transformation on the complete dataset and it bumped the 
   testing accuracy from 56.26 % to 59.63 %
 - Further testing with other parameters is required before making a conclusion.
@@ -98,3 +98,11 @@
     - Epochs: 20
     - Testing Accuracy[On the 10 classes]: 60.21 %
 - Currently compiling a jupyter notebook containing the saved models along with their class-wise classification accuracy on the testing set.
+
+## 27/02/2026
+- Compiled and pushed the jupyter notebook containing the test results from various models on the testing set provided for the Potato and Tomato subclass.
+- Initialized training on the Rice Disease Dataset with some basic transformations applied and EfficientNetB4 model for 10 epochs,
+    - Validation Accuracy => 92.47 %
+    - Testing Accuracy => 87.10 %
+- Next step, would be try to train this model for another 5 epochs and verify it's validation accuracy and find the overfit spot.
+- Also, training on the Convex-Net-Base after this to compare performances.
