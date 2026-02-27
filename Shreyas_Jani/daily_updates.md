@@ -370,3 +370,7 @@ Hmm, i suppose 82% is the limit for ViT tiny here on this data.
 And the one at epoch 40 was pretty well balanced as well.
 So if we need to test things out, the epoch 40 one is alright.
 Of course the best I found is still Swin-HViT at 89%, though I forget how it's per-class F1 was. If it was not equally spread, then this one might just be better.
+
+I looked through the authors' code, and got an idea of how they are doing things (surface level mostly, pretty complex setup).
+Then I researched and found mamba_ssm. It's a library with the major mamba related code ready using Pytorch itself. 
+Looked through their example code and created an outline for how to implement VMamba with this.
