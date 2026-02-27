@@ -332,3 +332,41 @@ If nothing helps, guess we need to reconsider stuff.
 
 Researched and found a few promising papers which I will begin with tomorrow
 The models are at epoch 38 and will complete in a while. After that, I'll have a better idea of how to move further with these ones
+
+## 27/2/2026
+
+Partially understood the architecture of VMamba
+
+Epoch 40 finished and the result is not bad. Bottleneck size 16 showed 81% test accuracy, the highest at that epoch.
+It's worth running it for another 20.
+
+Had the progress meet
+
+There were quite a few problems setting up the checkpoint with my pc crashing in the middle as well.
+Fixed them and training is continuing
+
+Training is at epoch 42 with val accuracy of 85%. Decent.
+
+VMamba is actually pretty recent from late 2024. 
+The architecture is actually quite complex. Might take a while to fully understand. And I should look into existing and pretrained versions.
+It should also be faster to train than vit
+
+It was pretty confusing at first but the idea is decent.
+The image is separated into patches, and these patches are unwinded in 4 different ways from top left to bottom right and bottom left to top right (all 4 combinations)
+Each unwind set of patches is sent to the s6 layer where it learns the relations between the tokens 
+These are then combined into 1 spatial patch which is again sent further.
+In between linear projections also increase the number of "channels" available similar to how a cnn does it. But slightly different.
+I'll look into a bit more detail before starting code.
+
+Bottleneck 16 is at epoch 56 with 86% val accuracy. 
+Hmm, not as much of an improvement as I thought but we will see the real results when it evaluates on the test set
+
+I think I have a pretty decent understanding of VMamba at the very least now.
+Will start by looking into pre-trained models and fine-tuned and then moving to training from scratch similar to current experiments
+
+It finished training and the test accuracy after epoch 60 is 79%
+Damn. And the F1 scores got worse too.
+Hmm, i suppose 82% is the limit for ViT tiny here on this data.
+And the one at epoch 40 was pretty well balanced as well.
+So if we need to test things out, the epoch 40 one is alright.
+Of course the best I found is still Swin-HViT at 89%, though I forget how it's per-class F1 was. If it was not equally spread, then this one might just be better.
