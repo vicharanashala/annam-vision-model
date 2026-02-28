@@ -374,3 +374,27 @@ Of course the best I found is still Swin-HViT at 89%, though I forget how it's p
 I looked through the authors' code, and got an idea of how they are doing things (surface level mostly, pretty complex setup).
 Then I researched and found mamba_ssm. It's a library with the major mamba related code ready using Pytorch itself. 
 Looked through their example code and created an outline for how to implement VMamba with this.
+
+
+## 28/2/2026
+
+I had some doubts regarding why there was a need for a special cuda kernel, so I looked into that. Pretty interesting.
+Had the progress meet
+
+Setup training and started.
+The necessary cuda kernel compilation is expected to take 20-30 minutes. 
+During this time, I'll read into existing research further
+
+Damn. This library is not at all structured or maintained well for working on kaggle notebooks atleast 
+I have been trying to have this run but there's always another bug when the previous is fixed.
+I'll try it again after the meal break but if it still doesn't work I'll have to look elsewhere.
+And if it is still not alright, then I'll have to move to another model approach
+
+Yeah no this isn't going to work.
+I'll need to go back to the drawing board. What else can I test. Or should I move onto another model.
+Maybe look into other people implementing VMamba on kaggle specifically?
+
+After a long while of searching, I found that the problem might be with using the P100 gpu for acceleration in kaggle. Why?? 
+Anyways, I have set it to T4x2, and also made the installation commands slightly better.
+Now what remains is to let it run and see.
+Meanwhile I'll look for alternative experiments if this doesn't turn out well
