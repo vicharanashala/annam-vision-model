@@ -106,3 +106,13 @@
     - Testing Accuracy => 87.10 %
 - Next step, would be try to train this model for another 5 epochs and verify it's validation accuracy and find the overfit spot.
 - Also, training on the Convex-Net-Base after this to compare performances.
+
+## 28/02/2026
+- Compiled the monthly update with all the model tested along with the datasets and the testing accuracies.
+- Trained and tested ConvexNet-Base on Rice Diseases Dataset with basic transformations for 20 epochs,
+    - Validation Accuracy => 93.21 %
+    - Testing Accuracy => 94.19 %
+- Trained and tested ConvexNet-Base on Rice Diseases Dataset with Equalize transformation for 20 epochs,
+    - Validation Accuracy => 92.42 %
+    - Testing Accuracy => 91.40 %
+- Currently training a ConvexNet-Base after applying a CenterCrop and removing Equalize transformation.
