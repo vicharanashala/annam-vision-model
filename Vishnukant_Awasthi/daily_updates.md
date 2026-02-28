@@ -42,3 +42,6 @@ Explored different dataset on kaggle for better training and testing. Earlier us
 
 ## 27/02/2026 
 Segmented 5 classes of plantdoc dataset 3 of Corn and 2 of Tomato using SAM 3 model. Completed the training and testing for 3 classes of corn and 2 of tomato. For segmented plant village + segmented plant doc got validation accuracy of 86% and testing accuracy of 82.6%. For grayscale plantvillage + segmented plantdoc got validation accuracy of 86% and testing accuracy of 73.91%. For normal plantvillage + segmented plantdoc got validation accuracy of 87.15% and testing accuracy of 78.26%.
+
+## 28/02/2026 
+Trained the model on 10 classes 3 of corn, 2 of tomato, 3 of apple and 2 of grapes. For segmented plant village + segmented plant doc got validation accuracy of 83.42% and testing accuracy of 81%. For grayscale plantvillage + segmented plantdoc got validation accuracy of 86.63% and testing accuracy of 85.26%. For normal plantvillage + segmented plantdoc got validation accuracy of 85.56% and testing accuracy of 81%.
