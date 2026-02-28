@@ -398,3 +398,9 @@ After a long while of searching, I found that the problem might be with using th
 Anyways, I have set it to T4x2, and also made the installation commands slightly better.
 Now what remains is to let it run and see.
 Meanwhile I'll look for alternative experiments if this doesn't turn out well
+
+The updates are making it run at the very least but I don't think it is still compiled correctly.
+This is because the small VMamba is taking as long as ViT-large per epoch. Not ideal.
+Created the Monthly report.
+VMamba is currently almost done with epoch 2. Epoch 1's val accuracy was 55.7%. Not bad. let's see if it performs okay, and then we can see how to fix the cuda compiler so it can show its major strength in speed.
+Otherwise, there is a need to move onto other models or different datasets for the previously tested models
