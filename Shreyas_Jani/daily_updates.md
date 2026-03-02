@@ -404,3 +404,33 @@ This is because the small VMamba is taking as long as ViT-large per epoch. Not i
 Created the Monthly report.
 VMamba is currently almost done with epoch 2. Epoch 1's val accuracy was 55.7%. Not bad. let's see if it performs okay, and then we can see how to fix the cuda compiler so it can show its major strength in speed.
 Otherwise, there is a need to move onto other models or different datasets for the previously tested models
+
+## 1/3/2026
+
+The VMamba model got around 75% test accuracy at epoch 10.
+It was also mostly converged. 
+But the problem is that it is supposed to be much faster than this because of the custom cuda compilation. 
+I'll do a deeper research into why this isn't working, maybe even set it up locally to see the difference if necessary.
+Otherwise, we'll move to checking the earlier models on different datasets.
+Had a weekly team-wide meet with Sudarshan sir.
+
+Yes VMamba is infamous for being annoying to work with, especially on kaggle.
+But I did find a few more models, including Vim, MambaVision by NVIDIA, that are maybe, possibly, potentially able to be setup in kaggle.
+From what I understand, running locally will be infeasible given my GTX 1660 has only 6 gb vram compared to kaggle t4x2's 16gb.
+Let me see what I can understand.
+Had the progress meet.
+
+From what I can see, the most straight forward model will be MambaVision by NVIDIA. There should also be some pretrained weights available on huggingface?
+I'll begin setting this up and see how well it works. Atleast there's still some hope to test SSMs.
+
+Looked to existing codes and setup MambaVision
+But this also requires mamba-ssm hmm
+I'll allow this to compile one more time
+And if this is still being annoying, I'll move onto training the previous models on different datasets
+
+Finally tried everything and it seems no other Vision SSM works without the mamba_ssm library. 
+The environment of kaggle is fundamentally unable to work with this, and locally is infeasible.
+So, I'll stop further time on this.
+I'll begin using different datasets on existing ones 
+Let's start with the train on PV and zero shot test on PD with bottleneck size 16 DeiT tiny from scratch. Can compare with SwinHViT
+
