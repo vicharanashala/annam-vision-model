@@ -434,3 +434,8 @@ So, I'll stop further time on this.
 I'll begin using different datasets on existing ones 
 Let's start with the train on PV and zero shot test on PD with bottleneck size 16 DeiT tiny from scratch. Can compare with SwinHViT
 
+Setup the training (merging the older style of my work with the better newer code took a little while), and started training 
+
+At epoch 9, it is 81% on PV but stagnating around 8% for PD
+I'll see if anything improves at epoch 20 
+Otherwise, I'll move to the mixed PV PD dataset
