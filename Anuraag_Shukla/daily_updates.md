@@ -116,3 +116,12 @@
     - Validation Accuracy => 92.42 %
     - Testing Accuracy => 91.40 %
 - Currently training a ConvexNet-Base after applying a CenterCrop and removing Equalize transformation.
+
+## 02/03/2026
+- Trained ConvexNet-Base after applying Center Crop and removing Equalize for 20 epochs,
+    - Validation Accuracy => 93.69 %
+    - Testing Accuracy => 88.39 %
+- Trained a ConvexNet-Large as well for 15 epochs to verify the performance of bigger models,
+    - Validation Accuracy => 93.31 %
+    - Testing Accuracy => 87.74 %
+- Implemented a WeightedRandomSampler on the training data loader as to focus more on the classes with very less number of training examples. Currently training this using ConvexNet-Base.
