@@ -45,3 +45,6 @@ Segmented 5 classes of plantdoc dataset 3 of Corn and 2 of Tomato using SAM 3 mo
 
 ## 28/02/2026 
 Trained the model on 10 classes 3 of corn, 2 of tomato, 3 of apple and 2 of grapes. For segmented plant village + segmented plant doc got validation accuracy of 83.42% and testing accuracy of 81%. For grayscale plantvillage + segmented plantdoc got validation accuracy of 86.63% and testing accuracy of 85.26%. For normal plantvillage + segmented plantdoc got validation accuracy of 85.56% and testing accuracy of 81%.
+
+## 02/03/2026 
+Gone through the different versions and working of DINO. Trained the model using DINOv2 small on 10 classes and the dataset used was segmented. Got the validation accuracy of 80% and testing accuracy of 76%.
