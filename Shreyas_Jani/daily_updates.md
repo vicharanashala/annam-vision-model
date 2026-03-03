@@ -483,3 +483,7 @@ So this is again not a good side.
 This concludes for classification at the very least, Swin-HViT is the best from the models I have tested, as was also my hypothesis at the beginning.
 
 Now I need to look into either different datasets (plant wild?) or see some other approach to modeling.
+
+After looking through other types of models and removing the options Vishnukant and Anuraag have tried, I found 2 very interesting types: MLP-mixer and FocalNet.
+From what I understand, they are quite unique in their architectures with the commonality of trying to provide alternatives to Transformers and attention. 
+Can be interesting to look into. I'll continue further study into these next time.
