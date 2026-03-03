@@ -405,7 +405,7 @@ Created the Monthly report.
 VMamba is currently almost done with epoch 2. Epoch 1's val accuracy was 55.7%. Not bad. let's see if it performs okay, and then we can see how to fix the cuda compiler so it can show its major strength in speed.
 Otherwise, there is a need to move onto other models or different datasets for the previously tested models
 
-## 1/3/2026
+## 2/3/2026
 
 The VMamba model got around 75% test accuracy at epoch 10.
 It was also mostly converged. 
@@ -439,3 +439,47 @@ Setup the training (merging the older style of my work with the better newer cod
 At epoch 9, it is 81% on PV but stagnating around 8% for PD
 I'll see if anything improves at epoch 20 
 Otherwise, I'll move to the mixed PV PD dataset
+
+## 3/3/2026
+
+The val accuracy (on PD) at epoch 10 is also 8% 
+And the per class accuracy is also very bad. Most images were being classified incorrectly as the same class. So it didn't understand a lot. 
+But given the model is not pretrained and only at epoch 10, I have setup to run this till epoch 30 and will see then.
+Parallely, I'll set up 2 other bottleneck size models on my other 2 accounts. 32 and 64 should be good.
+Had the progress meet
+
+Setup training for 32 and 64 bottleneck sizes on PV train and PD val.
+The 16 one has got to 11% val accuracy at epoch 26
+The 64 one is at 10.5% at epoch 16. This one is performing better than bottleneck 16 which had 7% at epoch 16. Maybe too much reduction is bad here? Will need to think more about this.
+As for the 32 one, I noticed I had forgotten to turn on the accelerator so it didn't get too far and I restarted it.
+All 3 will continue training while I try to analyze these results
+
+The 16 one maxed out at 11.4% at epoch 30 with horrible F1 scores (eve 0 F1 for a few classes). It's just barely better than a random guess and seems to heavily predict all images as pepper bell bacterial spot and tomato late flight. Interesting.
+The 64 one is at epoch 28 with 11% val accuracy as well. Hmm not improving much even though it got fast at the start. Maybe this is the limit and the smaller bottleneck of 16 found the same representation from more training but can't find much more.
+The 32 one is at 9.5% at epoch 9. Around the same as the others. Hmm. I'll let these complete and then see further
+
+The 64 one completed with 11% val accuracy. F1 for this is slightly better but still really bad.
+The 32 one only got to 10.5%. Much worse than the other 2. But it's F1 scores are much better than the other 2. Again, still really bad, but slightly better.
+So it seems zero shot on Plant Doc is way too difficult for these guys. Next step will be to make a combined dataset with PV and PD and then see how much that improves.
+If I remember correctly, then SwinHViT improved from 30% to 60% with this. Let's see how much these go.
+Started setting up the code for this.
+
+Setup took some time since the scripts for the merging had been done only once for swin hvit and I had apparently not saved the notebook 
+So after creating again, slightly better designed, I started training with all 3 accounts on all 3 types of bottleneck sizes 
+Currently training
+The validation is initially done on a mix of PV and PD.
+After these train for 20-30epochs, I will test them on PD only separately 
+80% val accuracy at epoch 10 for bottleneck 16, same for bottleneck 32, as well as for 64.
+All are similar for now
+
+While it trains, separated the PD part from the val set to see how it performs on that.
+After training, this is now at:
+For bottleneck 16 - 20.3%
+For 32 - 13.7% (damn)
+For 64 - 23.5% (highest, but not by much)
+
+This makes it very very clear that Swin-HViT fine-tuned was much better than this since it got 60%+ with this setup (albeit the exact dataset was slightly different but a difference of 40% is a lot).
+So this is again not a good side.
+This concludes for classification at the very least, Swin-HViT is the best from the models I have tested, as was also my hypothesis at the beginning.
+
+Now I need to look into either different datasets (plant wild?) or see some other approach to modeling.
