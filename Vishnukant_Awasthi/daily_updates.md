@@ -48,3 +48,6 @@ Trained the model on 10 classes 3 of corn, 2 of tomato, 3 of apple and 2 of grap
 
 ## 02/03/2026 
 Gone through the different versions and working of DINO. Trained the model using DINOv2 small on 10 classes and the dataset used was segmented. Got the validation accuracy of 80% and testing accuracy of 76%.
+
+## 03/03/2026 
+Experimented further with the DINOv2 small model to improve performance. First, fine-tuned the model by unfreezing the last 2 transformer blocks, which gave the validation accuracy of 89% and testing accuracy of around 90.5%. After that, tried unfreezing the last 4 blocks to see if deeper fine-tuning would improve performance. Got the validation accuracy of 89% and testing accuracy of 88.4%. So, unfreezing the last 2 blocks gives better results than unfreezing 4 blocks.
