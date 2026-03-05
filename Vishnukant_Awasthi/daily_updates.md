@@ -51,3 +51,6 @@ Gone through the different versions and working of DINO. Trained the model using
 
 ## 03/03/2026 
 Experimented further with the DINOv2 small model to improve performance. First, fine-tuned the model by unfreezing the last 2 transformer blocks, which gave the validation accuracy of 89% and testing accuracy of around 90.5%. After that, tried unfreezing the last 4 blocks to see if deeper fine-tuning would improve performance. Got the validation accuracy of 89% and testing accuracy of 88.4%. So, unfreezing the last 2 blocks gives better results than unfreezing 4 blocks.
+
+## 05/03/2026 
+Trained the model with Weight random sampler and also changed loss from cross entropy to focal loss for handling class imbalance and better accuracy using DINOv2 small. Completed the training using weighted random sampler and got the testing accuracy of 86%. Also collected real world images from different websites to increase the test dataset size. Increased the number of images from 95 to 179. Training the DINOv2 small with 5 folds cross validation. Completed the code setup and started training. Completed training on 4 folds of cross validation. Also tested on new test dataset it's giving 89% accuracy on 179 test images.
