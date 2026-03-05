@@ -125,3 +125,13 @@
     - Validation Accuracy => 93.31 %
     - Testing Accuracy => 87.74 %
 - Implemented a WeightedRandomSampler on the training data loader as to focus more on the classes with very less number of training examples. Currently training this using ConvexNet-Base.
+
+## 05/03/2026
+- Trained a ConvexNet-Base after applying WeightedRandomSampling with replacement on the train loader for 20 epochs,
+    - Validation Accuracy => 88.82 %
+    - Testing Accuracy => 91.40 %
+- Trained a ConvexNet-Base after applying WeightedRandomSampling with replacement on the train loader for 10 epochs,
+    - Validation Accuracy => 90.19 %
+    - Testing Accuracy => 93.98 %
+- Compiled a first draft for the results.md file and pushed it to the repository.
+- Currently looking for alternative models that can work better with the Rice Disease Dataset, InceptionV3 and VGG16 are 2 potential candidates (training InceptionV3 as of now).
