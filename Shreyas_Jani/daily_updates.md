@@ -487,3 +487,47 @@ Now I need to look into either different datasets (plant wild?) or see some othe
 After looking through other types of models and removing the options Vishnukant and Anuraag have tried, I found 2 very interesting types: MLP-mixer and FocalNet.
 From what I understand, they are quite unique in their architectures with the commonality of trying to provide alternatives to Transformers and attention. 
 Can be interesting to look into. I'll continue further study into these next time.
+
+## 5/3/2026
+
+Starting with MLP mixer and gained an overview of its working.
+Really interesting how everything now uses patches in some form. After the patches are created, they are projected to a hidden size C (single dimensional), making the input SxC where S is the number of patches.
+The architecture doesn't change its hidden size, maintaining C at all layers.
+It contains 2 types of layers, one mixes the spatial locations, while the other mixes the feature channels.
+This mixing aims to provide similar results as local and global understanding but with a simple architecture, while also maintaining linear complexity.
+I'll now look into some major papers for the architecture and then to plant disease specific if they exist.
+Had the progress meet
+
+Understood the main idea behind the different layers, how they work, and their problems. 
+For example, MLP mixer has a tendency to find sharp local minimas, causing overfitting.
+This can be fixed with Sharpness aware minimiser (SAM) which penalizes such sharp drops and tries to create a flat minima.
+Also, the mixer might be not as accurate as ViTs, but it has been shown to be at least 3 times as fast during inference, showcasing it's benefit. 
+I will now move onto agriculture specific work, followed by some major papers.
+
+After a bit more research, I can see that there hasn't been too much work specific to using MLP mixer on plant diseases, but there is one major paper from early 2025 benchmarking major results and their methodology.
+From the overview, it looks promising, and I'll continue with it and see how to begin experimentation after it.
+
+The paper starts with information about the various types of diseases and how they show them, and more specifically why diseases visible on leaves are of value.
+This is because the others are usually physically occluded, and unable to seen, while leaf diseases provide a bit of time before irreversible damage is done to the plant.
+They then move onto why specifically MLP mixer (gMLP that they also used; very similar model) are useful here: their benefit for edge ai with their compact sizes and simplicity (relatively speaking)
+They then go into the architecture for the models. They had a bit more detail so I went through it. Very interesting stuff. gMLP (g is for Gated) was new so I tried to understand in a little more detail.
+MLPs can easily overfit, so they implemented Gradient Centralization to combat it. I am currently reading through this, but the core idea to fix overfitting in MLPs is the same as SAM that I previously mentioned.
+I wonder what exactly it is. I'll continue reading this
+
+So, Gradient Centralization (GC) literally zero centers the gradients calculated during backpropagation. This makes things much more constrained and stable.
+It also notes that it inherently converts the gradients to a slower dimensional manifold.
+It stops any one feature from being dominant and causing overfitting, forcing the model to learn diverse features.
+It has been empirically tested to effectively smooth the space.
+How does it compare to SAM? Maybe they are similar in some way? Hmm.
+They also trained on potato and wheat leaf datasets (I'll see which one exactly) 
+They also trained from scratch instead of using pre trained weights. 
+They saw 98% on potato and 91% on wheat diseases, with mixer and gMLP both giving similar results
+All classes were pretty equal with wheat brown rust being slightly worse at 0.87.
+On these datasets, these models perform comparably to CNNs and ViTs.
+Sounds promising, I'll now begin looking for their code, see if existing implementations exist, and then begin training. I'll start with rice disease
+
+After a lot of searching around, I couldn't find any open code specific to the paper.
+But given that they trained from scratch, the major problem would at most be with implementing GC or SAM (I can also compare which one performs better)
+So after some more searching I found an implementation for MLP mixer in timm. This should be good given its in timm.
+I looked at the exact architecture in a bit more detail and it should be good. I'll begin with the code and start training next time.
+Added results.md for previous experiment under its folder
