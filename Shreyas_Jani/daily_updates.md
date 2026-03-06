@@ -531,3 +531,36 @@ But given that they trained from scratch, the major problem would at most be wit
 So after some more searching I found an implementation for MLP mixer in timm. This should be good given its in timm.
 I looked at the exact architecture in a bit more detail and it should be good. I'll begin with the code and start training next time.
 Added results.md for previous experiment under its folder
+
+## 6/3/2026
+
+Setup training for MLP mixer small 16x16 patches.
+Currently training for 30 epochs on rice disease datasets
+I'll compare both accuracy and training time.
+Currently it's just slightly faster than deit tiny at 10-11 minutes per epoch.
+Had the progress meet.
+
+It's training steadily and at epoch 7, it has 72% accuracy. Taking around 11 minutes per epochs, sometimes 12.
+I have also found a simple way to implement SAM and GC and will try set them up to run in parallel to this run.
+This will help in getting a comparison to how much they affect this model on this specific dataset.
+Should be interesting
+
+Setup SAM and AdamP for regularization of MLP mixer in separate kaggle accounts to run parallely.
+I replaced GC with AdamP because a custom implementation was the only way and that messed up training times because of python being slower than the gpus.
+AdamP works on a very similar method. Not exactly the same, but very similar.
+Used Pytorch-optimizer for pre-existing SAM and AdamP implementation
+SAM is much slower to train (2.5x) than the base approach. This is expected since it effectively does twice the work while optimizing the weights.
+AdamP also takes just as long now that I look at it again.
+I wonder why that is? Will try to understand while all 3 run
+
+At epoch 21, val accuracy seems to have been converged around 72% for the base MLP mixer. I'll let it continue till 30 and then see the class wise distribution as well.
+The other 2 are following the base one for now with 63% val accuracy at epoch 3 for now.
+I have hope that this will increase. Now that everything is stable, I will continue looking into the exact details of SAM and AdamP and see how they differ in their approach
+
+Yeah the main idea is still that SAM looks into the future and changes where it goes while AdamP modifies the gradient directly.
+If AdamP was implemented at a lower level alongside the c++, it would be much faster for this reason. But given its in Python, it ends up becoming equal to SAM.
+Currently here is the training progress:
+The base model remained stuck at 72% val accuracy, currently at epoch 29.
+AdamP at 68% at epoch 4, same as the base one.
+SAM at 67% at epoch 4.
+These ones will take a while
