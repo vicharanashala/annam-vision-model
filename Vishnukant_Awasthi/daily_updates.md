@@ -54,3 +54,7 @@ Experimented further with the DINOv2 small model to improve performance. First, 
 
 ## 05/03/2026 
 Trained the model with Weight random sampler and also changed loss from cross entropy to focal loss for handling class imbalance and better accuracy using DINOv2 small. Completed the training using weighted random sampler and got the testing accuracy of 86%. Also collected real world images from different websites to increase the test dataset size. Increased the number of images from 95 to 179. Training the DINOv2 small with 5 folds cross validation. Completed the code setup and started training. Completed training on 4 folds of cross validation. Also tested on new test dataset it's giving 89% accuracy on 179 test images.
+
+## 06/03/2026 
+Changed the DINOv2 version from small to base. Trained the model on both the datasets plantvillage and plantdoc segmented. Got the validation accuracy of 88.23 and testing accuray of 91.5 on 95 test images from plantdoc and 82 images collected from different websites so total of 177 testing images. Then trained the model on merged dataset of grayscale plantvillage + segmented plantdoc. Got the validation accuracy of 87.7% and testing accuracy of 88.7%.
+

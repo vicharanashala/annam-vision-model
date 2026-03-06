@@ -135,3 +135,20 @@
     - Testing Accuracy => 93.98 %
 - Compiled a first draft for the results.md file and pushed it to the repository.
 - Currently looking for alternative models that can work better with the Rice Disease Dataset, InceptionV3 and VGG16 are 2 potential candidates (training InceptionV3 as of now).
+
+## 06/03/2026
+- Trained a InceptionV3 model after resizing the images to (299,299) on the Rice Disease Dataset for 30 epochs,
+    - Validation Accuracy => 93.01 %
+    - Testing Accuracy => 93.12 %
+- Trained a InceptionV3 model after resizing the images to (299,299) and applying WeightedRandomSampling with replacement on the train loader of the Rice Disease Dataset for 30 epochs,
+    - Validation Accuracy => 90.73 %
+    - Testing Accuracy => 92.04 %
+- Trained a VGG16 model after resizing the images to (299,299) and applying WeightedRandomSampling with replacement on the train loader of the Rice Disease Dataset for 30 epochs,
+    - Validation Accuracy => 87.01 %
+    - Testing Accuracy => 90.11 %
+- Trained a VGG16 model after resizing the images to (224,224) and applying WeightedRandomSampling with replacement on the train loader of the Rice Disease Dataset for 30 epochs,
+    - Validation Accuracy => 87.59 %
+    - Testing Accuracy => 89.68 %
+- Currently training a VGG16 model for Images resized to (224,224) but no sampling applied for 20 epochs.
+
+
