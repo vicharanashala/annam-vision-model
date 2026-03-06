@@ -564,3 +564,17 @@ The base model remained stuck at 72% val accuracy, currently at epoch 29.
 AdamP at 68% at epoch 4, same as the base one.
 SAM at 67% at epoch 4.
 These ones will take a while
+
+The baseline model gave test accuracy of 65.5%. Around what the validation got and slightly lower.
+The f1's are mostly balanced which is nice, but the overall results is lower than ideal.
+Now the good news is that the SAM and AdamP models have already improved past 72% (74 and 73 respectively) at epoch 8. 
+This basically confirms that fact about the normal MLP getting stuck in a local minima while these 2 have moved past.
+The increase in training is worth it. Especially so since the inference time for all 3 will remain the same in the end.
+For now, I looked into the imbalanced classes and for this model specifically there weren't any problems caused by class imbalance.
+Of course, I can also start training with imbalance fixing techniques later on if the results stay promising.
+Will continue reading the remaining part of the research paper and see if I can see something new.
+
+They are training quite slowly, with epoch 10 showing 75% for SAM and 73.5 for AdamP.
+It's not been longer than 2 epochs but it might be stagnating? I hope not :D
+I'll let it run and hopefully it improves. 
+The paper doesn't have anything else of use that I can see. There are a few other papers, specifically one for FocalNet (the other model I'd like to try) which I will begin reading.
