@@ -1,7 +1,7 @@
 # Weekly Progress Report
 
-##**Project:** Wheat Leaf Disease Classification
-##**Week:** 05 March 2026 – 07 March 2026
+**Project:** Wheat Leaf Disease Classification
+**Week:** 05 March 2026 – 07 March 2026
 
 ---
 
