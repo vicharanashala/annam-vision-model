@@ -151,4 +151,13 @@
     - Testing Accuracy => 89.68 %
 - Currently training a VGG16 model for Images resized to (224,224) but no sampling applied for 20 epochs.
 
+## 07/03/2026
+- Trained a VGG16 model after resizing the images to (224,224) of the Rice Disease Dataset for 30 epochs,
+    - Validation Accuracy => 88.99 %
+    - Testing Accuracy => 83.66 %
+- Trained a Convex-Net-Base model after resizing the images to (224,224) and replacing the images of the Brown Spot class of the Rice Disease Dataset for 20 epochs,
+    - Validation Accuracy => 94.44 %
+    - Testing Accuracy => 86.67 %
+
+
 
