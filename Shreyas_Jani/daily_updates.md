@@ -578,3 +578,34 @@ They are training quite slowly, with epoch 10 showing 75% for SAM and 73.5 for A
 It's not been longer than 2 epochs but it might be stagnating? I hope not :D
 I'll let it run and hopefully it improves. 
 The paper doesn't have anything else of use that I can see. There are a few other papers, specifically one for FocalNet (the other model I'd like to try) which I will begin reading.
+
+## 7/3/2026
+
+The sam one showed progress by moving to 79% by epoch 17. It proves it moved past a local minima. Meanwhile, AdamP was being too slow and did not budge from 73%. So it might have also become overfitted. So, I will continue with sam for this and see where else it moves by epoch 30. I'll also see if there are any pre-trained weights available. Though I didn't find any last time with `use_pretrained = True`
+Had the progress meet
+
+At epoch 19, it seems to be inching forward to now 79.5%.
+As for focalnet, I got an initial understanding, and found the main paper: https://arxiv.org/pdf/2203.11926
+I'll read through this while the mlp mixer sam trains
+
+Hmm, it is still stuck at around 79 at epoch 21. Is this the limit? I hope not.
+Focalnet stands for Focal Modulation Networks. They were introduced as an alternative to self attention inside Vision Transformers. Though as can be seen from the fact that they came in 2022, they have not gained general popularity. It mainly performs 3 steps: Hierarchical Contextualization (for extracting features), Gated Aggregation (calculates what weight to give each context feature), Element-wise modulation (fused back into the original query).
+I will continue in greater detail.
+
+There was a small jump at epoch 22, but it has remained stable. The train accuracy continues to inch forward while val remains stagnant. I think it might have started overfitting, so I'll continue till maybe epoch 26 and then check the test set results.
+
+Focalnets have a pretty good history. They performs just as well, sometimes reaching SOTA performance faster and easier, they are more efficient in terms of FLOPs, and they are more interpretable in that you can visualise their modulation maps and see how it separates the foreground, etc.
+It's also very good at cross domain problems similar to CNNs, and has recently been applied to speech coding, medical images, and climate modeling.
+But this raises the question of why it isn't more popular and I only just heard about this when it is more than 3 years old now.
+The major issue seems to be how it needs to be more deeply optimised for it to actually achieve the high FLOPs amount.
+And to put salt on the wound, just around when this was released, Flash attention was also released, and it improved the speed for self attention, effectively making one of the main theoretical points of FocalNet useless.
+And so they never got too much use.
+But nevertheless, I will try them out (Unless they have the same problems as Mamba, then nevermind). I will begin looking for papers focusing on focalnets used for plant disease classification and then decide how to move forward with this.
+
+I stopped it and it did give a pretty good 80% test accuracy.
+Also the confusion matrix was very clean, much much cleaner than previous methods. It was almost not affected by the imbalance.
+This might be the effect of the SAM regularizer? Possible.
+The lowest F1 was around 0.6 and highest at 1.00
+This would be a very good model to run. Of course I will compare the per class performance with swin-hvit later.
+
+Also found a very recent (march 2026) paper for FocalNet on crop disease called Focal-HAIN. I will begin reading this
