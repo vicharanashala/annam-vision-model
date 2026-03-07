@@ -58,3 +58,6 @@ Trained the model with Weight random sampler and also changed loss from cross en
 ## 06/03/2026 
 Changed the DINOv2 version from small to base. Trained the model on both the datasets plantvillage and plantdoc segmented. Got the validation accuracy of 88.23 and testing accuray of 91.5 on 95 test images from plantdoc and 82 images collected from different websites so total of 177 testing images. Then trained the model on merged dataset of grayscale plantvillage + segmented plantdoc. Got the validation accuracy of 87.7% and testing accuracy of 88.7%.
 
+## 07/03/2026 
+Trained the DINOv2 base model with merged dataset of Normal plantvillage + Segmented plantdoc. Got the validation accuracy of 86%. Completed testing and got the testing accuracy of 90%. Set up the code for normal plantvillage + normal plantdoc for training on this merged dataset without segmentation. Completed the training and got the validation accuracy of 91.44%. Then did the testing and got the testing accuracy of 92.09%. Hence, base model performs better on normal without segmented dataset while small version performed better on the segmented dataset.
+
