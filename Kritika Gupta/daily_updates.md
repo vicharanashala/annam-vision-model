@@ -14,7 +14,7 @@
 - Further evaluation and fine-tuning will be done in the next steps.
 
 
-## 📅 Daily Update — 06 March 2026
+## 06 March 2026
 
 ### 🧠 Model Development
 - Started training **tf_efficientnetv2_s** for wheat disease classification.
@@ -76,3 +76,64 @@ Implemented **two-stage training pipeline**:
 - Training pipeline implemented
 - Training currently running.
 - Results and evaluation will be added after training completion.
+
+## 07 March 2026
+
+### 🧠 Model Training
+Continued training of the **tf_efficientnetv2_s** model for wheat disease classification.
+
+- Architecture: **EfficientNetV2-S**
+- Total Parameters: **20,187,736**
+- Training pipeline from previous day continued.
+- Monitoring training loss and validation accuracy during fine-tuning phase.
+
+### 🔬 Model Research
+Conducted research on **EfficientNet-B7** architecture to evaluate whether a larger model could improve performance on the wheat disease dataset.
+
+Studied:
+
+- Model architecture
+- Parameter size
+- Computational requirements
+- Performance reported in research papers
+- Suitability for plant disease classification tasks
+
+### ⚖️ Model Comparison
+
+Comparison between **EfficientNetV2-S** and **EfficientNet-B7**:
+
+| Model | Parameters | Characteristics |
+|------|------|------|
+| EfficientNetV2-S | ~20M | Faster training, optimized architecture, good balance between speed and accuracy |
+| EfficientNet-B7 | ~66M | Much deeper network, higher computational cost, often higher accuracy on large datasets |
+
+### 📊 Observations from Research
+
+- **EfficientNetV2-S**
+  - Faster training
+  - More optimized for modern training pipelines
+  - Better for medium-sized datasets
+
+- **EfficientNet-B7**
+  - Larger and more computationally expensive
+  - Potentially higher accuracy with very large datasets
+  - Requires more GPU memory and longer training time
+
+### 📂 Dataset Work
+Continued using the combined wheat disease dataset prepared earlier.
+
+Dataset contains **8 wheat disease classes**:
+- brown_rust
+- healthy
+- loose_smut
+- powdery_mildew
+- scab
+- septoria
+- stem_rust
+- yellow_rust
+
+### ⚙️ Current Status
+- Model training still running
+- Monitoring validation performance
+- Researching larger architectures for potential improvement
+- Results and final evaluation will be added after training completion
