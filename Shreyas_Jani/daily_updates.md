@@ -609,3 +609,12 @@ The lowest F1 was around 0.6 and highest at 1.00
 This would be a very good model to run. Of course I will compare the per class performance with swin-hvit later.
 
 Also found a very recent (march 2026) paper for FocalNet on crop disease called Focal-HAIN. I will begin reading this
+
+Oh turns out F-HAIN is an object detection model. Hmm, I'll still read this. I will first test things out on a normal FocalNet classifier and then pivot to this for object detection. That might require a different dataset probably.
+Anyways, the architecture is pretty neat. It is based on YOLOv5, but uses custom layers/modules: F-SPPELAN (the focal part), HAIN(Hierarchal Adaptive Interaction Network), which integrates the features directly in the aggregation path (need to see what exactly this means).
+It is supposed to be be both High in speed while also being accurate.
+I'll compare how the speed is, and then maybe also look into plant disease prediction results with vanilla YOLO models to see if there's an improvement. There should be a table in the papers ideally.
+
+After looking around, I found that timm also contains an implementation of focalnet (this is pretty nice library, and I think I just read some related news mentioning the creator of this). I will begin training with just a normal classifier (not f-hain). But before this, I'll get a bit more detail about f-hain to make it easy to continue after the classifier begins training or finishes to compare results.
+They mentioned an IP02 dataset. I'll look into this, probably one for object detection with diseases and pests.
+And they claim to be outperforming multiple models, including YOLOv11, and claim it can be deployed on Raspberry pi 4b. Pretty neat indeed.
