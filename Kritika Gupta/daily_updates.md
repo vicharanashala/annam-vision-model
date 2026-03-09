@@ -139,53 +139,72 @@ Dataset contains **8 wheat disease classes**:
 - Results and final evaluation will be added after training completion
 
 
-## 📅 09 March 2026
+## 09 March 2026
 
-### 📂 Dataset Preparation
-- Worked on building a clean wheat disease dataset using multiple sources.
-- Combined the following datasets:
-  - 20k+ Multi-Class Crop Disease Images
-  - Wheat Leaf Disease Dataset
-  - CGIAR Crop Disease Dataset
-  - Wheat Plant Disease Dataset
-- Filtered out **non-wheat disease classes** from the datasets.
-- Validated images and removed corrupted or invalid files.
-- Final dataset prepared with **8 wheat disease classes**:
-  - brown_rust
-  - healthy
-  - loose_smut
-  - powdery_mildew
-  - scab
-  - septoria
-  - stem_rust
-  - yellow_rust
+### Dataset Preparation
+Created a clean wheat disease dataset using the **wheat-leaf-disease dataset**.
 
-### 🔁 Data Processing
-- Applied **data augmentation** for minority classes to handle class imbalance.
-- Created **train, validation, and test splits** for the final dataset.
+Dataset statistics:
 
-### 🧠 Baseline Model Training
-- Implemented a baseline model using **EfficientNet-B0** with transfer learning.
-- Training strategy:
-  - Initially froze the backbone layers.
-  - Trained the classifier head.
-  - Later unfroze the backbone for fine-tuning.
+Classes:
+- Brown rust
+- Healthy
+- Loose Smut
+- Septoria
+- Yellow rust
 
-### ⚙️ Training Configuration
-- Framework: PyTorch  
-- Model: EfficientNet-B0  
-- Image Size: 224 × 224  
-- Optimizer: Adam  
-- Loss Function: CrossEntropyLoss  
-- LR Scheduler: CosineAnnealingLR  
-- Epochs: 30  
+Total Images: 5521
 
-### 📊 Model Results
-- Best Validation Accuracy: **96.62%**
-- Final Training Accuracy: **92.11%**
-- Final Validation Loss: **0.1108**
+Dataset split:
+- Train: 3864
+- Validation: 828
+- Test: 829
 
-### 📌 Summary
-- Successfully built a cleaned wheat disease dataset.
-- Trained the **EfficientNet-B0 baseline model**.
-- Achieved **96.62% validation accuracy** on wheat disease classification.
+Data loaders were created and verified. Sample images were visualized to confirm dataset integrity.
+
+---
+
+### Model Experiments
+
+Implemented EfficientNet based models for wheat disease classification.
+
+Models experimented with:
+- EfficientNet-B0
+- EfficientNet-B1
+- EfficientNet-B2
+- EfficientNet-B3
+
+Training setup:
+- Transfer learning using pretrained EfficientNet weights
+- Backbone initially frozen
+- Backbone unfrozen after epoch 10
+- Optimizer and scheduler configured
+- Batch size: 16
+
+Training executed on:
+GPU: Tesla T4
+
+---
+
+### Additional Model Experiment
+
+Created a separate experiment using:
+
+Model: EfficientNetV2-S
+
+Model parameters:
+- Total parameters: ~20M
+- Trainable head parameters: 6405 (initially)
+- Backbone unfreezes during training
+
+Class weights were applied to handle dataset imbalance.
+
+---
+
+### Current Status
+
+- Dataset pipeline finalized
+- EfficientNet baseline models trained
+- Multiple EfficientNet variants evaluated
+- EfficientNetV2-S training experiment created
+- Model checkpoints saved during training
