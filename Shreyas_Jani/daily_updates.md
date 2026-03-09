@@ -658,3 +658,12 @@ From scratch continues to increase to 80% val accuracy, while the pretrained one
 Other than the previous approaches mentioned, I also looked into what the current trend of the times is regarding plant health, primarily focused on computer vision. Trend is moving towards VLMs trained on image caption pairs (AgriGPT, AgriVLM, KBNet, etc). This will be a very different approach to the current models I am working on, and I think maybe this has been touched upon before I joined?
 Hmm
 Other than this, I noticed multiple works on 3d reconstruction (related to sfm I mentioned previously) (Wheat3DGS, Gaussian plant)
+
+The training results are as follows:
+From scratch: Final test accuracy of 72% and not too good per class F1. Nothing special. In effect worse than MLP mixer sam.
+Pretrained: Final test accuracy of 88%. Actually pretty good, second only to Swin-HViT. The per class F1 is also only problematic for leaf smut with 0.23, everything else is above 0.7, and most are above 0.9
+Pretty good.
+
+After looking through the classes that were being most difficult over my previous experiments, here are the ones that I have chosen: Sheath rot (usually low F1), leaf smut, leaf blast (commonly misclassified so the pair is needed), ragged stunt virus, brown spot.
+I'll begin with training swin-hvit on these with and without SAM for regularization.
+This serves 2 experiments: 1. Testing the model on a smaller difficulty, 2. Testing effectiveness of sam on swin hvit for later trying on larger datasets where it can take really long.
