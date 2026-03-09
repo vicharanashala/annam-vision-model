@@ -137,3 +137,55 @@ Dataset contains **8 wheat disease classes**:
 - Monitoring validation performance
 - Researching larger architectures for potential improvement
 - Results and final evaluation will be added after training completion
+
+
+## 📅 09 March 2026
+
+### 📂 Dataset Preparation
+- Worked on building a clean wheat disease dataset using multiple sources.
+- Combined the following datasets:
+  - 20k+ Multi-Class Crop Disease Images
+  - Wheat Leaf Disease Dataset
+  - CGIAR Crop Disease Dataset
+  - Wheat Plant Disease Dataset
+- Filtered out **non-wheat disease classes** from the datasets.
+- Validated images and removed corrupted or invalid files.
+- Final dataset prepared with **8 wheat disease classes**:
+  - brown_rust
+  - healthy
+  - loose_smut
+  - powdery_mildew
+  - scab
+  - septoria
+  - stem_rust
+  - yellow_rust
+
+### 🔁 Data Processing
+- Applied **data augmentation** for minority classes to handle class imbalance.
+- Created **train, validation, and test splits** for the final dataset.
+
+### 🧠 Baseline Model Training
+- Implemented a baseline model using **EfficientNet-B0** with transfer learning.
+- Training strategy:
+  - Initially froze the backbone layers.
+  - Trained the classifier head.
+  - Later unfroze the backbone for fine-tuning.
+
+### ⚙️ Training Configuration
+- Framework: PyTorch  
+- Model: EfficientNet-B0  
+- Image Size: 224 × 224  
+- Optimizer: Adam  
+- Loss Function: CrossEntropyLoss  
+- LR Scheduler: CosineAnnealingLR  
+- Epochs: 30  
+
+### 📊 Model Results
+- Best Validation Accuracy: **96.62%**
+- Final Training Accuracy: **92.11%**
+- Final Validation Loss: **0.1108**
+
+### 📌 Summary
+- Successfully built a cleaned wheat disease dataset.
+- Trained the **EfficientNet-B0 baseline model**.
+- Achieved **96.62% validation accuracy** on wheat disease classification.
