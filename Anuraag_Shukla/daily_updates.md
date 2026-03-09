@@ -159,5 +159,14 @@
     - Validation Accuracy => 94.44 %
     - Testing Accuracy => 86.67 %
 
+## 09/03/2026
+- After learning the correct transformation and settling on ConvexNet-Base as the choice of model, trained ConvexNet-Base on the Merged Dataset of Plant_Doc+Plant_Wild (27 classes) for 20 epochs after resizing the images to 224x224 and applying histogram equalization;
+    - Validation Accuracy => 68.54 %
+    - Testing Accuracy => 73.73 %
+- Also, trained YOLO26 on the same dataset with no transformations for 100 epochs with a patience=30(i.e. stop training if no change in accuracy for 30 epochs),
+    - Validation Accuracy => 62.9 %
+    - Testing Accuracy => 64.2 %
+- The images used for training both of the above-mentioned models were first passed through YOLO v11 pipeline to crop the images to focus on a leaf.
+- Currently exploring transformations described under Ultralytics documentation that can be applied on the YOLO26 pipeline.
 
 
