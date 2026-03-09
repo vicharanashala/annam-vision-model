@@ -61,3 +61,7 @@ Changed the DINOv2 version from small to base. Trained the model on both the dat
 ## 07/03/2026 
 Trained the DINOv2 base model with merged dataset of Normal plantvillage + Segmented plantdoc. Got the validation accuracy of 86%. Completed testing and got the testing accuracy of 90%. Set up the code for normal plantvillage + normal plantdoc for training on this merged dataset without segmentation. Completed the training and got the validation accuracy of 91.44%. Then did the testing and got the testing accuracy of 92.09%. Hence, base model performs better on normal without segmented dataset while small version performed better on the segmented dataset.
 
+## 09/03/2026 
+Changed the DINOv2 version from base to large. Set up the code for DINOv2 large model. Started training the model on merged dataset of normal plantvillage + normal plantdoc both were without segmentation. Completed training using DINOv2 large with 3 blocks unfreeze. Got the validation accuracy of 90.9% and testing accuracy of 84.21%. As the model was overfitting added the dropout of 0.5, weighted random sampler and better augmentation and started training the DINOv2 large model. Completed training got the validation accuracy of 90.37% and testing accuracy of 89.24%. Started training the model with more parameters changes unfreezed 4 blocks and training for 30 epochs.
+
+
