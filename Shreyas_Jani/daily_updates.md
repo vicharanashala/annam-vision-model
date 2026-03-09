@@ -618,3 +618,43 @@ I'll compare how the speed is, and then maybe also look into plant disease predi
 After looking around, I found that timm also contains an implementation of focalnet (this is pretty nice library, and I think I just read some related news mentioning the creator of this). I will begin training with just a normal classifier (not f-hain). But before this, I'll get a bit more detail about f-hain to make it easy to continue after the classifier begins training or finishes to compare results.
 They mentioned an IP02 dataset. I'll look into this, probably one for object detection with diseases and pests.
 And they claim to be outperforming multiple models, including YOLOv11, and claim it can be deployed on Raspberry pi 4b. Pretty neat indeed.
+
+
+## 9/3/2026
+
+Starting setting up a simple FocalNet directly. I'll first start training one from scratch and then see if there is one with pre trained weights and start that as well. 
+Had the progress meet
+
+Took a little while and started training for the from scratch one.
+Also setup pretrained weights for focal net. Currently the version I am using exactly is focalnet_tiny_srf. A small model is only feasible for training from scratch.
+Currently the from scratch model is at epoch 4 with val accuracy 63% and steadily improving.
+The pretrained one is also at epoch 4 with 91% val accuracy. 
+I guess this is the benefit of being pretrained before. Hopefully this can keep improving and doesn't stagnate like previous fine tuning attempts.
+If this shows promise I can try to fine tune a larger version as well.
+Also as Deepthi mam suggested, I can take a subset of 5 classes from rice disease and train Swin-HViT normally and with SAM to see if that improves the results. And if it does we can look into trying to train with all the classes.
+Well for now let's focus on FocalNet.
+
+The from scratch one is improving, currently at epoch 7 with 68% val accuracy.
+The pretrained model is also slowly improving, currently at 92% val accuracy at epoch 7.
+
+Started looking into other approaches than just leaf based, and a few other ideas are: roots and soil, sap analysis, olfactory sensors, sound based, x-rays and mri data.
+Most of these require special equipment or extra work. Much more difficult than just taking a photograph of the leaves from a phone. There should be other vision based approaches as well, but the previous ones listed are still okay as potential options
+
+At epoch 17:
+From scratch model at 77% val accuracy
+Pretrained model at 93% 
+The scratch model is being very consistent actually 
+Better than Deit tiny even if I remember correctly.
+The pretrained model is still slightly improving so I will let it continue onwards as well.
+FocalNet is being quite promising.
+As for other techniques and problems, vision based possibilities include hyperspectral images (hm, depending on the use case of the problems this can be feasible), there's also stem based detection for a few diseases which are visible there. Could be a possible direction to test.
+Root disease modeling is also possible but this will be manual given a photograph of the roots will require someone to manually pull it out.
+Also models for fruits and their seeds after a harvest with hyperspectral images.
+Also sfm (structure from motion) to create 3d representations of the plant part to get a much deeper understanding
+
+At epoch 23:
+From scratch continues to increase to 80% val accuracy, while the pretrained one remains stagnant at 93% peak. Train accuracy is also stagnant at 96%, so it's unlikely to be overfitting, although I don't know if there's any hope.
+
+Other than the previous approaches mentioned, I also looked into what the current trend of the times is regarding plant health, primarily focused on computer vision. Trend is moving towards VLMs trained on image caption pairs (AgriGPT, AgriVLM, KBNet, etc). This will be a very different approach to the current models I am working on, and I think maybe this has been touched upon before I joined?
+Hmm
+Other than this, I noticed multiple works on 3d reconstruction (related to sfm I mentioned previously) (Wheat3DGS, Gaussian plant)
