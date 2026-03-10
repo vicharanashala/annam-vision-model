@@ -690,3 +690,11 @@ The base model at epoch 24 is still only at 88.8% peak accuracy and has not impr
 The sam model is at epoch 12 and the peak val accuracy is at 88.6% which happened at epoch 8 earlier. I will run on test set when epoch 15 is completed and then see if it is worth training like 5 more epochs potentially.
 
 As for potentially useful datasets, 3 that I have found (and still searching) are cinnamon plant stem and branch disease dataset which is clearly different from leaves and could be interesting to test out on, and fruit disease dataset 4 diseases for apples. After moving on from leaves, the quantity and standardization of datasets is quite low. Even these 3 took a long while to find. I have some ideas for finding a few more while the swin-hvit trains.
+
+Alright fun observations.
+After 30 epochs, the base swin-hvit regressed to 82.5% test accuracy. This implies overfitting. Yes, the confusion matrix shows an old problem: Leaf smut misclassified as leaf blast. Wait, does this imply that this specific problem between the 2 classes happens because these are extremely easy to overfit or confuse (or well there might be a better word). So one solution can be to separate these 2 entirely and then train the model. And then train another model specifically for these 2. They are very "sensitive" if you will.
+As for the sam one, after 15 epochs, it shows a very disappointing 72.5% test accuracy. But funnily enough the confusion matrix shows that the only difference this had from the base model is that it misclassified leaf smut - leaf blast much more heavily (from 16 to 25 here). Pretty sure this alone degrades the performance from 82% to 72%.
+So this basically tells me that sam here will not have any benefit really. Possibly because of the swin part in the model, which is local as well.
+And that one experiment to test will be to see how things improve if I just only remove the 2 problematic classes and train the swin-hvit on remaining 17 classes.
+Hmm, something to discuss with Deepthi mam
+Other than that, I wasn't able to find many other useful datasets. A few papers mentioned some datasets but I was unable to track them down, so I will have to remain on the few I found earlier.
