@@ -667,3 +667,26 @@ Pretty good.
 After looking through the classes that were being most difficult over my previous experiments, here are the ones that I have chosen: Sheath rot (usually low F1), leaf smut, leaf blast (commonly misclassified so the pair is needed), ragged stunt virus, brown spot.
 I'll begin with training swin-hvit on these with and without SAM for regularization.
 This serves 2 experiments: 1. Testing the model on a smaller difficulty, 2. Testing effectiveness of sam on swin hvit for later trying on larger datasets where it can take really long.
+
+## 10/3/2026
+
+Partially implemented the notebooks for the Swin-HViT 5 classes with and without SAM experiment.
+Had the progress meet
+
+Took a while to update the Swin-HViT code style to the new approach and match it alongside the rice disease data, but the base training is setup and running. Currently creating SAM for training it another account
+
+The sam regularized swin-hvit code completed and both are now training. Given what I learnt previously and now, MLP-mixer has the highest chance of improvement, followed by transformers with sam. CNNs in comparison won't have much of a benefit since they automatically are scale equivariant and invariant. I will begin looking into what else I can experiment on.
+
+Both models are being trained with pretrained weights since this has shown to be better.
+for base swin-hvit: After 15 epochs, the test accuracy on the 5 classes is 95%. Very nice. But since the val accuracy was still increasing I'll train it till epoch 30.
+for sam regularized: At epoch 6, it's at around 88%.
+
+The base model also approached 87.8 at epoch 6, so the regularized one is currently following this same path.
+But from what we learnt with mlp mixer experiment, this should ideally improve along with the epochs.
+
+Aside from this, I am continuing to look through available datasets. And very interesting how almost everything is focused on leaves. Well, it makes sense given that leaves are the most visible part and multiple diseases show their symptoms on the leaves quite clearly. Targets like stems or roots are more difficult to setup. I'll continue looking.
+
+The base model at epoch 24 is still only at 88.8% peak accuracy and has not improved further. But the train accuracy has also not moved. This implies it is stuck somewhere but has not begun overfitting. Which is good.
+The sam model is at epoch 12 and the peak val accuracy is at 88.6% which happened at epoch 8 earlier. I will run on test set when epoch 15 is completed and then see if it is worth training like 5 more epochs potentially.
+
+As for potentially useful datasets, 3 that I have found (and still searching) are cinnamon plant stem and branch disease dataset which is clearly different from leaves and could be interesting to test out on, and fruit disease dataset 4 diseases for apples. After moving on from leaves, the quantity and standardization of datasets is quite low. Even these 3 took a long while to find. I have some ideas for finding a few more while the swin-hvit trains.
