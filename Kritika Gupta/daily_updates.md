@@ -208,3 +208,110 @@ Class weights were applied to handle dataset imbalance.
 - Multiple EfficientNet variants evaluated
 - EfficientNetV2-S training experiment created
 - Model checkpoints saved during training
+
+
+## 10 March 2026
+
+### 🚀 Model Training Experiments
+
+Continued large-scale experiments with **EfficientNet family models** for wheat disease classification.
+
+Models trained today:
+- EfficientNet-B5
+- EfficientNet-V2-M
+- EfficientNet-B6
+
+All experiments used **transfer learning with pretrained ImageNet weights**.
+
+Training setup:
+- Backbone frozen initially
+- Backbone unfrozen at **epoch 10**
+- Automatic checkpoint saving enabled
+- Best models pushed to repository after training
+
+---
+
+# EfficientNet-B5 Training
+
+Configuration:
+- Image size: **456**
+- Batch size: **8**
+- Parameters: **28.9M**
+
+Training progress highlights:
+
+- Epoch 1: Val Acc **0.8575**
+- Epoch 5: Val Acc **0.8973**
+- Epoch 10 (after unfreezing): **0.9191**
+- Epoch 20: **0.9722**
+- Epoch 26: **0.9746** (best)
+
+Final results:
+- **Test Accuracy:** 0.9807
+- **F1 Score:** 0.9808
+- Training time: **134 minutes**
+
+---
+
+# EfficientNet-V2-M Training
+
+Configuration:
+- Image size: **480**
+- Batch size: **8**
+- Parameters: **53.2M**
+
+Training progress highlights:
+
+- Epoch 1: Val Acc **0.8684**
+- Epoch 5: **0.9215**
+- Epoch 10 (after unfreezing): **0.9444**
+- Epoch 15: **0.9795**
+- Epoch 22: **0.9807** (best)
+
+Final results:
+- **Test Accuracy:** 0.9964
+- **F1 Score:** 0.9964
+- Training time: **152 minutes**
+
+---
+
+# EfficientNet-B6 Training
+
+Configuration:
+- Image size: **528**
+- Batch size: **4**
+- Parameters: **41.3M**
+
+Training progress:
+
+- Epoch 1: Val Acc **0.8237**
+- Epoch 5: **0.8961**
+- Epoch 10 (after unfreezing): **0.9251**
+- Epoch 13: **0.9541**
+- Epoch 20: **0.9626**
+
+Training is **currently ongoing**.
+
+---
+
+# Model Checkpoints Generated
+
+Saved checkpoints:
+
+- best_EffNet-B0.pth
+- best_EffNet-B1.pth
+- best_EffNet-B2.pth
+- best_EffNet-B3.pth
+- best_EffNet-B4.pth
+- best_EffNet-B5.pth
+- best_EffNet-V2-M.pth
+
+All checkpoints were pushed to the repository for version tracking.
+
+---
+
+# Current Status
+
+- Multiple EfficientNet models successfully trained.
+- EfficientNet-V2-M currently shows the **highest performance (Test Acc: 0.9964)**.
+- EfficientNet-B6 training is still running for further evaluation.
