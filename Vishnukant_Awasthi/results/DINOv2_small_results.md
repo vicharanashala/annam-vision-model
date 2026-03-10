@@ -1,8 +1,8 @@
 # DINOv2 (Vision Transformer) Results
 
-**Model Description:** For this phase of the project, we moved away from standard Convolutional Neural Networks (like ResNet and EfficientNet) and tested a state-of-the-art Vision Transformer: **DINOv2 Small** (`vit_small_patch14_dinov2.lvd142m`). The goal was to see if DINOv2's advanced pre-trained feature extraction could handle our complex 10-class leaf disease dataset better than traditional models. 
+**Model Description:** Moved away from standard Convolutional Neural Networks (like ResNet and EfficientNet) and tested a state-of-the-art Vision Transformer: **DINOv2 Small**. The goal was to see if DINOv2's advanced pre-trained feature extraction could handle complex 10 class leaf disease dataset better than traditional models. 
 
-Over a series of 7 experiments, we tested different dataset combinations (Grayscale, Normal, Segmented), tweaked the model's backbone (freezing vs. unfreezing blocks), adjusted image cropping sizes, and used cross-validation to find the absolute best pipeline.
+Over a series of 7 experiments, tested different dataset combinations (Grayscale, Normal, Segmented), tweaked the model's backbone (freezing vs. unfreezing blocks), adjusted image cropping sizes, and used cross validation to find the absolute best pipeline.
 
 ---
 
@@ -13,7 +13,7 @@ Over a series of 7 experiments, we tested different dataset combinations (Graysc
 | **1** | Grayscale PV + Seg PD | Fully Frozen (224x224) | 80.75% | 70.53% | Baseline established, but failed completely on `Corn_Gray_leaf_spot` (0%). |
 | **2** | Normal PV + Normal PD | Fully Frozen (224x224) | 85.03% | 72.63% | Using normal color images fixed the 0% corn class failure. |
 | **3** | Segmented PV + Seg PD | Fully Frozen (224x224) | 80.21% | 76.84% | Fully segmented data proved to be the best for real-world generalization. |
-| **4** | **Segmented PV + Seg PD** | **Unfroze Last 2 Blocks (256 ➔ 224)** | **89.30%** | **90.53%** | **Massive Breakthrough.** 6 out of 10 classes hit 100% testing accuracy! |
+| **4** | **Segmented PV + Seg PD** | **Unfroze Last 2 Blocks (256 ➔ 224)** | **89.30%** | **90.53%** |  6 out of 10 classes hit 100% testing accuracy! |
 | **5** | Segmented PV + Seg PD | Unfroze Last 4 Blocks (256 ➔ 224) | 89.30% | 88.42% | Unfreezing too much degraded performance; model forgot the hardest corn class. |
 | **6** | Segmented PV + Seg PD | Unfroze Last 2 Blocks (Weighted) | 86.10% | 83.16% | Weighted sampling helped the minority class but confused the model on easy classes. |
 | **7** | **Segmented PV + Seg PD** | **Unfroze Last 2 Blocks (5-Fold CV)** | **~98.35%** | **90.50%** | Proved that the 90.5% accuracy from Exp 4 was highly robust and consistent. |
