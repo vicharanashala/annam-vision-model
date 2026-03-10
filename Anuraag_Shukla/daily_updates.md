@@ -169,4 +169,12 @@
 - The images used for training both of the above-mentioned models were first passed through YOLO v11 pipeline to crop the images to focus on a leaf.
 - Currently exploring transformations described under Ultralytics documentation that can be applied on the YOLO26 pipeline.
 
+## 10/03/2026
+- Trained YOLO26-Large on the cropped and merged Plant_Doc+Plant_Wild dataset[27 classes] for 100 epochs after applying histogram equalization, horizontal flipping and normalization;
+    - Validation Accuracy => 65.7 %
+    - Testing Accuracy => 72.5 %
+- Trained YOLO26-X on the cropped and merged Plant_Doc+Plant_Wild dataset[27 classes] for 100 epochs after applying histogram equalization, horizontal flipping and normalization;
+    - Validation Accuracy => 64.9 %
+    - Testing Accuracy => 70.3 %
+- Currently training YOLO26-Large on the Rice Disease Dataset for 100 epochs.
 
