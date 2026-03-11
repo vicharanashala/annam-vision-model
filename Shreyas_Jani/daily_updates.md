@@ -731,3 +731,7 @@ After a bit more searching around for any other datasets options in case, specif
 In this case, I'll continue with training on the given 17 fruit disease classes. This should be quite interesting.
 I'll once again train the 2 trusty models: swin-hvit and mlp mixer. I'll setup swin-hvit since the rice disease 17 classes has trained (at epoch 5 no less, need to keep that in mind). The MLP mixer I'll setup when this existing run for rice disease 17 classes with MLP mixer is finished. This will provide greater information for when the run is likely to achieve its peak
 
+Setting up the new dataset took a while because of the differences in folder structure between this and rice disease, but it was completed.
+Then I repurposed the already pretty good training script and started training for 6 epochs. There should be an idea about how it will perform. My assumption is that it should be able to work out the max possible accuracy slightly earlier than the rice disease one. It might also take a while if the classes are different or similar enough.
+The val accuracy at epoch 2 is 97.8%
+The MLP mixer at epoch 11 is at 83.4%. The improvement speed has slowed, but it is still decent (83 at epoch 10 to 83.4 at 11). I'll let it run until 2 consecutive epochs don't give an improvement.
