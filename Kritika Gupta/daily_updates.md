@@ -315,3 +315,100 @@ All checkpoints were pushed to the repository for version tracking.
 - Multiple EfficientNet models successfully trained.
 - EfficientNet-V2-M currently shows the **highest performance (Test Acc: 0.9964)**.
 - EfficientNet-B6 training is still running for further evaluation.
+- 
+
+## 11 March 2026
+
+### 🗣 Team Stand-up
+Attended the morning stand-up meeting with the team to discuss the current progress of the wheat disease classification project and ongoing model experiments.
+
+Discussed:
+- Current EfficientNet training experiments
+- Model evaluation pipeline
+- GPU resource usage on the shared Jupyter environment
+- Next steps for testing larger EfficientNet architectures
+
+---
+
+### ⚙ Environment Setup
+
+Yesterday I received access to the **shared Jupyter notebook environment** provided by the team for GPU computation.
+
+Today I completed the following setup tasks:
+
+- Imported all project notebooks into the shared environment
+- Mounted and verified all required datasets
+- Restored previously saved model checkpoints
+- Verified GPU availability and environment configuration
+- Recreated the training and evaluation pipeline inside the shared system
+
+This ensures all experiments can now run using the **team GPU infrastructure instead of local systems**.
+
+---
+
+### 📦 Checkpoint Integration
+
+Integrated previously trained model checkpoints into the new environment.
+
+Loaded checkpoints for the following models:
+
+- EfficientNet-B0
+- EfficientNet-B1
+- EfficientNet-B2
+- EfficientNet-B3
+- EfficientNet-B4
+- EfficientNet-B5
+- EfficientNet-B6
+
+These checkpoints were used to **re-evaluate models without retraining**, saving computation time.
+
+Evaluation results were successfully generated and stored.
+
+Progress so far:
+- 7 out of 15 model evaluations completed.
+
+---
+
+### 🚀 EfficientNet-B7 Training
+
+Started training **EfficientNet-B7**, the largest model in the EfficientNet family used in this project.
+
+Configuration:
+- Image size: 600
+- Batch size: 16
+- Total parameters: 64.4M
+- Trainable parameters (initial): 0.66M
+- Backbone unfrozen at epoch 10
+
+Training progress highlights:
+
+Early training phase:
+- Epoch 1: Validation Accuracy 0.8671
+- Epoch 4: Validation Accuracy 0.9118
+- Epoch 8: Validation Accuracy 0.9336
+
+After backbone unfreezing:
+- Epoch 11: Validation Accuracy 0.9626
+- Epoch 15: Validation Accuracy 0.9734
+- Epoch 18: Validation Accuracy 0.9807
+- Epoch 20: Validation Accuracy 0.9819 (best so far)
+
+Training is **currently ongoing**.
+
+---
+
+### 📊 Current Progress Summary
+
+Completed:
+- Environment migration to shared GPU Jupyter system
+- Dataset and checkpoint integration
+- Evaluation of multiple EfficientNet models
+- Initiated EfficientNet-B7 training
+
+Ongoing:
+- EfficientNet-B7 training and monitoring
+- Remaining model evaluations
+
+---
+
+
