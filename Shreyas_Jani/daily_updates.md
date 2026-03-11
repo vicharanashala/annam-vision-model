@@ -698,3 +698,36 @@ So this basically tells me that sam here will not have any benefit really. Possi
 And that one experiment to test will be to see how things improve if I just only remove the 2 problematic classes and train the swin-hvit on remaining 17 classes.
 Hmm, something to discuss with Deepthi mam
 Other than that, I wasn't able to find many other useful datasets. A few papers mentioned some datasets but I was unable to track them down, so I will have to remain on the few I found earlier.
+
+
+## 11/3/2026
+
+Setup another notebook for training the 17 classes except leaf smut and leaf blast on pretrained base swin-hvit. Not sam since it didn't show any benefit last time (most likely because of the swin part which handles the same effect in a way), and started training it.
+Also added the previous notebooks for swin-hvit base and sam and working on the results.md file
+Had the progress meet
+
+Created results.md for the 17 classes experiment
+Setup mlp mixer after a discussion with deepthi mam for comparative training on removing leaf smut and leaf blast. 
+One thing to note is that mlp mixer doesn't have pretrained weights.
+Now both this and swin-hvit will be running on the 17 classes parallely
+The swin-hvit is currently at epoch 4 with ~95% val accuracy.
+I'll look through the cinnamon and fruit dataset to gain a better understanding of both.
+
+The swin-hvit is training at epoch 6 with 5's val accuracy as 96.3%. Pretty good and it's improving a good amount. I should probably also show f1 scores for each epoch? But an average of the f1's might not hold too much value? I'll have to look into this.
+The browser running the account with mlp mixer crashed after my pc froze for a few minutes, so that will need to be restarted, but it was steadily improving and will continue.
+The cinnamon dataset is very small with only 2 classes and very few images per class. The images themselves are overall alright. This can be tested, but even the smallest of the models I am using will overfit on this. And there won't be much left to test.
+
+The fruits dataset is a lot bigger than the size of the cinnamon one with 4 fruits, total of 17 classes, and 100-200 images per class. This is pretty good and it might potentially be enough for fine-tuning. This also means we can't run mlp mixer because of a lack of pretrained weights in timm.
+I'll test it out regardless if it can actually be pretty good.
+After going through the individual images themselves, I can say that at the very least, the dataset's quality is actually pretty nice. There are varied angles and the only thing common is that the fruit itself takes up the majority of the image. Which is completely fine, we can just instruct the users to take the image from a close up. Or if it is an automated system, the camera can first run an object detection and crop the fruit out.
+
+The swin-hvit model showed test accuracy of 89.3% after epoch 10. The major issue is now narrow brown spot being misclassified as brown spot. (I will check how much the 2 classes differ). Also the peak was hit at epoch 5, so I will check by loading those weights and then run on test data.
+The mlp mixer model is at epoch 5, with epoch 4 val accuracy at 75% and steadily improving. Last time MLP mixer converged at 80-82%. It would be interesting to see what happens as mlp mixer sam was actually the only one that didn't mind leaf smut - leaf blast when trained on all 19 classes.
+
+Yep the checkpoint at epoch 5 is much superior, providing test accuracy of 92.84%. The highest I have gotten. This is for the 17 fruit classes.
+The MLP mixer model is at 81.5% at epoch 8. Very nicely improving consistently. Literally every epoch has had an improvement. Very neat architecture. I remember there's also gMLP that was found to be marginally better in that previous plant disease paper testing on MLP mixer and gMLP. Might check it out later.
+
+After a bit more searching around for any other datasets options in case, specifically focusing on fruits to merge with the existing dataset, a few appeared, but none were really mergeable directly.
+In this case, I'll continue with training on the given 17 fruit disease classes. This should be quite interesting.
+I'll once again train the 2 trusty models: swin-hvit and mlp mixer. I'll setup swin-hvit since the rice disease 17 classes has trained (at epoch 5 no less, need to keep that in mind). The MLP mixer I'll setup when this existing run for rice disease 17 classes with MLP mixer is finished. This will provide greater information for when the run is likely to achieve its peak
+
