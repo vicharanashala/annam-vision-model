@@ -178,3 +178,9 @@
     - Testing Accuracy => 70.3 %
 - Currently training YOLO26-Large on the Rice Disease Dataset for 100 epochs.
 
+## 12/03/2026
+- Compiled all the necessary inferences as well as the class-wise accuracy in the results.md file and compilation_of_models_testing.ipynb respectively.
+- Implemented Grad-Cam for Potato and Tomato Dataset as well as Rice Disease Dataset for further interpretability of results and decisions made by the model.
+- Currently researching about VLMs, their architecture and how to implement them to solve the objective given to us.
+
+
