@@ -763,3 +763,9 @@ The MLP mixer sam fruit disease got 89.5% val accuracy at epoch 30. Given that i
 Now as for the per class results, Alternaria Mango is at 0 F1. Huh, all of them were misclassified as Black rot. Maybe there's a mode collapse happening specifically for this class. Very interesting. Swin-HViT is still the highest available yet, but who knows maybe this gets higher accuracy, even if it ignores alternaria.
 
 Also almost completed setup of the Dataset class for the Potato Tomato disease dataset that I had previously uploaded to Kaggle. I will then begin training as soon as it is completed with Swin-HViT pretrained.
+
+Created the dataset class, migrated over the Swin-HViT Hybrid classifier class and training loop and made the necessary updates to work with the new dataset.
+Then started training. At epoch 6, it got val accuracy of 63%. This makes sense given PlantDoc is also present. I should also look into how much PlantWild is "wild" in nature. But given this, 63% is pretty neat. But also given that it was increasing in val accuracy, I continued training it till epoch 15. Now at epoch 10, it still hasn't gone far, and the peak is still the one at epoch 6. This fine tuning on this model is very consistent on when it converges, consistently being around epoch 5-7. Anyways, I'll check the f1 score and confusion matrix again to verify any cases of mode collapse.
+
+The MLP mixer sam fruit disease model finished training at epoch 45 with 92% as the peak val accuracy. The Confusion matrix shows only alternaria mango as the possible issue, rest of all the classes are very nice.
+Also it was still increasing,so I will continue training this. 
