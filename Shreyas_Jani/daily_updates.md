@@ -735,3 +735,31 @@ Setting up the new dataset took a while because of the differences in folder str
 Then I repurposed the already pretty good training script and started training for 6 epochs. There should be an idea about how it will perform. My assumption is that it should be able to work out the max possible accuracy slightly earlier than the rice disease one. It might also take a while if the classes are different or similar enough.
 The val accuracy at epoch 2 is 97.8%
 The MLP mixer at epoch 11 is at 83.4%. The improvement speed has slowed, but it is still decent (83 at epoch 10 to 83.4 at 11). I'll let it run until 2 consecutive epochs don't give an improvement.
+
+
+## 12/3/2026
+
+Resumed training for the 2 models. There were once again some minor issues with adding the checkpoints, but it worked out.
+And the results were nice for one and not nice for another.
+The MLP mixer sam on 17 rice disease classes converged at epoch 17 to 85.7% val accuracy, but sadly only got to 75% test accuracy. I wonder why it got so different from when on all 19 classes? It should have increase not decreased. But it is what it is.
+Now, the new and shiny fruit dataset. The Swin-HViT trained for 6 epochs 97.3% val accuracy. There isn't any specially assigned test set for this so the validation set is the testing set in effect. The results were very clean. Also the confusion matrix made me notice that while apple guava and mango have approx 100-200 images per disease class, I had missed that pomegrenate had 1k. Very interesting.
+But it's still alright because the per class f1 scores are clean as well. The lowest is 0.55 for Alternaria_mango but everything else is above 0.8, most being above 0.9
+I will begin setting up the experiment for doing the same for MLP mixer. Although I doubt how far it can go without pre-trained weights now, it did gain my trust with the first rice disease results so it's worth a shot.
+Had the progress meet
+
+Partially implemented the MLP mixer fruit disease. There's a bug because of merging 2 sources which I'll fix.
+Also Deepthi mam mentioned testing on the potato tomato disease dataset shared a while back for comparative results. I'll begin looking into that when the training starts for this.
+
+Finally setup mlp mixer sam on fruit disease data and started training. Let's see how it goes.
+Also downloaded and looked through the potato tomato dataset. Will now add it to kaggle and begin setting up the dataset class for my usage and train on swin-hvit. A good set of experiments for the day these are.
+
+The MLP mixer fruit disease model is at epoch 21 with val accuracy of 87.2%. This is pretty nice. And its also increasing consistently
+And it makes sense that a model trained from scratch will require more epochs than one that was fine-tuned. Though clearly fine-tuning is the better approach. This is also because ImageNet contains images of items we will look at daily, and most things follow similar low level geometry, making fine-tuning highly effective.
+In contrast, something like gravitational lensing images follow slightly different geometries, colors, and the like, potentially making training from scratch better. It depends on the data and model in the end though. I wonder if there is a better guideline than just trial and error.
+
+Setup the potato tomato dataset in kaggle and shared it with my other accounts. It was a bit more annoying than I thought to get this done. Kaggle doesn't like long image names and so I had to manually remove each one of these. Also a few images had forbidden characters when uploading to kaggle. These are probably forbidden in the linux distro (highly likely) that they are using. Also why it didn't affect locally in windows. Don't think it will result in too big of a difference in the results :). Thankfully there weren't too many that crossed the text limit and I didn't have to write a script. I will begin setting up the Dataset class for the, well, dataset.
+
+The MLP mixer sam fruit disease got 89.5% val accuracy at epoch 30. Given that it was still improving until epoch 29, I will continue its training until epoch 45 for now.
+Now as for the per class results, Alternaria Mango is at 0 F1. Huh, all of them were misclassified as Black rot. Maybe there's a mode collapse happening specifically for this class. Very interesting. Swin-HViT is still the highest available yet, but who knows maybe this gets higher accuracy, even if it ignores alternaria.
+
+Also almost completed setup of the Dataset class for the Potato Tomato disease dataset that I had previously uploaded to Kaggle. I will then begin training as soon as it is completed with Swin-HViT pretrained.
