@@ -769,3 +769,36 @@ Then started training. At epoch 6, it got val accuracy of 63%. This makes sense 
 
 The MLP mixer sam fruit disease model finished training at epoch 45 with 92% as the peak val accuracy. The Confusion matrix shows only alternaria mango as the possible issue, rest of all the classes are very nice.
 Also it was still increasing,so I will continue training this. 
+
+## 13/3/2026
+
+After Epoch 15, it is at 64.51% test accuracy. Slightly better but that might be the limit as there wasn't any change in the val accuracy from epochs 7 to 15. Per class F1 score is decently distributed with lowest being tomato septoria leaf spot at 0.49.
+MLP mixer sam fruit got 92% val accuracy at the end of 60 epochs so not much change there but Alternaria mango did improve to 0.3 f1 score but in its place a few other classes got slightly worse, keeping the final accuracy same.
+Hmm, so that's its limit. I wonder if it was pre-trained on ImageNet as well, how much better it could get.
+But for now, for Fruit disease, the highest is Swin-HViT (again), and Swin-HViT's result on Tomato Potato is 64.5% test accuracy on the cropped data after 15 epochs.
+
+Partially created the results.md for previous experiment of 17 class rice disease.
+
+Had the progress meet
+
+Created the results.md for the rice disease 17 classes (all excluding leaf smut and leaf blast) and pushed to github. Tried to design slightly better than previous ones but its okayish. Still decent, not bad.
+
+Added the notebooks for the fruit disease dataset experiments (Swin-HViT(who would've guessed eh), MLP mixer sam)
+Also created a results.md for this experiment and pushed to github.
+Also started looking through VLMs and related approaches that differ from normal image classification and segmentation.
+
+Here is what I have understood about VLMs for classification in general and some specific details on plant disease data. I will of course continue looking through more.
+The main benefit of using a VLM for classification comes from the limitations of CNNs, ViTs, etc in chaotic real-world scenarios where they can't understand semantic context. When a VLM combines the text-based semantic context into the image, the overall information present becomes much stronger, enabling almost human-like reasoning.
+A potential problem with VLMs is that those trained on generic internet data fail on specific, detailed, fine-grained tasks. Thus, there is a need to pre-train on similar data. I can obviously test things out myself when dealing with this.
+Although they are bad at zero-shot, it seems many VLMs are very good when trained with few-shot.
+There is obviously the problem with adoption in edge devices because they are much more resource-intensive than normal models.
+But I believe it should be possible to keep them small as long as the focus is highly specific.
+
+Continuing with the research, I found LeafNet: https://ieee-dataport.org/documents/leafnet-large-scale-dataset-training-image-text-models-leaf-disease-identification
+It's a pretty large dataset for training VLMs. Took a while to find, but it's certainly very useful.
+The only problem is that it seems to be paid. I wonder if it's available anywhere for free or if there's some way to get access. Though given the work is for the company, it would be commercial work, and so student access won't be possible Hmm.
+Anyways, also there's AgroBench: https://huggingface.co/datasets/risashinoda/AgroBench which is pretty neat. And I suppose since it's available on HuggingFace, it should be free?
+In terms of models, there's SCOLD (Soft target Contrastive learning for leaf disease), which uses Swin-T and Roberta paralely. And there's a few other details which I'll go in deep detail in when an overview is complete.
+There's also Agri-LLaVA.
+Hmm, pretty interesting stuff.
+Let's start with SCOLD then.
