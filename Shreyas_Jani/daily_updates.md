@@ -802,3 +802,16 @@ In terms of models, there's SCOLD (Soft target Contrastive learning for leaf dis
 There's also Agri-LLaVA.
 Hmm, pretty interesting stuff.
 Let's start with SCOLD then.
+
+Alright, SCOLD's main point is it's use of 2 streams (2 sub-networks)
+1.  Swin Transfomer (we meet again) for processing visual features
+2.  RoBERTa for processing text
+This seems like a decent combination.
+The model was pre-trained on LeafNet directly from scratch. This handles the problem of differences in domains when most of the foundational models were trained with ImageNet.
+Oh damn LeafNet has 180k samples. Pretty neat. Though I for sure can't train this myself given the massive size. Likely to have to fine-tune a SCOLD pre-trained model on a specific smaller dataset.
+The dataset also spans over 22 plant types with the majority of the disease classes being from fungus related diseases.
+Even on top of this, their core is Context-aware soft targets (CST), this makes it easier for the model to learn the differences in classes that are very similar, something very common in plant diseases.
+So, in essence, it converts the "hard-label" score to a probability distributed "soft" label smoothed score.
+The text is not simply the disease name but a deliberately put-together setup of prompt + [crop name] + leaves diseased by + [disease name] + with symptoms of + [description]
+This provides a lot of extra context and information to the image it is paired with
+
