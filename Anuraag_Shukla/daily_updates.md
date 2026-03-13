@@ -183,4 +183,10 @@
 - Implemented Grad-Cam for Potato and Tomato Dataset as well as Rice Disease Dataset for further interpretability of results and decisions made by the model.
 - Currently researching about VLMs, their architecture and how to implement them to solve the objective given to us.
 
+## 13/03/2026
+- Researching VLM in context to image classification, currently went through the following articles:
+    - [Benchmarking Top Vision Language Models (VLMs) for Image Classification](https://www.clarifai.com/blog/best-vision-language-models-vlms-for-image-classification-performance-benchmarks)
+    - [Why are Visually-Grounded Language Models Bad at Image Classification?](https://arxiv.org/html/2405.18415v2)
+- Implemented Grad-Cam for both disease datasets, now working on expanding the plotting grid as well to include more examples from different classes for inference purposes.
+- Shortlisted one model on HuggingFace as well from the above-mentioned articles, "Qwen/Qwen2.5-VL-7B-Instruct".
 
