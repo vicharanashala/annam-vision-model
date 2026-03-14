@@ -845,3 +845,12 @@ Just this alone can also sometimes be not sufficient. We are then left with the 
 
 Added the experiment notebook for potato tomato swin-hvit and created and pushed the results.md for this as well. It was a very interesting experiment and also it seems like this performed better than other models on the same dataset, where the previous best one among our's was previously ConvNeXT, with test accuracy of 60%. So Swin-HViT finally got higher somewhere :).
 Also created the weekly progress report
+
+Now for some practical details.
+The main way to fine-tune these models seems to be unsloth. I remember working with this at a very surface level a few months ago (can't remember the exact project though). And also Huggingface TRL (Transformer Reinforcement Learning), specifically it's SFTTrainer (SFT stands for Supervised Fine Tuning).
+For the hyperparameters, there are some general guidelines and starting values that provide a good result. For just LoRA fine tuning, 2e-4 and for AgriLLaVA it is mentioned 2e-5.
+For lower-ish compute scenarios the effective batch size should be 8. If that turns out to be difficult, then gradient accumulation is an option. But I believe this might be for heavier images and text datasets. It should be possible to get 32 as well right? Could be something that can be tested.
+Oh and this is weird. The recommended epochs are actually around 1-3. I suppose if the dataset is vast (like leafnet), there's a lot that happens in a single epoch. Going for more than these can cause overfitting. But then again for the same reason, if the dataset is small, it might be necessary to do a few more.
+For evaluation, LLM-as-a-judge is the modern standard and there should be plenty of existing libraries for this where you just input your OpenAI API key and it works.
+
+Some of these I knew, some I have understood in more detail now and some were completely new (heh. knew and new). I now have a better grasp of the overall approach and should be able to begin setting up the pipeline.
