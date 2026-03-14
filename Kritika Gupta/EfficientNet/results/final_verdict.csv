@@ -1,0 +1,10 @@
+Metric,Best Model,Score,Family
+Overall Accuracy,EfficientNet-V2-L,98.9100%,V2
+Balanced Accuracy,EfficientNet-B5,98.6500%,V1
+Macro F1,EfficientNet-V2-L,98.6500%,V2
+Weighted F1,EfficientNet-V2-L,98.9100%,V2
+Macro Precision,EfficientNet-V2-L,99.1700%,V2
+Macro Recall,EfficientNet-B5,98.6500%,V1
+MCC,EfficientNet-V2-L,0.9859,V2
+Cohen Kappa,EfficientNet-V2-L,0.9859,V2
+ROC-AUC,EfficientNet-V2-L,0.9998,V2

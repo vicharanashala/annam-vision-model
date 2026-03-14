@@ -1,0 +1,1247 @@
+{
+  "EfficientNet-B0": {
+    "overall_acc": 97.1,
+    "balanced_acc": 96.81,
+    "macro_f1": 95.77,
+    "weighted_f1": 97.16,
+    "micro_f1": 97.1,
+    "macro_prec": 94.95,
+    "weighted_prec": 97.3,
+    "macro_rec": 96.81,
+    "weighted_rec": 97.1,
+    "mcc": 0.9626,
+    "kappa": 0.9625,
+    "roc_auc": 0.9985,
+    "per_class_acc": {
+      "Brown rust": 97.35,
+      "Healthy": 98.33,
+      "Loose Smut": 99.28,
+      "Septoria": 94.34,
+      "Yellow rust": 94.74
+    },
+    "per_class_prec": {
+      "Brown rust": 98.4,
+      "Healthy": 99.58,
+      "Loose Smut": 100.0,
+      "Septoria": 80.65,
+      "Yellow rust": 96.12
+    },
+    "per_class_rec": {
+      "Brown rust": 97.35,
+      "Healthy": 98.33,
+      "Loose Smut": 99.28,
+      "Septoria": 94.34,
+      "Yellow rust": 94.74
+    },
+    "per_class_f1": {
+      "Brown rust": 97.87,
+      "Healthy": 98.95,
+      "Loose Smut": 99.64,
+      "Septoria": 86.96,
+      "Yellow rust": 95.42
+    },
+    "confusion_matrix": [
+      [
+        184,
+        0,
+        0,
+        1,
+        4
+      ],
+      [
+        0,
+        235,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        138,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        50,
+        1
+      ],
+      [
+        2,
+        0,
+        0,
+        9,
+        198
+      ]
+    ],
+    "family": "V1",
+    "params_M": 4.3,
+    "img_size": 224,
+    "train_time_min": null
+  },
+  "EfficientNet-B1": {
+    "overall_acc": 97.23,
+    "balanced_acc": 97.18,
+    "macro_f1": 96.79,
+    "weighted_f1": 97.23,
+    "micro_f1": 97.23,
+    "macro_prec": 96.43,
+    "weighted_prec": 97.25,
+    "macro_rec": 97.18,
+    "weighted_rec": 97.23,
+    "mcc": 0.964,
+    "kappa": 0.964,
+    "roc_auc": 0.9975,
+    "per_class_acc": {
+      "Brown rust": 94.71,
+      "Healthy": 98.33,
+      "Loose Smut": 100.0,
+      "Septoria": 96.23,
+      "Yellow rust": 96.65
+    },
+    "per_class_prec": {
+      "Brown rust": 97.28,
+      "Healthy": 98.33,
+      "Loose Smut": 99.29,
+      "Septoria": 91.07,
+      "Yellow rust": 96.19
+    },
+    "per_class_rec": {
+      "Brown rust": 94.71,
+      "Healthy": 98.33,
+      "Loose Smut": 100.0,
+      "Septoria": 96.23,
+      "Yellow rust": 96.65
+    },
+    "per_class_f1": {
+      "Brown rust": 95.98,
+      "Healthy": 98.33,
+      "Loose Smut": 99.64,
+      "Septoria": 93.58,
+      "Yellow rust": 96.42
+    },
+    "confusion_matrix": [
+      [
+        179,
+        1,
+        1,
+        1,
+        7
+      ],
+      [
+        1,
+        235,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        0,
+        139,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        51,
+        0
+      ],
+      [
+        4,
+        1,
+        0,
+        2,
+        202
+      ]
+    ],
+    "family": "V1",
+    "params_M": 6.8,
+    "img_size": 240,
+    "train_time_min": null
+  },
+  "EfficientNet-B2": {
+    "overall_acc": 96.86,
+    "balanced_acc": 97.48,
+    "macro_f1": 96.54,
+    "weighted_f1": 96.87,
+    "micro_f1": 96.86,
+    "macro_prec": 95.75,
+    "weighted_prec": 96.93,
+    "macro_rec": 97.48,
+    "weighted_rec": 96.86,
+    "mcc": 0.9594,
+    "kappa": 0.9593,
+    "roc_auc": 0.9984,
+    "per_class_acc": {
+      "Brown rust": 95.24,
+      "Healthy": 97.91,
+      "Loose Smut": 100.0,
+      "Septoria": 100.0,
+      "Yellow rust": 94.26
+    },
+    "per_class_prec": {
+      "Brown rust": 96.77,
+      "Healthy": 98.73,
+      "Loose Smut": 99.29,
+      "Septoria": 88.33,
+      "Yellow rust": 95.63
+    },
+    "per_class_rec": {
+      "Brown rust": 95.24,
+      "Healthy": 97.91,
+      "Loose Smut": 100.0,
+      "Septoria": 100.0,
+      "Yellow rust": 94.26
+    },
+    "per_class_f1": {
+      "Brown rust": 96.0,
+      "Healthy": 98.32,
+      "Loose Smut": 99.64,
+      "Septoria": 93.81,
+      "Yellow rust": 94.94
+    },
+    "confusion_matrix": [
+      [
+        180,
+        2,
+        1,
+        0,
+        6
+      ],
+      [
+        0,
+        234,
+        0,
+        2,
+        3
+      ],
+      [
+        0,
+        0,
+        139,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        53,
+        0
+      ],
+      [
+        6,
+        1,
+        0,
+        5,
+        197
+      ]
+    ],
+    "family": "V1",
+    "params_M": 8.1,
+    "img_size": 260,
+    "train_time_min": null
+  },
+  "EfficientNet-B3": {
+    "overall_acc": 97.35,
+    "balanced_acc": 97.55,
+    "macro_f1": 96.51,
+    "weighted_f1": 97.37,
+    "micro_f1": 97.35,
+    "macro_prec": 95.67,
+    "weighted_prec": 97.47,
+    "macro_rec": 97.55,
+    "weighted_rec": 97.35,
+    "mcc": 0.9657,
+    "kappa": 0.9656,
+    "roc_auc": 0.9992,
+    "per_class_acc": {
+      "Brown rust": 97.35,
+      "Healthy": 98.74,
+      "Loose Smut": 99.28,
+      "Septoria": 98.11,
+      "Yellow rust": 94.26
+    },
+    "per_class_prec": {
+      "Brown rust": 97.35,
+      "Healthy": 99.16,
+      "Loose Smut": 98.57,
+      "Septoria": 85.25,
+      "Yellow rust": 98.01
+    },
+    "per_class_rec": {
+      "Brown rust": 97.35,
+      "Healthy": 98.74,
+      "Loose Smut": 99.28,
+      "Septoria": 98.11,
+      "Yellow rust": 94.26
+    },
+    "per_class_f1": {
+      "Brown rust": 97.35,
+      "Healthy": 98.95,
+      "Loose Smut": 98.92,
+      "Septoria": 91.23,
+      "Yellow rust": 96.1
+    },
+    "confusion_matrix": [
+      [
+        184,
+        0,
+        1,
+        1,
+        3
+      ],
+      [
+        0,
+        236,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        138,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        52,
+        0
+      ],
+      [
+        4,
+        1,
+        0,
+        7,
+        197
+      ]
+    ],
+    "family": "V1",
+    "params_M": 11.1,
+    "img_size": 300,
+    "train_time_min": null
+  },
+  "EfficientNet-B4": {
+    "overall_acc": 96.86,
+    "balanced_acc": 96.97,
+    "macro_f1": 96.14,
+    "weighted_f1": 96.88,
+    "micro_f1": 96.86,
+    "macro_prec": 95.43,
+    "weighted_prec": 96.94,
+    "macro_rec": 96.97,
+    "weighted_rec": 96.86,
+    "mcc": 0.9594,
+    "kappa": 0.9593,
+    "roc_auc": 0.9989,
+    "per_class_acc": {
+      "Brown rust": 97.35,
+      "Healthy": 97.49,
+      "Loose Smut": 100.0,
+      "Septoria": 96.23,
+      "Yellow rust": 93.78
+    },
+    "per_class_prec": {
+      "Brown rust": 97.35,
+      "Healthy": 99.15,
+      "Loose Smut": 98.58,
+      "Septoria": 86.44,
+      "Yellow rust": 95.61
+    },
+    "per_class_rec": {
+      "Brown rust": 97.35,
+      "Healthy": 97.49,
+      "Loose Smut": 100.0,
+      "Septoria": 96.23,
+      "Yellow rust": 93.78
+    },
+    "per_class_f1": {
+      "Brown rust": 97.35,
+      "Healthy": 98.31,
+      "Loose Smut": 99.29,
+      "Septoria": 91.07,
+      "Yellow rust": 94.69
+    },
+    "confusion_matrix": [
+      [
+        184,
+        0,
+        1,
+        0,
+        4
+      ],
+      [
+        1,
+        233,
+        1,
+        1,
+        3
+      ],
+      [
+        0,
+        0,
+        139,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        51,
+        2
+      ],
+      [
+        4,
+        2,
+        0,
+        7,
+        196
+      ]
+    ],
+    "family": "V1",
+    "params_M": 18.0,
+    "img_size": 380,
+    "train_time_min": null
+  },
+  "EfficientNet-B5": {
+    "overall_acc": 98.31,
+    "balanced_acc": 98.65,
+    "macro_f1": 97.82,
+    "weighted_f1": 98.32,
+    "micro_f1": 98.31,
+    "macro_prec": 97.11,
+    "weighted_prec": 98.38,
+    "macro_rec": 98.65,
+    "weighted_rec": 98.31,
+    "mcc": 0.9782,
+    "kappa": 0.9781,
+    "roc_auc": 0.9993,
+    "per_class_acc": {
+      "Brown rust": 98.41,
+      "Healthy": 99.16,
+      "Loose Smut": 100.0,
+      "Septoria": 100.0,
+      "Yellow rust": 95.69
+    },
+    "per_class_prec": {
+      "Brown rust": 97.89,
+      "Healthy": 100.0,
+      "Loose Smut": 99.29,
+      "Septoria": 89.83,
+      "Yellow rust": 98.52
+    },
+    "per_class_rec": {
+      "Brown rust": 98.41,
+      "Healthy": 99.16,
+      "Loose Smut": 100.0,
+      "Septoria": 100.0,
+      "Yellow rust": 95.69
+    },
+    "per_class_f1": {
+      "Brown rust": 98.15,
+      "Healthy": 99.58,
+      "Loose Smut": 99.64,
+      "Septoria": 94.64,
+      "Yellow rust": 97.09
+    },
+    "confusion_matrix": [
+      [
+        186,
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        0,
+        237,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        139,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        53,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        5,
+        200
+      ]
+    ],
+    "family": "V1",
+    "params_M": 28.9,
+    "img_size": 456,
+    "train_time_min": null
+  },
+  "EfficientNet-B6": {
+    "overall_acc": 97.23,
+    "balanced_acc": 96.88,
+    "macro_f1": 96.47,
+    "weighted_f1": 97.24,
+    "micro_f1": 97.23,
+    "macro_prec": 96.13,
+    "weighted_prec": 97.29,
+    "macro_rec": 96.88,
+    "weighted_rec": 97.23,
+    "mcc": 0.9641,
+    "kappa": 0.964,
+    "roc_auc": 0.999,
+    "per_class_acc": {
+      "Brown rust": 98.41,
+      "Healthy": 98.33,
+      "Loose Smut": 98.56,
+      "Septoria": 94.34,
+      "Yellow rust": 94.74
+    },
+    "per_class_prec": {
+      "Brown rust": 94.9,
+      "Healthy": 99.16,
+      "Loose Smut": 99.28,
+      "Septoria": 89.29,
+      "Yellow rust": 98.02
+    },
+    "per_class_rec": {
+      "Brown rust": 98.41,
+      "Healthy": 98.33,
+      "Loose Smut": 98.56,
+      "Septoria": 94.34,
+      "Yellow rust": 94.74
+    },
+    "per_class_f1": {
+      "Brown rust": 96.62,
+      "Healthy": 98.74,
+      "Loose Smut": 98.92,
+      "Septoria": 91.74,
+      "Yellow rust": 96.35
+    },
+    "confusion_matrix": [
+      [
+        186,
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        2,
+        235,
+        0,
+        1,
+        1
+      ],
+      [
+        2,
+        0,
+        137,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        50,
+        1
+      ],
+      [
+        6,
+        0,
+        0,
+        5,
+        198
+      ]
+    ],
+    "family": "V1",
+    "params_M": 41.3,
+    "img_size": 528,
+    "train_time_min": null
+  },
+  "EfficientNet-B7": {
+    "overall_acc": 98.67,
+    "balanced_acc": 98.12,
+    "macro_f1": 97.98,
+    "weighted_f1": 98.68,
+    "micro_f1": 98.67,
+    "macro_prec": 97.84,
+    "weighted_prec": 98.68,
+    "macro_rec": 98.12,
+    "weighted_rec": 98.67,
+    "mcc": 0.9828,
+    "kappa": 0.9828,
+    "roc_auc": 0.9996,
+    "per_class_acc": {
+      "Brown rust": 99.47,
+      "Healthy": 99.16,
+      "Loose Smut": 100.0,
+      "Septoria": 94.34,
+      "Yellow rust": 97.61
+    },
+    "per_class_prec": {
+      "Brown rust": 98.95,
+      "Healthy": 99.58,
+      "Loose Smut": 100.0,
+      "Septoria": 92.59,
+      "Yellow rust": 98.08
+    },
+    "per_class_rec": {
+      "Brown rust": 99.47,
+      "Healthy": 99.16,
+      "Loose Smut": 100.0,
+      "Septoria": 94.34,
+      "Yellow rust": 97.61
+    },
+    "per_class_f1": {
+      "Brown rust": 99.21,
+      "Healthy": 99.37,
+      "Loose Smut": 100.0,
+      "Septoria": 93.46,
+      "Yellow rust": 97.84
+    },
+    "confusion_matrix": [
+      [
+        188,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        237,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        139,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        50,
+        2
+      ],
+      [
+        2,
+        0,
+        0,
+        3,
+        204
+      ]
+    ],
+    "family": "V1",
+    "params_M": 64.4,
+    "img_size": 600,
+    "train_time_min": 79.8
+  },
+  "EfficientNet-V2-B0": {
+    "overall_acc": 92.28,
+    "balanced_acc": 93.76,
+    "macro_f1": 90.21,
+    "weighted_f1": 92.68,
+    "micro_f1": 92.28,
+    "macro_prec": 88.81,
+    "weighted_prec": 93.88,
+    "macro_rec": 93.76,
+    "weighted_rec": 92.28,
+    "mcc": 0.9023,
+    "kappa": 0.9008,
+    "roc_auc": 0.9963,
+    "per_class_acc": {
+      "Brown rust": 92.06,
+      "Healthy": 92.05,
+      "Loose Smut": 97.12,
+      "Septoria": 100.0,
+      "Yellow rust": 87.56
+    },
+    "per_class_prec": {
+      "Brown rust": 95.08,
+      "Healthy": 98.65,
+      "Loose Smut": 96.43,
+      "Septoria": 59.55,
+      "Yellow rust": 94.33
+    },
+    "per_class_rec": {
+      "Brown rust": 92.06,
+      "Healthy": 92.05,
+      "Loose Smut": 97.12,
+      "Septoria": 100.0,
+      "Yellow rust": 87.56
+    },
+    "per_class_f1": {
+      "Brown rust": 93.55,
+      "Healthy": 95.24,
+      "Loose Smut": 96.77,
+      "Septoria": 74.65,
+      "Yellow rust": 90.82
+    },
+    "confusion_matrix": [
+      [
+        174,
+        2,
+        0,
+        5,
+        8
+      ],
+      [
+        5,
+        220,
+        5,
+        8,
+        1
+      ],
+      [
+        0,
+        0,
+        135,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        53,
+        0
+      ],
+      [
+        4,
+        1,
+        0,
+        21,
+        183
+      ]
+    ],
+    "family": "V2",
+    "params_M": 20.5,
+    "img_size": 192,
+    "train_time_min": 5.3
+  },
+  "EfficientNet-V2-B1": {
+    "overall_acc": 96.02,
+    "balanced_acc": 96.22,
+    "macro_f1": 94.91,
+    "weighted_f1": 96.08,
+    "micro_f1": 96.02,
+    "macro_prec": 93.93,
+    "weighted_prec": 96.25,
+    "macro_rec": 96.22,
+    "weighted_rec": 96.02,
+    "mcc": 0.9486,
+    "kappa": 0.9484,
+    "roc_auc": 0.9985,
+    "per_class_acc": {
+      "Brown rust": 95.77,
+      "Healthy": 97.49,
+      "Loose Smut": 99.28,
+      "Septoria": 96.23,
+      "Yellow rust": 92.34
+    },
+    "per_class_prec": {
+      "Brown rust": 95.26,
+      "Healthy": 99.15,
+      "Loose Smut": 100.0,
+      "Septoria": 79.69,
+      "Yellow rust": 95.54
+    },
+    "per_class_rec": {
+      "Brown rust": 95.77,
+      "Healthy": 97.49,
+      "Loose Smut": 99.28,
+      "Septoria": 96.23,
+      "Yellow rust": 92.34
+    },
+    "per_class_f1": {
+      "Brown rust": 95.51,
+      "Healthy": 98.31,
+      "Loose Smut": 99.64,
+      "Septoria": 87.18,
+      "Yellow rust": 93.92
+    },
+    "confusion_matrix": [
+      [
+        181,
+        0,
+        0,
+        2,
+        6
+      ],
+      [
+        2,
+        233,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        1,
+        138,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        51,
+        1
+      ],
+      [
+        6,
+        1,
+        0,
+        9,
+        193
+      ]
+    ],
+    "family": "V2",
+    "params_M": 20.5,
+    "img_size": 240,
+    "train_time_min": 6.0
+  },
+  "EfficientNet-V2-B2": {
+    "overall_acc": 96.86,
+    "balanced_acc": 97.17,
+    "macro_f1": 95.95,
+    "weighted_f1": 96.91,
+    "micro_f1": 96.86,
+    "macro_prec": 95.0,
+    "weighted_prec": 97.05,
+    "macro_rec": 97.17,
+    "weighted_rec": 96.86,
+    "mcc": 0.9595,
+    "kappa": 0.9593,
+    "roc_auc": 0.9988,
+    "per_class_acc": {
+      "Brown rust": 96.3,
+      "Healthy": 97.91,
+      "Loose Smut": 99.28,
+      "Septoria": 98.11,
+      "Yellow rust": 94.26
+    },
+    "per_class_prec": {
+      "Brown rust": 96.81,
+      "Healthy": 99.57,
+      "Loose Smut": 100.0,
+      "Septoria": 82.54,
+      "Yellow rust": 96.1
+    },
+    "per_class_rec": {
+      "Brown rust": 96.3,
+      "Healthy": 97.91,
+      "Loose Smut": 99.28,
+      "Septoria": 98.11,
+      "Yellow rust": 94.26
+    },
+    "per_class_f1": {
+      "Brown rust": 96.55,
+      "Healthy": 98.73,
+      "Loose Smut": 99.64,
+      "Septoria": 89.66,
+      "Yellow rust": 95.17
+    },
+    "confusion_matrix": [
+      [
+        182,
+        0,
+        0,
+        2,
+        5
+      ],
+      [
+        3,
+        234,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        138,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        52,
+        1
+      ],
+      [
+        3,
+        1,
+        0,
+        8,
+        197
+      ]
+    ],
+    "family": "V2",
+    "params_M": 20.5,
+    "img_size": 260,
+    "train_time_min": 6.7
+  },
+  "EfficientNet-V2-B3": {
+    "overall_acc": 97.35,
+    "balanced_acc": 97.92,
+    "macro_f1": 96.32,
+    "weighted_f1": 97.41,
+    "micro_f1": 97.35,
+    "macro_prec": 95.16,
+    "weighted_prec": 97.63,
+    "macro_rec": 97.92,
+    "weighted_rec": 97.35,
+    "mcc": 0.9659,
+    "kappa": 0.9656,
+    "roc_auc": 0.999,
+    "per_class_acc": {
+      "Brown rust": 97.35,
+      "Healthy": 97.49,
+      "Loose Smut": 100.0,
+      "Septoria": 100.0,
+      "Yellow rust": 94.74
+    },
+    "per_class_prec": {
+      "Brown rust": 98.4,
+      "Healthy": 99.57,
+      "Loose Smut": 100.0,
+      "Septoria": 80.3,
+      "Yellow rust": 97.54
+    },
+    "per_class_rec": {
+      "Brown rust": 97.35,
+      "Healthy": 97.49,
+      "Loose Smut": 100.0,
+      "Septoria": 100.0,
+      "Yellow rust": 94.74
+    },
+    "per_class_f1": {
+      "Brown rust": 97.87,
+      "Healthy": 98.52,
+      "Loose Smut": 100.0,
+      "Septoria": 89.08,
+      "Yellow rust": 96.12
+    },
+    "confusion_matrix": [
+      [
+        184,
+        0,
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        233,
+        0,
+        3,
+        1
+      ],
+      [
+        0,
+        0,
+        139,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        53,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        9,
+        198
+      ]
+    ],
+    "family": "V2",
+    "params_M": 20.5,
+    "img_size": 300,
+    "train_time_min": 8.3
+  },
+  "EfficientNet-V2-S": {
+    "overall_acc": 98.31,
+    "balanced_acc": 97.82,
+    "macro_f1": 97.57,
+    "weighted_f1": 98.32,
+    "micro_f1": 98.31,
+    "macro_prec": 97.34,
+    "weighted_prec": 98.33,
+    "macro_rec": 97.82,
+    "weighted_rec": 98.31,
+    "mcc": 0.9781,
+    "kappa": 0.9781,
+    "roc_auc": 0.9994,
+    "per_class_acc": {
+      "Brown rust": 100.0,
+      "Healthy": 98.33,
+      "Loose Smut": 99.28,
+      "Septoria": 94.34,
+      "Yellow rust": 97.13
+    },
+    "per_class_prec": {
+      "Brown rust": 99.47,
+      "Healthy": 98.74,
+      "Loose Smut": 100.0,
+      "Septoria": 90.91,
+      "Yellow rust": 97.6
+    },
+    "per_class_rec": {
+      "Brown rust": 100.0,
+      "Healthy": 98.33,
+      "Loose Smut": 99.28,
+      "Septoria": 94.34,
+      "Yellow rust": 97.13
+    },
+    "per_class_f1": {
+      "Brown rust": 99.74,
+      "Healthy": 98.53,
+      "Loose Smut": 99.64,
+      "Septoria": 92.59,
+      "Yellow rust": 97.36
+    },
+    "confusion_matrix": [
+      [
+        189,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        235,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        1,
+        138,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        50,
+        3
+      ],
+      [
+        1,
+        2,
+        0,
+        3,
+        203
+      ]
+    ],
+    "family": "V2",
+    "params_M": 20.5,
+    "img_size": 384,
+    "train_time_min": 11.4
+  },
+  "EfficientNet-V2-M": {
+    "overall_acc": 98.43,
+    "balanced_acc": 98.17,
+    "macro_f1": 98.05,
+    "weighted_f1": 98.43,
+    "micro_f1": 98.43,
+    "macro_prec": 97.93,
+    "weighted_prec": 98.43,
+    "macro_rec": 98.17,
+    "weighted_rec": 98.43,
+    "mcc": 0.9796,
+    "kappa": 0.9796,
+    "roc_auc": 0.9996,
+    "per_class_acc": {
+      "Brown rust": 98.41,
+      "Healthy": 99.58,
+      "Loose Smut": 100.0,
+      "Septoria": 96.23,
+      "Yellow rust": 96.65
+    },
+    "per_class_prec": {
+      "Brown rust": 98.41,
+      "Healthy": 98.76,
+      "Loose Smut": 100.0,
+      "Septoria": 94.44,
+      "Yellow rust": 98.06
+    },
+    "per_class_rec": {
+      "Brown rust": 98.41,
+      "Healthy": 99.58,
+      "Loose Smut": 100.0,
+      "Septoria": 96.23,
+      "Yellow rust": 96.65
+    },
+    "per_class_f1": {
+      "Brown rust": 98.41,
+      "Healthy": 99.17,
+      "Loose Smut": 100.0,
+      "Septoria": 95.33,
+      "Yellow rust": 97.35
+    },
+    "confusion_matrix": [
+      [
+        186,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        238,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        139,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        51,
+        0
+      ],
+      [
+        3,
+        1,
+        0,
+        3,
+        202
+      ]
+    ],
+    "family": "V2",
+    "params_M": 53.2,
+    "img_size": 480,
+    "train_time_min": null
+  },
+  "EfficientNet-V2-L": {
+    "overall_acc": 98.91,
+    "balanced_acc": 98.18,
+    "macro_f1": 98.65,
+    "weighted_f1": 98.91,
+    "micro_f1": 98.91,
+    "macro_prec": 99.17,
+    "weighted_prec": 98.93,
+    "macro_rec": 98.18,
+    "weighted_rec": 98.91,
+    "mcc": 0.9859,
+    "kappa": 0.9859,
+    "roc_auc": 0.9998,
+    "per_class_acc": {
+      "Brown rust": 98.41,
+      "Healthy": 99.58,
+      "Loose Smut": 98.56,
+      "Septoria": 94.34,
+      "Yellow rust": 100.0
+    },
+    "per_class_prec": {
+      "Brown rust": 99.47,
+      "Healthy": 99.17,
+      "Loose Smut": 100.0,
+      "Septoria": 100.0,
+      "Yellow rust": 97.21
+    },
+    "per_class_rec": {
+      "Brown rust": 98.41,
+      "Healthy": 99.58,
+      "Loose Smut": 98.56,
+      "Septoria": 94.34,
+      "Yellow rust": 100.0
+    },
+    "per_class_f1": {
+      "Brown rust": 98.94,
+      "Healthy": 99.37,
+      "Loose Smut": 99.28,
+      "Septoria": 97.09,
+      "Yellow rust": 98.58
+    },
+    "confusion_matrix": [
+      [
+        186,
+        1,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        238,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        137,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        50,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        209
+      ]
+    ],
+    "family": "V2",
+    "params_M": 117.6,
+    "img_size": 480,
+    "train_time_min": 28.3
+  }
+}
