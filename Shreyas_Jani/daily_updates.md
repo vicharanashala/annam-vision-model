@@ -815,3 +815,33 @@ So, in essence, it converts the "hard-label" score to a probability distributed 
 The text is not simply the disease name but a deliberately put-together setup of prompt + [crop name] + leaves diseased by + [disease name] + with symptoms of + [description]
 This provides a lot of extra context and information to the image it is paired with
 
+
+## 14/3/2026
+
+Now, let's compare with AgriLLaVA
+It's based on LLaVA-1.5's architecture but is adapted heavily for botanical queries specifically.
+The other main benefit is the custom built, first, large-scale, multimodal instruction-following dataset. Quite a mouthful but also quite impressive. It has 400k data entries covering 200+ agricultural pests and disease. The data is not fully human-created. A major part was created by a customized GPT-4 (customized on agri data). I see now how 400k is possible. Although I also doubt the quality. But then again this is similar to Knowledge distillation (or maybe the same?).
+It is a bit more detailed than SCOLD because it has 2 steps: first pretraining on the image-text pairs and getting the model to predict the diseases, etc.
+Then second step adds a conversational dataset training the model to understand and respond to user queries.
+Similar to SCOLD, it obviously outperforms generic LLMs and VLMs. A known problem is that if the disease is underrepresented in the training data, the model's zero-shot capability drops heavily. And obviously, it won't be an LLM if it didn't hallucinate every once in a while :).
+
+While looking at the architectures in detail, I noticed that my understanding of VLMs is severely lacking in the detailed domain. I understand a good bit about LLMs and have good experience with vision models, so it shouldn't take too long to grasp the details. 
+But to get a better idea, I have found a few quick topics to grasp before I begin fine-tuning (also need to ask Deepthi mam if any dataset is available to fine-tune on/ what their plan is).
+The first problem is understanding the vision language alignment and the pre-training phase.
+From what I understood after researching. In essence, and after simplifying stuff. A standard LLM converts text into feature vectors, and so does a vision model convert pixels into visual feature vectors.
+But if we were to feed the visual vectors into an LLM, it obviously won't understand anything as they are effectively speaking different languages.
+This requires a Projector / Adapter. It acts as a translator. There are 2 major types: Linear projector (cheap, fast, but less accurate) and MLP Projector (effectively a small NN to translate; slow, but accurate, standard in high performance models like LLaVA)
+When pre-training, we freeze the massive LLM and Vision encoder and only train the projector. It trains until it can accurately translate the images to the llm's language.
+And I had a question regarding why not train from scratch. And the reason is simply: too low data in a specialized domain. And there's no point in building that much (astronomical requirements) when separately language and vision models are available that understand basic shapes.
+
+After pretraining comes training visual instruction tuning. The model can map an image to a word but it can't reason and understand a user's query. This requires us to either: 1. unfreeze the LLM or 2. Use Parameter efficient fine-tuning (eg LoRA).
+The dataset is question answer examples. The goal is to make it understand queries and respond. The dataset must be structured like a dialogue. Just writing keywords of the plant of advice are not ideal.
+The result from this becomes that the model can see an image, read your prompt, and generate a comprehensive advice after extracting all information needed.
+As an extra, AgriLLaVA created this conversational dataset after passing the existing plant information to GPT-4 and got it to make the dataset instead :).
+Very nice. Interesting approach as well.
+
+Now, for specifically training/fine-tuning on a smaller dataset, we can't directly retrain the model. For this, parameter efficient fine-tuning (PEFT) is needed. The main technique in this is LoRA (Low Rank Adaptation) This basically adds 2 small matrices, A and B, to each weight. The original weights are frozen while these remain trainable. The actual calculation of the model then shifts to utilize the original weights as well as the product of these matrices, AB. This allows fine-tuning the model without affecting the original weights.
+Just this alone can also sometimes be not sufficient. We are then left with the possibility of Quantization. Usually beneficial in inference, it can also be used during training. The idea is to simply remove some decimal precision from the weights, converting them to 8bit or 4bit precision. This drastically reduces the time for the calculations done, speeding up training and inference.
+
+Added the experiment notebook for potato tomato swin-hvit and created and pushed the results.md for this as well. It was a very interesting experiment and also it seems like this performed better than other models on the same dataset, where the previous best one among our's was previously ConvNeXT, with test accuracy of 60%. So Swin-HViT finally got higher somewhere :).
+Also created the weekly progress report
