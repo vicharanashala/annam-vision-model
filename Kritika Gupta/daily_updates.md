@@ -412,3 +412,88 @@ Ongoing:
 ---
 
 
+
+#16 March 2026
+
+
+### Test Dataset Integration
+
+Added the **test image dataset** to the project pipeline in the notebook `wheat_efficientnet_final (6).ipynb`.
+
+Tasks completed:
+
+* Loaded the test dataset into the environment
+* Verified dataset structure and image loading
+* Integrated test data with the existing dataloader pipeline
+* Ensured compatibility with previously trained models
+
+The test dataset is used to evaluate the **generalization performance of trained EfficientNet models**.
+
+---
+
+# Model Evaluation
+
+Previously trained models were loaded using the saved checkpoint files.
+
+Loaded model checkpoints:
+
+* EfficientNet-B0
+* EfficientNet-B1
+* EfficientNet-B2
+* EfficientNet-B3
+* EfficientNet-B4
+* EfficientNet-B5
+* EfficientNet-B6
+* EfficientNet-B7
+* EfficientNet-V2-M
+
+Each model was evaluated using the **test dataset**.
+
+Evaluation metrics generated:
+
+* Test Accuracy
+* F1 Score
+* Prediction outputs for test images
+
+---
+
+# Inference Testing
+
+Inference was performed on the newly added test images.
+
+Steps performed:
+
+1. Loaded trained model checkpoints
+2. Loaded test images
+3. Applied preprocessing and normalization
+4. Generated predictions using trained models
+5. Compared predicted labels with ground truth labels
+
+This allowed verification of how well the models perform on **unseen data**.
+
+---
+
+# Validation of Model Predictions
+
+Model predictions were analyzed to ensure:
+
+* correct image preprocessing
+* correct label mapping
+* proper model loading
+* consistent prediction outputs
+
+Testing confirmed that the trained EfficientNet models are able to **correctly classify wheat disease images from the test dataset**.
+
+---
+
+# Current Status
+
+Completed:
+
+* Test dataset integration
+* Loading of trained EfficientNet checkpoints
+* Running inference on test images
+* Evaluation of model predictions
+
+
+
