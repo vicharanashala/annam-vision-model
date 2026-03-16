@@ -190,3 +190,8 @@
 - Implemented Grad-Cam for both disease datasets, now working on expanding the plotting grid as well to include more examples from different classes for inference purposes.
 - Shortlisted one model on HuggingFace as well from the above-mentioned articles, "Qwen/Qwen2.5-VL-7B-Instruct".
 
+## 16/03/2026
+- Created the .jsonl file but experiencing issues storing the images on the VM. Also, the repeated crashing of VM interrupts the loading of the VLM.
+- Pushed the Grad-CAM images along with the results as a Jupyter notebook titled "compilation_of_models_testing_dataset".
+- Currently focusing on setting up the VLM pipeline as of now.
+
