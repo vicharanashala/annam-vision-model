@@ -854,3 +854,20 @@ Oh and this is weird. The recommended epochs are actually around 1-3. I suppose 
 For evaluation, LLM-as-a-judge is the modern standard and there should be plenty of existing libraries for this where you just input your OpenAI API key and it works.
 
 Some of these I knew, some I have understood in more detail now and some were completely new (heh. knew and new). I now have a better grasp of the overall approach and should be able to begin setting up the pipeline.
+
+## 16/3/2026
+
+Started looking through how I could implement SCOLD for fine-tuning. Currently found some approaches, including one implementation in the transformers library. I'll be looking further to find other better approaches. The idea is to first setup a training pipeline for this which I'll try in the VM, and after that I'll look into how I can modify the rice disease dataset to fit the format used by SCOLD.
+
+Nothing else separately exists for this. I did look through the huggingface page for the model though for a better understanding of the details. Went through model.py and inference.py in the huggingface repo: https://huggingface.co/enalis/scold/tree/main
+Went through the code and understood some more details. The major one was that it uses swin base. I still had my mind going around swin tiny from my time working with swin-hvit. Now that I have a solid enough understanding, I will begin setting up the environment in the VM. Will probably go with uv for package management. I assume the linux distro of the vm (didn't check, will check) is supported.
+
+Tried setting things up on the vm with uv
+Had some success installing uv and initialisation, but for me atleast it was being quite slow and laggy, and it would be a little difficult to keep working with this.
+So to not waste too much time, I decided to go back to trusty old kaggle.
+Tried first setting up in the standard hugging face approach but their model doesn't seem to be available in that format. Potentially because they haven't uploaded that yet?
+I think I saw the weights available though.
+Decided to manually clone the repo (which was quick and will then move to loading any weights directly). Hopefully they are available because pretraining on a massive dataset like LeafNet is not feasible
+
+Loading their code from the repo didn't work. But the saved weights are available (I sure hope they are up to date), and so I copied the code from the repo directly into the notebook. Then I loaded the saved weights into the model. Following this, I created a new Dataset class specifically for rice disease to be trained on SCOLD. This needs to follow their formatting approach. Given that there is not a lot of time to go through each image and provide a detailed description for minute differences within images of the same class, I created 19 templates for each 19 classes with the corresponding prompt/format. So in a way the model only sees 19 types of prompts. This might reduce the efficacy of the text embedding and thus the main model but it can certainly be a good baseline to test things. 
+Will now continue with setting up the dataloaders and the PEFT fine-tuning + training loop.
