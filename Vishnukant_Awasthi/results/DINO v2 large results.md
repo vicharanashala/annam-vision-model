@@ -81,3 +81,19 @@
 * **Testing Accuracy:** 89.27%
 * **Notes:** Pushing the fine-tuning 1 block deeper (4 blocks total) yielded the exact same overall testing accuracy (89.27%) as Exp 3. However, there was a clear trade-off: it improved recall on the minority Corn_Gray_leaf_spot class (from 73% to 80%) but sacrificed some accuracy on Corn_leaf_blight.
 
+|Class|Precision|Recall (Acc)|F1-Score|Support|
+|:----|:----|:----|:----|:----|
+|Corn_Gray_leaf_spot|0.52|0.80|0.63|15|
+|Corn_leaf_blight|0.73|0.52|0.61|21|
+|Corn_rust_leaf|1.00|0.90|0.95|21|
+|Tomato_Septoria_leaf_spot|1.00|1.00|1.00|22|
+|Tomato_leaf|1.00|1.00|1.00|14|
+|Apple_Scab_Leaf|0.87|0.87|0.87|15|
+|Apple_leaf|1.00|0.93|0.96|14|
+|Apple_rust_leaf|0.89|0.94|0.92|18|
+|grape_leaf|1.00|1.00|1.00|18|
+|grape_leaf_black_rot|1.00|1.00|1.00|19|
+|Macro Avg|0.90|0.90|0.89|177|
+|Weighted Avg|0.91|0.89|0.89|177|
+
+
