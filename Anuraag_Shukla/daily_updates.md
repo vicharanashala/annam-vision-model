@@ -195,3 +195,6 @@
 - Pushed the Grad-CAM images along with the results as a Jupyter notebook titled "compilation_of_models_testing_dataset".
 - Currently focusing on setting up the VLM pipeline as of now.
 
+## 17/03/2026
+- Created the VLM pipeline for Qwen-2.5-7B-Instruct, trained the model for 100 steps as well but encountered bugs during inference so currently working on that as of now.
+
