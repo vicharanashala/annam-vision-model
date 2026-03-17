@@ -73,10 +73,11 @@
 | **Macro Avg** | **0.90** | **0.89** | **0.89** | **177** |
 | **Weighted Avg** | **0.90** | **0.89** | **0.89** | **177** |
 
+### Experiment 4: Deep Fine-Tuning with Heavy Regularization (4 Blocks Unfrozen)
+* **Dataset:** Normal PlantVillage + Normal PlantDoc (No Segmentation Applied)
+* **Test Set:** 177 images (95 PlantDoc + 82 manually collected real-world web images)
+* **Architecture Setup:** Unfroze the last 4 blocks of the DINOv2 Large backbone. Applied 0.5 Dropout and Weighted Random Sampling.
+* **Validation Accuracy:** 91.98% (Peaked at Epoch 13, Early Stopping triggered at Epoch 21)
+* **Testing Accuracy:** 89.27%
+* **Notes:** Pushing the fine-tuning 1 block deeper (4 blocks total) yielded the exact same overall testing accuracy (89.27%) as Exp 3. However, there was a clear trade-off: it improved recall on the minority Corn_Gray_leaf_spot class (from 73% to 80%) but sacrificed some accuracy on Corn_leaf_blight.
 
-### Experiment 3: Optimized Moderate Fine-Tuning (3 Blocks Unfrozen + Regularization)
-* **Dataset:** Normal PlantVillage + Normal PlantDoc (**No Segmentation Applied**)
-* **Test Set:** **177 images** (95 PlantDoc + 82 manually collected real-world web images)
-* **Architecture Setup:** **Unfroze the last 3 blocks** of the DINOv2 Large backbone. Applied 0.5 Dropout and Weighted Random Sampling.
-* **Validation Accuracy:** 90.91% (Peaked at Epoch 11, Early Stopping triggered at Epoch 21)
-* **Testing Accuracy:** **89.27%**
