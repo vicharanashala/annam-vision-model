@@ -96,4 +96,71 @@
 |Macro Avg|0.90|0.90|0.89|177|
 |Weighted Avg|0.91|0.89|0.89|177|
 
+### Experiment 5: Maximum Resolution & Deep Fine-Tuning (6 Blocks Unfrozen)
+* **Dataset:** Normal PlantVillage + Normal PlantDoc (No Segmentation Applied)
+* **Test Set:** 177 images (95 PlantDoc + 82 manually collected real-world web images)
+* **Architecture Setup:** Unfroze the last 6 blocks. Image resolution increased to 384x384. Applied Test-Time Augmentation (TTA), 0.5 Dropout, and Weighted Random Sampling.
+* **Validation Accuracy:** ~92.00%
+* **Testing Accuracy:** 89.83%
+* **Notes:** Pushing the Large model to its absolute limit, the image input size was increased to 384x384 to provide more fine-grained details, 6 blocks were unfrozen, and Test-Time Augmentation was used during evaluation. While the overall testing accuracy of 89.83% still didn't eclipse the DINOv2 Base model's record, this specific setup achieved the highest recall we have ever seen on the minority Corn_Gray_leaf_spot class (86.67%).
 
+|Class|Precision|Recall (Acc)|F1-Score|Support|
+|:----|:----|:----|:----|:----|
+|Corn_Gray_leaf_spot|0.52|0.87|0.65|15|
+|Corn_leaf_blight|0.85|0.52|0.65|21|
+|Corn_rust_leaf|1.00|0.90|0.95|21|
+|Tomato_Septoria_leaf_spot|1.00|1.00|1.00|22|
+|Tomato_leaf|1.00|1.00|1.00|14|
+|Apple_Scab_Leaf|0.87|0.87|0.87|15|
+|Apple_leaf|1.00|0.86|0.92|14|
+|Apple_rust_leaf|0.90|1.00|0.95|18|
+|grape_leaf|1.00|1.00|1.00|18|
+|grape_leaf_black_rot|1.00|1.00|1.00|19|
+|Macro Avg|0.91|0.90|0.90|177|
+|Weighted Avg|0.92|0.90|0.90|177|
+
+### Experiment 6: Fully Segmented Datasets with Heavy Regularization
+* **Dataset:** Segmented PlantVillage + Segmented PlantDoc
+* **Test Set:** 177 images (95 PlantDoc + 82 manually collected real-world web images)
+* **Architecture Setup:** Unfroze the last 3 blocks of the DINOv2 Large backbone. Applied 0.5 Dropout and Weighted Random Sampling.
+* **Validation Accuracy:** 88.24% (Peaked at Epoch 15, Early Stopping triggered at Epoch 23)
+* **Testing Accuracy:** 88.70%
+* **Notes:** This experiment evaluated the Large architecture specifically on the pre-processed, fully segmented image datasets. While the testing accuracy proved robust and stable at 88.70%, it underperformed compared to training on the raw, unsegmented images (Exp 4 & 5).
+
+|Class|Precision|Recall (Acc)|F1-Score|Support|
+|:----|:----|:----|:----|:----|
+|Corn_Gray_leaf_spot|0.44|0.53|0.48|15|
+|Corn_leaf_blight|0.63|0.57|0.60|21|
+|Corn_rust_leaf|1.00|0.95|0.98|21|
+|Tomato_Septoria_leaf_spot|1.00|1.00|1.00|22|
+|Tomato_leaf|1.00|1.00|1.00|14|
+|Apple_Scab_Leaf|0.88|0.93|0.90|15|
+|Apple_leaf|1.00|0.86|0.92|14|
+|Apple_rust_leaf|0.95|1.00|0.97|18|
+|grape_leaf|1.00|1.00|1.00|18|
+|grape_leaf_black_rot|1.00|1.00|1.00|19|
+|Macro Avg|0.89|0.88|0.89|177|
+|Weighted Avg|0.89|0.89|0.89|177|
+
+### Experiment 7: Grayscale Lab Data + Segmented Real-World Data
+* **Dataset:** Grayscale PlantVillage + Segmented PlantDoc
+* **Test Set:** 177 images (95 PlantDoc + 82 manually collected real-world web images)
+* **Architecture Setup:** Unfroze the last 3 blocks of the DINOv2 Large backbone. Applied 0.5 Dropout and Weighted Random Sampling.
+* **Validation Accuracy:** 88.24% (Peaked at Epoch 12, Early Stopping triggered at Epoch 20)
+* **Testing Accuracy:** 88.70%
+* **Notes:** Mixing the datasets (using grayscale for the lab data and segmentation for the real-world data) resulted in the exact same overall testing accuracy (88.70%) as the fully segmented dataset from Exp 6. However, there was a shift in class-level confidence: performance dropped on Corn_Gray_leaf_spot (40% vs 53%) but significantly improved on Corn_leaf_blight (76% vs 57%).
+
+|Class|Precision|Recall (Acc)|F1-Score|Support|
+|:----|:----|:----|:----|:----|
+|Corn_Gray_leaf_spot|0.55|0.40|0.46|15|
+|Corn_leaf_blight|0.59|0.76|0.67|21|
+|Corn_rust_leaf|1.00|0.90|0.95|21|
+|Tomato_Septoria_leaf_spot|1.00|1.00|1.00|22|
+|Tomato_leaf|1.00|1.00|1.00|14|
+|Apple_Scab_Leaf|0.92|0.80|0.86|15|
+|Apple_leaf|1.00|0.93|0.96|14|
+|Apple_rust_leaf|0.86|1.00|0.92|18|
+|grape_leaf|1.00|1.00|1.00|18|
+|grape_leaf_black_rot|1.00|1.00|1.00|19|
+|Macro Avg|0.89|0.88|0.88|177|
+|Weighted Avg|0.89|0.89|0.89|177|
