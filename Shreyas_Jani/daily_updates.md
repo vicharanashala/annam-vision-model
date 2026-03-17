@@ -874,3 +874,26 @@ Will now continue with setting up the dataloaders and the PEFT fine-tuning + tra
 
 Setup the dataloaders for all of this
 then started researching training loops for this, and created a standard training loop with some references and some idea from the scold repo itself. There were some issues in the training loop related to amp usage (for speeding up training given the large sizes of the models), which caused some more issues. Now, it seems to be training but then stops after some time. The time it stops after has been 27% and 35% . This might be an issue with torch amp. Or it might be something completely different. And for whatever reason the tqdm progress bar is red. Without any errors shown. I'll have to look into why these might be happening.
+
+## 17/3/2026
+
+After a few different tries including checking for any exceptions and changes in the training loop, I searched and found that another option for the culprit was high VRAM usage, silently killing the process.
+And to fix this, one approach is to pull back the num_workers in the dataset objects to 0. Larger values (even 2), will create a shared memory, which doesn't work well with notebooks in general and specifically not kaggle. 
+After this, I ran it again and it has crossed 35% at least, and is increasing. But it remains to be seen if it will actually fulfil training.
+Meanwhile, I'll check out further why the tqdm progress bar is red.
+
+Phew training is running correctly and it moved past epoch 2. But the progress bar is still red. After more searching and removing the possibilities of something going wrong given that it is training correctly now, there are 2 main options. One is very stupid and that kaggle still remembers an old error which caused a red progress bar. If it's this, then it's really weird because of I had both removed that cell and added a new one and also restarted the environment. So ideally it should have gone away, unless something is wrong with kaggle.
+The other is that the from tqdm import tqdm isn't directly compatible with kaggle. Though there were conflicting opinions about this.
+Given that there are no actual problems now, I'll ignore the red color.
+Train loss is going down and I'll calculate the performance metric (I'll check if I should do an effective classification type metric or something more often used in vlms) when 5 epochs complete.
+
+Yes, accuracy will work but first I'll need to calculate a similarity score between the 2 embeddings.
+Thus, partially created the evaluation script while the model has reached epoch 5. When it finishes training, the evaluation script should be ready and we'll get a rough idea.
+After this, given full fine-tuning is quite time-consuming, I'll move onto and implement PEFT, probably specifically just normal LoRA for now.
+
+After the 5 epochs, the result was only an accuracy of 47%. This is probably because the model is very large and if we want to go with Full fine-tuning, of course it will need a lot more than 5 epochs.
+Thus, I decided to shift PEFT with LoRA. 
+Created a training script which will also run accuracy metric on validation data every epoch. Looking to LoRA took some time to understand but thankfully the library is well-made.
+Currently almost done with epoch 1, will go on till 5.
+
+The epoch 1 resulted in 47% val accuracy but there were a few problems in the training loop that were causing unnecessary extra calculations. And also the dataloaders were previously set to save space by trading time for the full fine-tune. This caused further slow downs. So, I decided to save time in the long run by stopping the training after epoch 1, updating the code, and restarting training. It is now significantly faster. The val accuracy at epoch 2 this time is 50%. Still pretty low. Hmmm, I'll need to look if and when it could theoretically start improving. Otherwise, hmm, we'll need to look in more detail.
