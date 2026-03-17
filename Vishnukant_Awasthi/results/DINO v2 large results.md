@@ -57,6 +57,9 @@
  [ 0  0  0  0  0  0  0  0 18  0] 
  [ 0  0  0  0  0  0  0  0  0 19]]
 ```
+
+| Class Name | Precision | Recall | F1-Score | Support |
+| :--- | :--- | :--- | :--- | :--- |
 | Corn_Gray_leaf_spot | 0.52 | 0.73 | 0.61 | 15 |
 | Corn_leaf_blight | 0.71 | 0.57 | 0.63 | 21 |
 | Corn_rust_leaf | 1.00 | 0.90 | 0.95 | 21 |
@@ -69,6 +72,7 @@
 | grape_leaf_black_rot | 1.00 | 1.00 | 1.00 | 19 |
 | **Macro Avg** | **0.90** | **0.89** | **0.89** | **177** |
 | **Weighted Avg** | **0.90** | **0.89** | **0.89** | **177** |
+
 
 ### Experiment 3: Optimized Moderate Fine-Tuning (3 Blocks Unfrozen + Regularization)
 * **Dataset:** Normal PlantVillage + Normal PlantDoc (**No Segmentation Applied**)
