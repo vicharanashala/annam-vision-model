@@ -154,7 +154,7 @@
 * **Testing Accuracy:** 87.01%
 * **Notes:** To see if the Small model could handle unsegmented data even better with more capacity to adapt, the unfreezing strategy was deepened to 6 blocks. Interestingly, the testing accuracy dropped back down to 87.01%. This indicates that unfreezing too many layers on the lower-parameter Small model likely causes it to overfit to the training dataset, losing the generalizability of its self-supervised pre-training.
 
-* |Class|Precision|Recall (Acc)|F1-Score|Support|
+|Class|Precision|Recall (Acc)|F1-Score|Support|
 |:----|:----|:----|:----|:----|
 |Corn_Gray_leaf_spot|0.50|0.60|0.55|15|
 |Corn_leaf_blight|0.71|0.57|0.63|21|
