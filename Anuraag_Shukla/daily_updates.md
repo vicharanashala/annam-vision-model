@@ -198,3 +198,8 @@
 ## 17/03/2026
 - Created the VLM pipeline for Qwen-2.5-7B-Instruct, trained the model for 100 steps as well but encountered bugs during inference so currently working on that as of now.
 
+## 18/03/2026
+- Trained the VLM pipeline for 200-300 steps which took 2 hours and 40 mins to execute completely. The issue was: it was not training over the complete dataset so changed the training strategy to epochs and started training it for 1 epoch.
+- Training it for 1 epoch with Unsloth and PEFT using LoRA adapters gave an estimated time of 16 hours which is not feasible on the Kaggle GPU quota as of this week.
+- Researching about various ways to finetune this model so as to ensure what should I expect in terms of training times and if I can shave down the training time from 16 hours to 7-8 hours.
+
