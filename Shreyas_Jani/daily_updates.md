@@ -902,3 +902,20 @@ After lora ran for 5 epochs, the val accuracy was 40%. It actually decreased. An
 One possibility could be the conversion of the class names into set templates to send to the text embedder. But hmm.
 A possible solution is to try a learning rate scheduler. This has shown to have good effects on VLMs.
 Another is to make a few variations of the class name to text conversion and choose randomly between them, so that the VLM can understand the concept rather than memorize the strings. I'll begin with these next time
+
+
+18/3/2026
+
+Almost done with creating the final conclusion for the previous all experiments done before starting with VLMs. A comprehensive conclusion of everything is necessary for guiding future experiments and also to let yourself know where there might be any gaps that were missed. That can happen when training everything and your focus is at the low level. It should be done in a while, after which I will continue with SCOLD.
+Had the progress meet
+
+Created the final experiment results and conclusions doc. Then started looking into how the accuracy is calculated in the code, and yeah I remembered. The idea is to find the cosine similarity between a chosen image's embedding with all 19 class text embeddings, and then just looking at the best one as the class. Now, according to the approach by Deepthi mam, I should be able to first run the VLM directly before fine-tuning. Zero-shot in essence. This will give an idea about the model's existing base results. Started creating the code for that.
+
+Created the zero-shot testing script, and ran on the test set and got 17.8% accuracy. So clearly the fine-tuning was indeed benefiting. But it go to it's highest amount (50%) and then just kept getting worse. So we still need to try ways to improve this. The most likely one to improve things is probably creating multiple descriptions per class and choosing randomly. Although I doubt how much of an improvement there will be.
+
+Updated the dataset class to use 3-4 variations in the text description. It randomly chooses one. This should hopefully provide some variation
+I first ran this on the zero shot evaluation (required minor updates in the script) and the test accuracy was 17.85%. I guess technically a very minimal 0.05% increase in magnitude.
+Now, started fine-tuning with lora on this change (also required updates) and its currently at epoch 1.
+
+Apparently that single update for using multiple descriptions broke a lot more than just the fine-tuning code. So I had to update the accuracy checking utility function and some more details in the fine tuning loop as well. Currently it's on epoch 2 with val accuracy of epoch 1 as 33.25%. Hmm, it actually got worse. I'll have to look into why that might be.
+Also started looking into more ways to improve the model in case this (highly likely) doesn't help.
