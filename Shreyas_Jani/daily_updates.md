@@ -919,3 +919,6 @@ Now, started fine-tuning with lora on this change (also required updates) and it
 
 Apparently that single update for using multiple descriptions broke a lot more than just the fine-tuning code. So I had to update the accuracy checking utility function and some more details in the fine tuning loop as well. Currently it's on epoch 2 with val accuracy of epoch 1 as 33.25%. Hmm, it actually got worse. I'll have to look into why that might be.
 Also started looking into more ways to improve the model in case this (highly likely) doesn't help.
+
+The val accuracy over the 5 epochs first improved 49% at epoch 3 but then got to 42% at the end. And the test accuracy was 37%. So effectively there hasn't been any visible benefit over just 5 epochs of LoRA. I have continued the training for another 5 epochs (total 10), and as for the results of my searching for the problem, it might be 1. Low batch size (possible, and I can use gradient accumulation), 2. More epochs (tis a slippery slope), 3. Potentially the scold format could be harmful because of common text words. Could try training without this.
+I can implement large batch size in another account's notebook while this one trains parallelly for more epochs
