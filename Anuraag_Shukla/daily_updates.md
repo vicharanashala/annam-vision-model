@@ -203,3 +203,7 @@
 - Training it for 1 epoch with Unsloth and PEFT using LoRA adapters gave an estimated time of 16 hours which is not feasible on the Kaggle GPU quota as of this week.
 - Researching about various ways to finetune this model so as to ensure what should I expect in terms of training times and if I can shave down the training time from 16 hours to 7-8 hours.
 
+## 19/03/2026
+- Created a pipeline with Qwen-3-2B but the training time per epoch was infeasible (32 hours per epoch), reduced the image size as well increased the batch size but it made no difference.
+- Currently working on a Qwen-2 pipeline with Unsloth to train the model even if it takes 16 hour per epoch (Will save checkpoints to resume training) as that seems more feasible to train and test as of now.
+
