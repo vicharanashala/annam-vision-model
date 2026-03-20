@@ -904,7 +904,7 @@ A possible solution is to try a learning rate scheduler. This has shown to have 
 Another is to make a few variations of the class name to text conversion and choose randomly between them, so that the VLM can understand the concept rather than memorize the strings. I'll begin with these next time
 
 
-18/3/2026
+## 18/3/2026
 
 Almost done with creating the final conclusion for the previous all experiments done before starting with VLMs. A comprehensive conclusion of everything is necessary for guiding future experiments and also to let yourself know where there might be any gaps that were missed. That can happen when training everything and your focus is at the low level. It should be done in a while, after which I will continue with SCOLD.
 Had the progress meet
@@ -922,3 +922,23 @@ Also started looking into more ways to improve the model in case this (highly li
 
 The val accuracy over the 5 epochs first improved 49% at epoch 3 but then got to 42% at the end. And the test accuracy was 37%. So effectively there hasn't been any visible benefit over just 5 epochs of LoRA. I have continued the training for another 5 epochs (total 10), and as for the results of my searching for the problem, it might be 1. Low batch size (possible, and I can use gradient accumulation), 2. More epochs (tis a slippery slope), 3. Potentially the scold format could be harmful because of common text words. Could try training without this.
 I can implement large batch size in another account's notebook while this one trains parallelly for more epochs
+
+
+## 20/3/2026
+
+Had a daily progress meet with Kshitij.
+The val accuracy improved to 61.2% at epoch 10. So there does seem to be a clear improvement. 
+I have saved the checkpoint so I can try to increase the epochs anytime later.
+For now, I will move onto increasing the batch size as decided last time. Not training in parallel because the first 5 epochs of the increase batch size will provide enough info on whether if I need to waste more gpu hours.
+
+Updated the batch sizes to 64 (from 32) and made some changes in the training loop and the evaluation function that were causing problems with the outputs/logs. Obviously no change in the zero-shot results (no difference if batch size is 1 or 128 either obviously).
+The training is running and currently at epoch 1. The estimated training time per epoch seems to be the same as well.
+
+Val accuracy at epoch 2 is 45.7%. It is slightly better? A few more epochs will make things clear. There should obviously be a difference with such an increase in batch size (2x). Also searching for other studies regarding training VLMs for classification tasks and how they compare to focused image classification models.
+
+the val accuracy at epoch 5 was 46% and test accuracy was 44%. So there is clearly an improvement in the test accuracy even if val remained close to same. So just in case I continued training it till 10 epochs and val accuracy improved to 60%. Slightly lower than batch size 32 but effectively the same. But the test accuracy only got to 45%. So in a way this didn't improve much either.
+I continued reading more and it seems that without a doubt, for a classification task, a vlm won't be able to compare to a normal classifier. The situation in which they shine though, is for open vocabulary scenarios where novel concepts need to be understood. This matches with what I thought regarding using it for chat applications. That reminds me of Agri-LLaVA. Let me see if I can do any more experiments with SCOLD directly before either moving on to agri llava or looking further into literature and seeing what exactly I can do with a vlm that is not possible with classifiers, and is also feasible to train with the data I have. That last part is the key, otherwise the obvious application is a chat application.
+
+Oh it seems I was little quick on the judgement. There is a possibility that vlms can perform comparatively to traditional classifiers but the problem is that they require a lot more data. This is probably speaking both about the images themselves being needed to be much more as well as the language part to be more varied and diverse. Otherwise that's just a useless part of the model. 
+Another benefit is that even though CNNs and ViTs, etc are more accurate, the VLMs are more stable and predictable. You can work around their errors.
+But it is still not really a good idea to continue thinking of using a vlm for only classification. That is clearly inefficient in terms of time and resources (gpu hours). The goal should be using vlms for being more flexible. Is a zero-shot chat application the only feasible use case with the dataset constraints I have? Hmm, there's something called VQA (Visual Question Answering). Let me see if there any works utilizing scold or agri llava for this
