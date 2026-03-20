@@ -1,14 +1,14 @@
 # DINOv2 Base (Vision Transformer) Results - Rice Dataset
 
 **Model Description:** Evaluating the **DINOv2 Base** architecture on a highly complex, 19-class Rice Disease dataset. The goal of this experiment is to assess the baseline generalization capability of DINOv2's self-supervised pre-training on a diverse set of fungal, bacterial, viral, and pest-related rice crop damages.
-
 ---
 
 ## Quick Summary of All Experiments
 
 | Exp | Dataset Used | Backbone Status | Best Val Acc | Test Acc | Key Takeaway |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | **Rice Disease Data (19 Classes)** | **Unfroze Last 2 Blocks** | **93.30%** | **94.19%** | **Tested on 465 images. Exceptional baseline performance. Achieves 100% recall on 5 different classes, with `Sheath Rot` being the only major bottleneck.** |
+| **1** | Rice Disease Data (19 Classes) | Unfroze Last 2 Blocks | 93.30% | 94.19% | Tested on 465 images. Exceptional baseline performance. Achieves 100% recall on 5 different classes, with `Sheath Rot` being the only major bottleneck. |
+| **2** | **Rice Disease Data (19 Classes)** | **Unfroze Last 4 Blocks** | **93.83%** | **94.62%** | **Tested on 465 images. Deeper fine-tuning improved overall accuracy to 94.62% and specifically boosted the detection of the difficult `Sheath Rot` class.** |
 
 ---
 
