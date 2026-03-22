@@ -207,3 +207,9 @@
 - Created a pipeline with Qwen-3-2B but the training time per epoch was infeasible (32 hours per epoch), reduced the image size as well increased the batch size but it made no difference.
 - Currently working on a Qwen-2 pipeline with Unsloth to train the model even if it takes 16 hour per epoch (Will save checkpoints to resume training) as that seems more feasible to train and test as of now.
 
+## 20/03/2026
+- Came across several issues with the created pipeline, the major one was the vector size mismatch.
+- Reduced the size of the images of 252x252 to 224x224 to ensure correct calculations but that did not help with the problem. Confined the LoRA parameters to language layers instead of vision+language layers, so far no issues yet.
+- As soon as the training is done, will update this document and results.md with the inference results.
+- Currently training over the Rice Disease Dataset for 2 epochs using Qwen2-2B-Instruct VLM.
+
