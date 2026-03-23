@@ -213,3 +213,12 @@
 - As soon as the training is done, will update this document and results.md with the inference results.
 - Currently training over the Rice Disease Dataset for 2 epochs using Qwen2-2B-Instruct VLM.
 
+## 23/03/2026
+- Training finished for Qwen2-2B-Instruct for **6000 steps**, 
+    **Testing Accuracy => 61.52 %** 
+  Training the model for another **2000 steps**, to verify whether the model is overfitting or not.
+- Training for another **2000 steps** was successful, Testing Accuracy increased from **61.51 % => 63.66 %** 
+- Trained the model for another **3,358 steps** on the same **Rice Disease Dataset** before the Kaggle GPU Quota ran out **Testing Accuracy** increased from **63.66 % to 65.38 %**
+- Created the pipeline for **Qwen 3-4B-Instruct** in a new Kaggle notebook and currently it is training for **an epoch** or **5679 steps** on the **Rice Disease Dataset**.
+
+
