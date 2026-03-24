@@ -946,3 +946,17 @@ But it is still not really a good idea to continue thinking of using a vlm for o
 Created the weekly report for this week and sent it to Deepthi mam and Kshitij (Deepthi mam's replacement for today).
 After some thinking, I just thought something interesting. How would the vlm perform on PlantDoc, which we have found to be extremely difficult. Given we'll only be using LoRA, using just the PlantDoc train set to train might be enough.
 And another important thing to note. SCOLD is not usable for a VQA as it's an aligner and doesn't come with an autoregressive language decoder. There are some ways to work around this but the next best option is to then test this on Agri-LLaVA which was made and trained for user interaction
+
+
+## 24/3/2026
+
+Partially setup Plant Doc for SCOLD with the Dataset class with prompt mapping. Would be interesting to see how this goes.
+Had the progress meet.
+
+Fully setup the Plant Doc dataset class for SCOLD, and started training. The zero shot accuracy was actually 46%. Interesting. You know, I have a feeling that this might be because they could potentially have had used Plant Doc during their pretraining? Hmm, I'll need to check. The LoRA fine-tuning is currently ongoing.
+
+The val accuracy peaked at Epoch 2 (again with epoch 2 having the peak) with 57%. Currently started with epoch 4. Also from what I can see from my search and the leafnet paper, they don't seem to have used PlantDoc during training? That's quite interesting. Or is it a case of their later checkpoint being trained on Plant Doc some time after the paper? Hmm, I guess that's a problem with research not being properly tracked and checkpoints not labelled. But either way, this seems like a good performance given that standard CNNs and ViT also only performed close to this when trained on a merged dataset.
+
+The val accuracy did not increase at epoch 5. And the test accuracy is 54%. This is pretty impressive given the difficulty of PlantDoc. And it's also interesting how well scold performed for PD in comparison to Rice Disease. The differences are that PD is smaller in total images, but has a lot more classes (total of 30 classes in the full dataset). That is honestly very impressive. So I am going to look into why scold performed better for this. Meanwhile I made some updates to the training loop and am training with batch size 64.
+
+The validation accuracy in the first 5 epochs was peaked at 69% at epoch 1 this time. Validation at epoch 5 was 49%. Test at epoch 5 was 51%. Even worse than batch size 32. Pretty weird stuff going on here. Anyways, so I setup training for 5 more epochs, and validation at 10 was 49.5% and test was 54.6%. Just like barely on par. So this seems to be the limit for Plant Doc. As for why rice disease performed worse than plant doc, after a lot of searching, I think the answer is simply either, 1. There were only a few images per class so the prompts were more equally distributed in a sense? And the language module was able to do something useful, or 2. 50-55% is the limit for classification in general. And the vlm does not care how difficult the problem is.
