@@ -221,4 +221,11 @@
 - Trained the model for another **3,358 steps** on the same **Rice Disease Dataset** before the Kaggle GPU Quota ran out **Testing Accuracy** increased from **63.66 % to 65.38 %**
 - Created the pipeline for **Qwen 3-4B-Instruct** in a new Kaggle notebook and currently it is training for **an epoch** or **5679 steps** on the **Rice Disease Dataset**.
 
+## 24/03/2026
+- Training finished for **Qwen 3-4B-Instruct** for **5679 steps** or **1 epoch**,
+    **Testing Accuracy => 69.03 %**
+- Trained the model for another 2 epochs or for a total of **17037 steps**,
+    **Testing Accuracy** increased from **69.03% -> 81.08%**
+- Currently training for another epoch to verify whether the model will overfit or whether the generalization accuracy can be improved further.
+
 
