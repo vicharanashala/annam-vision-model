@@ -962,3 +962,29 @@ The val accuracy did not increase at epoch 5. And the test accuracy is 54%. This
 The validation accuracy in the first 5 epochs was peaked at 69% at epoch 1 this time. Validation at epoch 5 was 49%. Test at epoch 5 was 51%. Even worse than batch size 32. Pretty weird stuff going on here. Anyways, so I setup training for 5 more epochs, and validation at 10 was 49.5% and test was 54.6%. Just like barely on par. So this seems to be the limit for Plant Doc. As for why rice disease performed worse than plant doc, after a lot of searching, I think the answer is simply either, 1. There were only a few images per class so the prompts were more equally distributed in a sense? And the language module was able to do something useful, or 2. 50-55% is the limit for classification in general. And the vlm does not care how difficult the problem is.
 
 I had some doubts so I decided to go through the paper again, and after sifting through a lot of text, I found exactly the datasets they used to make their LeafNet database. And as suspected initially, it contains PlantDoc. Now it makes sense why it was performing so well. Haaaa. Now, to be safe I searched for the rest of the datasets used, and it contains many famous datasets. While doing this, I found a Rice disease dataset in it as well, but after opening the given link in the references and going through the paper, I noticed it was completely different. Apparently they messed up a hyperlink? Anyways, I searched for that specific paper and found it. And from the disease classes in that, I can see that it is probably a subset of the one we used (as in this was part of the collected smaller datasets used to create the current one we used). And interestingly enough, they didn't have as much of a problem with the leaf smut - leaf blast combination. It was in fact replaced by Tungro-Leaf Blast causing the same problem with misclassification. Uh so I guess in essence, I confirmed that PlantDoc is indeed part of the training set of the SCOLD pretrained weights I used so it's not a good metric to test on
+
+
+## 25/3/2026
+
+Had the progress meet.
+After some discussion and further brainstorming, decided to continue with using Agri-LLaVA. For that, started with skimming through the research paper to gain a deeper understanding as well as a quick recap.
+
+Agri llava authors created a custom instruction following dataset, available here: https://huggingface.co/Agri-LLaVA-Anonymous
+Training is done in 2 steps. 1. Pretraining with a lot of image caption pairs, followed by, 2. a multi-turn conversational dataset created using GPT 4. In this phase, the visual encoder is frozen while the LLM weights are updated.
+As Deepthi mam was asking, the base model it uses is the LLaVA-1.5. llava contains the visual enocder within it directly. Will be interesting to see how better it can perform.
+For more information, I searched a bit deeper, and llava-1.5 itself uses CLIP ViT-L/14 as its visual encoder, so that's interesting.
+
+After looking through their dataset structure for the conversational training step, I found the general idea to use for fine-tuning. And that is to build upon Anuraag's shared jsonl structure but instead put up a few conversation types for each class. It will start with the user mentioning what they see, then the gpt replying with some more info, followed by the user asking what class it is and gpt's response.
+There can be 3-4 combinations for each message type for a better, more diverse result.
+Now, I need to look through what data the model was pre-trained with so that I don't end up using the same dataset while fine-tuning. That would be non-ideal.
+
+Okay so here's an initial approach/plan to fine-tune for the rice disease dataset moving onto others that may or may not be already be used by Agri llava
+Obviously PEFT with LoRA will be used at all points.
+The most important part is to convert the data into the conversational format as mentioned in the previous time log.
+After that, I'll follow the general approach used by the authors themselves.
+First freeze both the visual and language modules, keeping only the projection matrix trainable with lora. This will be trained on the image label pairs directly.
+After that, freeze the projection and unfreeze the language module and train it using the conversational converted dataset.
+I'll be continuing with looking into further details
+
+Their dataset used is, like scold, a mix of existing datasets. It's important to know these for better understanding and comparison of the results. Among the many available, the ones that we have worked with previously include Plant Village, that smaller Rice leaf disease dataset (so testing on our rice leaf disease has some images it has probably seen previously. Important to keep note of). None others that I have used, but I believe either Anuraag or Vishnukant have used the Wheat disease dataset. 
+What they did do new over this is the conversational setup to train the language module. But still. This also means that PlantDoc is a valid dataset to test out on. In fact, it's a good first baseline in comparison to rice leaf disease given that the latter has a subset already used in the training data.
