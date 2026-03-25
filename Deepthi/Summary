@@ -1,0 +1,10 @@
+Advanced Image Processing & Vision-Language Modeling for Plant Disease Detection
+
+
+Summary  of project  :  Contributor  Anuraag Shukla  
+
+Multiple CNN-based models and preprocessing techniques were applied across diverse plant disease datasets to evaluate classification performance. ConvNeXt-based models achieved strong results, particularly on the Rice Disease dataset with accuracy above 94%, while performance on mixed datasets remained moderate. The study emphasized the importance of image preprocessing, such as cropping and augmentation, and concluded that CNN-based approaches were more effective than transformer-based models in this setup.
+Summary  of project  : Contributor Shreyas Jani  
+A wide range of advanced architectures, including Swin-HViT, ViT variants, MLP-Mixer, and FocalNet, were evaluated for plant disease classification. The experiments highlighted the importance of fine-tuning and dataset alignment, as zero-shot performance was poor. Among all models, Swin-HViT consistently delivered the highest accuracy (up to 97.3%), proving to be the most effective architecture, while alternative approaches like MLP-Mixer with SAM also showed promising results under specific conditions.
+Summary  of project  : Contributor Vishnukant Awasthi  
+Various plant leaf disease classification models were experimented with across multiple datasets to address the domain gap between lab and real-world images. Initial CNN-based approaches showed overfitting, which was improved using segmentation techniques like SAM. However, Vision Transformer models, especially DINOv2 Base, achieved the best performance, reaching up to ~94% accuracy and demonstrating strong generalization across different crops without requiring heavy preprocessing.Also attaching the final reports shared by the team members.
