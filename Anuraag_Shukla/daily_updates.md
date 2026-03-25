@@ -228,4 +228,10 @@
     **Testing Accuracy** increased from **69.03% -> 81.08%**
 - Currently training for another epoch to verify whether the model will overfit or whether the generalization accuracy can be improved further.
 
+## 25/03/2026
+- Kaggle GPU Quota ran out for both of the accounts, so could not proceed with any model training.
+- Instead, went back to the codebase and exploring it in detail to find hyperparameters that can be tuned as soon as VM access is provided to improve accuracy.
+- Currently have gone through the processor, model and LoRA config in the codebase. Making my way through the data collator as of now.
+- As of now, Image Resolution in the Processor as well as rank of LoRA matrix are the two things that can be tweaked for better performance.
+
 
