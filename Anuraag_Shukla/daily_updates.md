@@ -234,4 +234,11 @@
 - Currently have gone through the processor, model and LoRA config in the codebase. Making my way through the data collator as of now.
 - As of now, Image Resolution in the Processor as well as rank of LoRA matrix are the two things that can be tweaked for better performance.
 
+## 26/03/2026
+- Created a new Kaggle account for further experimentation, trained Qwen 3-4B-Instruct for **5 epochs**.
+- Testing Accuracy decreased from **81.08 %** to **80.65 %**
+- The model is showing signs of overfitting, considering the training only focused on weights related to the language layers and no vision layers were included due to Kaggle's VRAM limitation.
+- Currently training it for 4 epochs, to verify whether some improvement can be observed before the test accuracy started going down for 5 epochs.
+- Also, currently looking into **Kimi-VLM** as a potential choice for this task.
+
 
