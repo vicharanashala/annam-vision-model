@@ -991,3 +991,21 @@ What they did do new over this is the conversational setup to train the language
 
 given this rough idea for the fine-tuning, I searched through the parameters they used and ideal hyperparams, specifically for LoRA since that's something relatively new for me, a good starting point, with quick experimentation needed of course, would be rank=16 for the lora. A good point for low memory environments. I could also go to QLoRA for faster training if this proves too slow. The vision encoder will be expecting 336px images. Very important information. sequence length capping shouldn't be needed given I'll keep the prompt small already for just the classification task. I have a list of target modules for lora and will go through the entire architecture when beginning code to see if any others are needed. 
 They do have a huggingface page but I don't know if it's well maintained in comparison to SCOLD's. Hopefully it is. We'll know I suppose.
+
+
+## 26/3/2026
+
+Had the daily meet
+Started with setting up the code for fine-tuning. And while searching I was unable to find their pre-trained weights (which they said would be available but apparently were never released). After some thinking and decisions, I decided to test out how fine-tuning LLaVA-1.5 directly would work. This is missing the full fine-tuning done by them using a special plant disease dataset but it would be something. Because that full training is obviously not feasible given the dataset size. Maybe potentially feasible with VM but the dataset itself is too large so there's problems with that. Hmm, this requires more thought
+
+Partially setup the dataset class for PlantDoc for LLaVA-1.5. I'll be using the same approach as the agri-llava authors of first training the projection matrix followed by a simplified conversational thing. Probably just user asking what is the class with a list of classes as options, and the model replying the class name.
+
+Hmm, apparently it's not a good idea to do the pretraining. Given that PlantDoc is much smaller (around 2-3k images) than agri-llava's dataset (400k), the matrix might just memorize stuff or not gain anything useful. So instead we go straight to the next step. For that, instead of a dataset class, I setup a script to create a json file with the image and a corresponding question by a user asking which class it is, alongside the list of classes.
+
+Looked into training llava and there repository is actually pretty neat. From what I could understand, we can utilize their training setup with out training data. It requires cloning their repo,  and installing something called deepspeed and flash attention. Flash attention is pretty slow to setup though. Hopefully this isn't another VMamba 2.0 happening.
+Anyways, after this, we just provide our data and use the deepspeed command to run the training script in the llava repo with the necessary hyperparameters.
+Currently flash attention is being installed. I guess a VM would've been pretty nice for this.
+
+Flash attention was taking too long to build, so I searched around and had 2 options. 1. Use a pre-built wheel. Potentially good but might end up with obscure version mismatches as it depends heavily on the machine and versions of installed libraries. 2. Not use flash attention. 
+I searched and it was not necessary. Just need to use a different train script. It will be slower, but atleast it will run. In the vm, flash-attention would be better. Well depends on the memory constraints I suppose.
+After this, started training, but there is an error which I am looking into right now
