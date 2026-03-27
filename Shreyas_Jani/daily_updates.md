@@ -1011,3 +1011,20 @@ I searched and it was not necessary. Just need to use a different train script. 
 After this, started training, but there is an error which I am looking into right now
 
 After looking through their repo and some searching and after a few failed attempts, including manually providing the repositories path, downgrading transformers and peft libraries, the problem still remains. Then I searched some more and apparently one of the command line args needs a space in a specific location. After that it started training. But the progress bar is messed up and keeps adding to the next line, and it also stopped with an error after 76%. I'll try to look further given it showed some promise but if it honestly keeps giving problems, I'll just setup the training script myself.
+
+
+## 27/3/2026
+
+Had the daily meet.
+After looking in more detail, the new error turned out to be a memory overload? Hmm, I might need to reduce batch size and try again. If there's an option for gradient accumulation (should be ideally), I'll do that as well to maintain the effective batch size
+
+Thought of trying using quantization with bitsandbytes but there was a weird error where it didn't work. After a while trying to fix it, it seems unlikely to work. So instead I set batch size to 1 and gradient accumulation to 16, so effectively a batch size of 16, just slower to compute. I'll see if this doesn't use the full memory and see if I should increase batch size.
+
+Yes, this too caused it to run out of memory after 2 epochs. Hmm, Quantization is messed up. While searching for solutions I found something called Zero3-offload in deepspeed. From what I understand this offloads part of the data to CPU in between. Moving things back and forth so that the GPU VRAM alone doesn't have to deal with everything. 
+This trained again for 2 epochs, but then stopped after another error. And after looking at the error, it was apparently out of CPU ram (normal ram). Damn. I'll have to make quantization work somehow otherwise this is never going to train.
+
+Apparently zero3 might be fighting for control against bitsandbytes, which could potentially be fixed by using zero2 instead.
+So I implemented that and it did begin training again. Hopefully it will train this time.
+Deepspeed uses both GPUs by default so that's nice and there doesn't seem to be any overflows in the near future
+
+This did train until some point, but then just... stopped? At 9% of epoch 3. So there was an improvement but this is pretty weird. I am trying to see what the problem might have been but found nothing relevant that I haven't already tried by now. Things should improve with the VM but I'll still keep investigating in case the problem is something else now.
