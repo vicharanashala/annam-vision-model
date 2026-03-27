@@ -241,4 +241,10 @@
 - Currently training it for 4 epochs, to verify whether some improvement can be observed before the test accuracy started going down for 5 epochs.
 - Also, currently looking into **Kimi-VLM** as a potential choice for this task.
 
+## 27/03/2026
+- Trained **Qwen 3-4B-Instruct** for **4 epochs** to no avail as the testing accuracy remained stagnant and started decreasing after the **5th epoch**.
+- Testing Accuracy for **4 epochs** remained the same at **81.08 %**
+- Started working on a Kimi-VLM pipeline but currently it is not working because of dependency issues, tensor dimensions mismatch.
+- Fixed the dependency issues but the GPU quota for all 3 accounts ran out, so had to stop the experimentation.
+
 
