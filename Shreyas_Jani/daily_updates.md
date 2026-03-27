@@ -1028,3 +1028,5 @@ So I implemented that and it did begin training again. Hopefully it will train t
 Deepspeed uses both GPUs by default so that's nice and there doesn't seem to be any overflows in the near future
 
 This did train until some point, but then just... stopped? At 9% of epoch 3. So there was an improvement but this is pretty weird. I am trying to see what the problem might have been but found nothing relevant that I haven't already tried by now. Things should improve with the VM but I'll still keep investigating in case the problem is something else now.
+
+It might have been caused by a deadlock between the 2 gpus (unlikely but worth testing out) which might have been caused by asymmetry between the dataset sizes between the 2. So for that I removed extra less than batch size batch at the end with the corresponding command line arg. This trained but stopped much earlier at epoch 1 only. No luck finding any other problem or fix right now. Might just be a hard limit of the environment in training heavy models like this.
