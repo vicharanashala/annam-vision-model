@@ -1030,3 +1030,20 @@ Deepspeed uses both GPUs by default so that's nice and there doesn't seem to be 
 This did train until some point, but then just... stopped? At 9% of epoch 3. So there was an improvement but this is pretty weird. I am trying to see what the problem might have been but found nothing relevant that I haven't already tried by now. Things should improve with the VM but I'll still keep investigating in case the problem is something else now.
 
 It might have been caused by a deadlock between the 2 gpus (unlikely but worth testing out) which might have been caused by asymmetry between the dataset sizes between the 2. So for that I removed extra less than batch size batch at the end with the corresponding command line arg. This trained but stopped much earlier at epoch 1 only. No luck finding any other problem or fix right now. Might just be a hard limit of the environment in training heavy models like this.
+
+## 28/3/2026
+
+Had the daily progress meets.
+Currently looking through other possible problems and solutions. I'm pretty sure at this point I just need more memory but it's worth trying to optimize things further
+
+Another potential problem could have been the version of the accelerate library. I tried it out, and it did run for a while longer, and then stopped again after some time. The progress bar is messed up (goes to new line every time) so I can't say exactly when but it was probably atleast equal to the previous best. Anyways, I can't say if this was indeed the problem's fix or it was just a random stroke of luck. I did find some more avenues of testing, which I'll continue testing.
+
+Tried down-versioning a few other libraries including deepspeed. But this time it didn't even run again. Very weird. I don't think any of these approaches are going to work. Or rather I can't get trustworthy feedback if the memory overloads or some weird memory bug happens. I'll wait for the VM and in the meanwhile think of other things I can do in parallel. Or maybe just a few more tries to get the code to work here. After all, if it runs here, it will race through the vm's gpu.
+
+Yeah this isn't gonna work on kaggle. To make use of this time, I'll be looking into more detail in Zero3 and zero2. The most new topic out of all the techniques used is this. After this, i'll decide further.
+
+Zero stands for zero redundancy optimize.
+Oh I understood it correctly. I thought it pushed things to cpu ram
+But instead it removes the redundant storage of gradients and stuff which is done in both GPUs. And instead makes it so that it can be shared.
+Zero2 keeps the full copy of each parameter in both GPUs but they only keep the fraction of gradients they train. That is individual to each gpu.
+Before continuing, created the weekly report.
