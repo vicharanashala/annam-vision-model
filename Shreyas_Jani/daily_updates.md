@@ -1047,3 +1047,6 @@ Oh I understood it correctly. I thought it pushed things to cpu ram
 But instead it removes the redundant storage of gradients and stuff which is done in both GPUs. And instead makes it so that it can be shared.
 Zero2 keeps the full copy of each parameter in both GPUs but they only keep the fraction of gradients they train. That is individual to each gpu.
 Before continuing, created the weekly report.
+
+Zero3 instead partitions all 3: Optimizer states, gradients, model parameters. No GPU has any redundant information. They only have what they are working on. But because of this, when a GPU needs the weights of other parts of the model, they need to get them from another GPU. Once the calculation is done, it deletes the extra information. 
+And after some more searching, I learnt that the reason why zero3 was incompatible with 4 bit quantization was that the kind of slicing and manipulation of the data it needs to do is hindered by the 4 bit representation in comparison to float 16. Now how close this is to the actual reason I don't really know. But it feels close enough given that zero2 fixed this problem when used alongside 4 bit quantization.
