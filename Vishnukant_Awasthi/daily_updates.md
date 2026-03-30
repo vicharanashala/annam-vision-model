@@ -106,3 +106,6 @@ Attended the daily stand up and then the daily meeting. Started fine tuning from
 
 ## 28/03/2026
 Attended the daily stand up and daily meeting. Started fine tuning from last saved checkpoint of 200 completed 227 steps out of 500 steps using Gemma 3 , 4B on rice disease dataset.Completed 263 steps on fine tuning for 1 epoch with 500 steps using Gemma 3 , 4B on rice disease dataset.Completed 299 steps on fine tuning for 1 epoch with 500 steps using Gemma 3 , 4B on rice disease dataset.Completed 343 steps on fine tuning for 1 epoch with 500 steps using Gemma 3 , 4B on rice disease dataset.
+
+## 30/03/2026
+Attended the daily stand up and daily meeting. Started fine tuning from last saved checkpoint of 400 completed 419 steps out of 500 steps using Gemma 3 , 4B on rice disease dataset.Completed testing with 400 steps checkpoint out 500 steps for 1 epochs but got the same testing accuracy of 6.45%. The issue is that for all the testing I did at various step checkpoint it predicts all classes as one class. Understood what large language models (LLMs) are, their architecture, and how they work. Completed making the project report to close the previous task and also made this month's monthly report. Gone through working of transformers and tokenization. How it improves overall LLM accuracy.
