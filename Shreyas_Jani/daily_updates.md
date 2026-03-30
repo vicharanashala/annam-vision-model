@@ -1050,3 +1050,23 @@ Before continuing, created the weekly report.
 
 Zero3 instead partitions all 3: Optimizer states, gradients, model parameters. No GPU has any redundant information. They only have what they are working on. But because of this, when a GPU needs the weights of other parts of the model, they need to get them from another GPU. Once the calculation is done, it deletes the extra information. 
 And after some more searching, I learnt that the reason why zero3 was incompatible with 4 bit quantization was that the kind of slicing and manipulation of the data it needs to do is hindered by the 4 bit representation in comparison to float 16. Now how close this is to the actual reason I don't really know. But it feels close enough given that zero2 fixed this problem when used alongside 4 bit quantization.
+
+
+## 30/3/2026
+
+Had the daily meet
+Was Continuing to read and understand necessary topics for fine-tuning. But Deepthi mam mentioned we will be moving onto speech and LLMs. In this I mentioned speech, so I suppose I will be continuing with this.
+
+Continued with the daily progress meet, focusing more on the newer tasks.
+Started doing some research on TTS models and fine tuning, focusing on Punjabi and Indic languages in general.
+
+I first got an overview of the work already done and general issues, like the tonal structure of Punjabi where slightly variations in tone change the meaning as well as how it is converted to international phonetic alphabets as a standard.
+I also found that generic models like Meta's MMS don't work very well for this, and 2 main models are IndicF5 and Parler TTS. The second one is already being fine-tuned by other teams so I'll currently ignore that. 
+I'll be continuing to look for more information as this just surface level
+
+There's an architecture called A2TTS which apparently uses a diffusion based approach. I have been focusing on diffusion for a good while so this seems like a good avenue for research. 
+There are quite a few audibook datasets for Indic languages which were cleaned with other AI models (IndicVoices-R)
+There's also a lot of stuff by Bhashini.
+Elevenlabs is also an option but it could get expensive.
+
+Before continuing further, created this month's monthly report and sent it to Deepthi mam. I will begin my focus from A2TTS since it is closest to what I already know (so a good entry point), and seems to be capable as well.
