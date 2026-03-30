@@ -1070,3 +1070,8 @@ There's also a lot of stuff by Bhashini.
 Elevenlabs is also an option but it could get expensive.
 
 Before continuing further, created this month's monthly report and sent it to Deepthi mam. I will begin my focus from A2TTS since it is closest to what I already know (so a good entry point), and seems to be capable as well.
+
+A2TTS stands for Adaptive Text To Speech. It is diffusion-based and was release in July 2025 by IIT Bombay researchers (so pretty new). It was designed specifically the issue of low-resource quantities of Indic languages.
+The model is very light (approximately 150M parameters), and extends the Grad-TTS architecture (can check later its details as well). It uses a DDPM decoder to generate the Speech (high-fidelity mel-spectrograms).
+It extracts and uses a continuous speaker embedding, which makes it extremely easy and fast to adapt its voice to completely new speakers from just a small 10 second sample audio. There's a cross attention duration prediction module, and Classifier Free Guidance is used to condition the output to the chosen speaker's voice. 
+Also A2TTS was trained exclusively on IndicSUPERB dataset. So its foundation is completely on Indic languages.
