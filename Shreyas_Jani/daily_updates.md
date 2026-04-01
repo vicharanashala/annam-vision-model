@@ -1075,3 +1075,26 @@ A2TTS stands for Adaptive Text To Speech. It is diffusion-based and was release 
 The model is very light (approximately 150M parameters), and extends the Grad-TTS architecture (can check later its details as well). It uses a DDPM decoder to generate the Speech (high-fidelity mel-spectrograms).
 It extracts and uses a continuous speaker embedding, which makes it extremely easy and fast to adapt its voice to completely new speakers from just a small 10 second sample audio. There's a cross attention duration prediction module, and Classifier Free Guidance is used to condition the output to the chosen speaker's voice. 
 Also A2TTS was trained exclusively on IndicSUPERB dataset. So its foundation is completely on Indic languages.
+
+## 1/4/2026
+
+Had a meet with the whole team with Sudarshan sir.
+After that continued with A2TTS. Started with the research paper itself.
+
+For the model evaluation (an important starting point given our focus is primarily practical), they had a dedicated test set (standard), they had 3 hours of audio from 20 distinct speakers (10 male, 10 female). The speakers might have also been excluded from the training data, but I can't be certain.
+They used 2 metrics: Sim-O score (for speaker similarity), and Character Error Rate (CER) for intelligibility.
+And of course this Sim-O score is also a cosine similarity on speaker embeddings.
+
+For more specific details, Punjabi had a score of 0.7717 where the baseline score from Grad-TTS was 0.7046.
+The other languages were also much higher but Punjabi seemed like one of the bigger improvements.
+Hindi only got to 0.74 from 0.72, possibly because it has a larger amount of data already existing.
+CER is calculated by comparing the the generated audio with the original test audio by running them through an ASR (Automatic Speech Recognition) model
+
+Interestingly enough, the Word Error Rate was not included directly in the main paper. This was due to high error rates in the baseline model's results directly, which makes them unreliable for evaluating the new model. But for transparency, they were revealed in the Appendix.
+The most relevant value there would be the WER for Punjabi on IndicSUPERB.
+For ASR, 11.80, For TTS, 20.99
+
+Instead of training everything from scratch, A2TTS uses a pretrained speaker encoder from UnitSpeech. Makes sense given that is probably the most data intensive part and is potentially language agnostic? Might need to read more into speaker encoders. My current understanding is they are similar to language encoders like Word2Vec.
+It's trained on the VoxCeleb dataset with 6k+ speakers.
+Also, the IndicSUPERB dataset was initially at 16khz, which was resampled to 22khz before training for better results.
+It also doubled the channels over the base GradTTS.
