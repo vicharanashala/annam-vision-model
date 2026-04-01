@@ -1098,3 +1098,7 @@ Instead of training everything from scratch, A2TTS uses a pretrained speaker enc
 It's trained on the VoxCeleb dataset with 6k+ speakers.
 Also, the IndicSUPERB dataset was initially at 16khz, which was resampled to 22khz before training for better results.
 It also doubled the channels over the base GradTTS.
+
+Yes about what I thought. Speaker encoders take a small clip of a speaker's voice and extract embeddings from them. These contain the unique vocal characteristics of that person. Effectively the same as language embeddings. 
+The 2 main components of the model that use this are of course the diffusion decoder and the duration predictor. The latter one probably uses the natural talking speed of the speaker.
+I think I have a decent understanding of the model now. I'll begin with the model training.
