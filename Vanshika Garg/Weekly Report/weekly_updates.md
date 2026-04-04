@@ -88,6 +88,8 @@ The progress lays a strong foundation for further research and development.
 
 ---
 
+# WEEKLY UPDATE 
+
 **Project Title:** AI-Based Plant Disease Detection System Using Computer Vision  
 **Week Duration:** 23/03/26 – 29/03/26  
 
