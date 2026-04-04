@@ -1,5 +1,31 @@
 # DAILY PROGRESS LOG  
+
+#### LLM Architecture Study & Synthetic Data Literature Review (April 2026)  
+---
+## 04/04/26  
+Today I continued working on the literature review for synthetic data generation. I consolidated insights from research papers and the links shared by Kshitiz, and started identifying key patterns, advantages, and limitations of different approaches. I also focused on structuring my findings in a clear and organized way to make the documentation more effective. The main goal today was to move from understanding the concepts to preparing a well-structured draft for the literature review.
+
+---
+
+## 03/04/26  
+Today I began a focused study on synthetic data generation techniques as part of the literature review. I analyzed different methods such as generative models, simulation-based approaches, and data augmentation techniques. I also compared their advantages and limitations to understand where each method performs best. This step helped in forming a structured direction for the literature review.
+
+---
+
+## 02/04/26  
+Today I went through the resources and links shared by Kshitiz regarding synthetic data generation. I explored different techniques and approaches mentioned in those materials and tried to understand their relevance in real-world scenarios. I also organized the resources properly so that they can be used effectively during the literature review process. The focus was on building clarity around the domain before starting deep analysis.
+
+---
+
+## 01/04/26  
+Today I continued my deep dive into LLM architectures and explored more advanced concepts. I studied topics like fine-tuning, retrieval-augmented generation (RAG), and agent-based workflows used in modern AI systems. I also analyzed how different architectures are applied in real-world use cases. This helped me understand how theoretical concepts are translated into practical implementations.
+
+---
+
 ## Plant Disease Detection Project (March 2026)
+
+## 31/03/26  
+Today I started exploring LLM architectures in detail. I focused on understanding the core components such as transformers, attention mechanisms, and how large language models process and generate text. I also studied the overall training pipeline and how these models are deployed in real-world systems. The goal was to build a strong foundational understanding that will help in future AI-related tasks and projects.
 
 ---
 
