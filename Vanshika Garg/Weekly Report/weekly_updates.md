@@ -1,4 +1,93 @@
 # WEEKLY REPORT  
+**Project:** Literature Review on Synthetic Data Generation  
+**Week:** 30/03 - 04/04 
+**Status:** In Progress  
+
+---
+
+## 📌 Overview  
+This week focused on initiating and conducting a structured literature review on synthetic data generation.  
+The work included collecting research papers, analyzing various techniques, and identifying key insights.  
+Major approaches studied include generative models, simulation techniques, and data augmentation.  
+The progress lays a strong foundation for further research and development.
+
+---
+
+## ✅ Tasks Completed  
+
+### 1. Research Planning  
+- Defined scope and objectives of the literature review  
+- Identified key focus areas: GANs, VAEs, simulations, augmentation  
+- Created a structured research roadmap  
+- Set milestones for completion  
+
+### 2. Data Collection  
+- Gathered research papers from IEEE, Springer, and arXiv  
+- Filtered relevant and recent publications  
+- Categorized papers based on techniques  
+- Organized references for easy tracking  
+
+### 3. Generative Models Analysis  
+- Studied GANs, VAEs, and diffusion models  
+- Understood architecture and working mechanisms  
+- Analyzed real-world applications  
+- Documented key differences and observations  
+
+### 4. Simulation Techniques Study  
+- Reviewed simulation-based data generation  
+- Explored use cases in healthcare and finance  
+- Identified strengths in controlled environments  
+- Noted limitations in realism and scalability  
+
+### 5. Data Augmentation Review  
+- Examined augmentation techniques like transformations and noise injection  
+- Compared effectiveness across domains  
+- Studied impact on model performance  
+- Documented suitable use cases  
+
+---
+
+## 📊 Key Findings  
+- Synthetic data helps in privacy preservation and scalability  
+- Generative models are powerful but computationally expensive  
+- Simulation methods are domain-specific and less flexible  
+- Data augmentation is effective but limited in diversity  
+
+---
+
+## ⚠️ Challenges Faced  
+- Difficulty in comparing results due to lack of standard metrics  
+- Variability in research quality across sources  
+- Understanding complex architectures of advanced models  
+- Limited real-world validation in some studies  
+
+---
+
+## 🔍 Research Gaps Identified  
+- Lack of standardized evaluation frameworks  
+- Challenges in high-dimensional data generation  
+- Bias and fairness issues in synthetic datasets  
+- Limited domain-specific optimization techniques  
+
+---
+
+## 🚀 Next Week Plan  
+- Perform deeper comparative analysis of techniques  
+- Explore evaluation metrics for synthetic data quality  
+- Study advanced models and hybrid approaches  
+- Begin drafting final literature review document  
+
+---
+
+## 📈 Overall Progress  
+- Research Initiated: ✅  
+- Data Collection: ✅  
+- Initial Analysis: ✅  
+- Comparative Study: 🔄 In Progress  
+- Final Report: ⏳ Pending  
+
+---
+
 **Project Title:** AI-Based Plant Disease Detection System Using Computer Vision  
 **Week Duration:** 23/03/26 – 29/03/26  
 
